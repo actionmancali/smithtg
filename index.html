@@ -1,3 +1,8 @@
+That one capital letter makes all the difference! In the world of web hosting and GitHub, logo.png and Logo.png are treated as two completely different files.
+
+I have updated the code below to reference Logo.png exactly.
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +25,7 @@
             line-height: 1.6;
         }
         
-        /* Navigation with Logo Placement */
+        /* Navigation */
         nav { 
             display: flex; 
             justify-content: space-between; 
@@ -37,11 +42,11 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            gap: 12px; /* Space between logo image and text */
+            gap: 12px;
         }
 
         .logo-img {
-            height: 40px; /* Standard professional height */
+            height: 40px; 
             width: auto;
             display: block;
         }
@@ -169,8 +174,8 @@
 <body>
 
     <nav>
-        <a href="#" class="logo-container">
-            <img src="logo.png" alt="STG Logo" class="logo-img">
+        <a href="index.html" class="logo-container">
+            <img src="./Logo.png" alt="STG Logo" class="logo-img">
             <span class="logo-text">SMITH TECHNOLOGY GROUP</span>
         </a>
         <div class="menu">
