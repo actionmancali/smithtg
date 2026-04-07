@@ -3,202 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smith Technology Group | Proven IT Leadership</title>
+    <title>Smith Technology Group | Corporate Technology Partners</title>
     <style>
         :root {
-            /* Professional Corporate/Aerospace Palette */
-            --stg-navy: #0e1219; 
-            --stg-accent: #0088cc; 
-            --text-light: #e0e6ed;
-            --text-muted: #b0b9c1;
-            --card-bg: rgba(14, 18, 25, 0.95);
+            --primary-blue: #003366; 
+            --secondary-blue: #00509d;
+            --accent-blue: #e6f0ff;
+            --text-dark: #1a1a1a;
+            --text-light: #555;
         }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--stg-navy);
-            /* Subtle geometric background to imply networking and systems */
-            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6h2c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            color: var(--text-light);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            margin: 0; 
+            color: var(--text-dark); 
             line-height: 1.6;
         }
-
-        .main-container {
-            max-width: 800px;
-            width: 90%;
-            text-align: center;
-            padding: 3.5rem;
-            margin: 2rem 0;
-            border-radius: 12px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            background-color: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        /* Navigation with Logo Placement */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 8%; 
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px; /* Space between logo image and text */
         }
 
-        /* Temporary Logo Styling */
-        .logo-box {
-            margin-bottom: 2.5rem;
-        }
-
-        .stg-logo-svg {
-            width: 320px;
-            max-width: 100%;
-            height: auto;
-        }
-
-        h1 {
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 0.5rem;
-            font-size: 1.8rem;
-        }
-
-        .experience-badge {
-            color: var(--stg-accent);
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            font-size: 1rem;
-        }
-
-        .about-section {
-            text-align: left;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: rgba(255,255,255,0.03);
-            border-left: 4px solid var(--stg-accent);
-            border-radius: 4px;
-        }
-
-        .about-section p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-bottom: 1.2rem;
-        }
-
-        .contact-header {
-            margin-top: 3rem;
-            font-size: 1.4rem;
-            color: #fff;
-        }
-
-        /* Form Styling */
-        form {
-            text-align: left;
-            margin-top: 2rem;
-        }
-
-        label {
+        .logo-img {
+            height: 40px; /* Standard professional height */
+            width: auto;
             display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--stg-accent);
-            font-weight: bold;
         }
 
-        input, textarea {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 4px;
-            box-sizing: border-box;
-            border: 1px solid rgba(255,255,255,0.1);
-            background-color: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            font-size: 1rem;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--stg-accent);
-        }
-
-        button {
-            width: 100%;
-            padding: 1.2rem;
-            background-color: var(--stg-accent);
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
+        .logo-text { 
+            font-weight: 800; 
+            font-size: 20px; 
+            color: var(--primary-blue); 
+            letter-spacing: -0.5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
         }
 
-        button:hover {
-            background-color: #00aaff;
-            box-shadow: 0 0 15px rgba(0, 136, 204, 0.4);
+        .menu a { 
+            margin-left: 30px; 
+            text-decoration: none; 
+            color: var(--text-dark); 
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        footer {
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #555;
+        .menu a:hover { color: var(--secondary-blue); }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 80, 157, 0.85)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white; 
+            padding: 120px 8%; 
+            text-align: left; 
+        }
+
+        .hero h1 { 
+            font-size: 48px; 
+            margin: 0 0 20px 0; 
+            max-width: 800px;
+            line-height: 1.1;
+        }
+
+        .hero p { 
+            font-size: 20px; 
+            max-width: 650px; 
+            margin-bottom: 30px; 
+            opacity: 0.9;
+        }
+
+        /* Services Grid */
+        .section { padding: 80px 8%; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 40px; 
+        }
+
+        .card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 4px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.3s;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card h3 { color: var(--primary-blue); margin-top: 0; font-size: 20px; }
+        .card p { color: var(--text-light); font-size: 15px; }
+
+        /* About Section */
+        .about-bar {
+            background-color: var(--accent-blue);
+            padding: 80px 8%;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-text { flex: 2; min-width: 350px; }
+        .about-text h2 { color: var(--primary-blue); font-size: 32px; margin-top: 0; }
+        .about-text p { font-size: 18px; color: #444; }
+
+        .about-stat { 
+            flex: 1; 
+            min-width: 250px; 
+            text-align: center; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
+        }
+        .about-stat span { display: block; font-size: 54px; font-weight: 800; color: var(--secondary-blue); line-height: 1; }
+        .about-stat p { margin: 10px 0 0; font-weight: 600; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 1px; }
+
+        footer { 
+            text-align: center; 
+            padding: 50px 8%; 
+            background: #111; 
+            color: #888; 
+            font-size: 13px; 
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .menu { display: none; } 
+            .logo-text { font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-
-        <div class="logo-box">
-            <svg class="stg-logo-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 120">
-                <style type="text/css">
-                    .st0{fill:#0088CC;}
-                    .st1{fill:#FFFFFF; font-family:Arial, sans-serif; font-weight:bold; font-size:40px;}
-                    .st2{fill:#B0B9C1; font-family:Arial, sans-serif; font-size:16px; letter-spacing: 5px;}
-                </style>
-                <rect x="0" y="30" class="st0" width="100" height="60"/>
-                <text transform="matrix(1 0 0 1 12 75)" class="st1">STG</text>
-                <text transform="matrix(1 0 0 1 120 60)" class="st1">SMITH</text>
-                <text transform="matrix(1 0 0 1 120 90)" class="st2">TECHNOLOGY GROUP</text>
-            </svg>
+    <nav>
+        <a href="#" class="logo-container">
+            <img src="logo.png" alt="STG Logo" class="logo-img">
+            <span class="logo-text">SMITH TECHNOLOGY GROUP</span>
+        </a>
+        <div class="menu">
+            <a href="#services">Solutions</a>
+            <a href="#about">About</a>
+            <a href="#contact">Support</a>
         </div>
+    </nav>
 
-        <h1>CONTINUITY. EXPERTISE. INNOVATION.</h1>
-        <div class="experience-badge">25+ Years of Proven Technology Leadership</div>
-
-        <div class="about-section">
-            <p>
-                Smith Technology Group represents the next chapter in a quarter-century legacy of IT excellence. While our name is evolving, our foundation remains built on over two decades of dedicated service to our corporate partners.
-            </p>
-            <p>
-                We are committed to providing the same high-level technical precision and uninterrupted support you have relied on for years. As we move forward, your infrastructure remains our highest priority.
-            </p>
-        </div>
-
-        <h2 class="contact-header">EXISTING CLIENT SUPPORT</h2>
-        <p>Our secure full-service portal is under development. Existing clients may use the form below for service requests or account inquiries.</p>
-        
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            
-            <label for="name">NAME / COMPANY</label>
-            <input type="text" id="name" name="name" required placeholder="Organization Name">
-
-            <label for="email">REPLY EMAIL</label>
-            <input type="email" id="email" name="email" required placeholder="contact@company.com">
-
-            <label for="message">HOW CAN WE ASSIST YOU?</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Please describe your technical request..."></textarea>
-
-            <button type="submit">Send Secure Inquiry</button>
-        </form>
-
-        <footer>
-            &copy; 2026 Smith Technology Group. All Rights Reserved. | Dedicated to Corporate Excellence.
-        </footer>
-
+    <div class="hero">
+        <h1>Scalable IT Infrastructure and Management for the Modern Enterprise.</h1>
+        <p>Expert-led systems management and strategic technical oversight backed by 25+ years of industry leadership.</p>
     </div>
+
+    <div class="about-bar" id="about">
+        <div class="about-text">
+            <h2>The STG Advantage</h2>
+            <p>We provide the technical stability essential for corporate growth. Whether we are optimizing inherited legacy systems or architecting future-ready infrastructure, our methodology is rooted in 25 years of cross-industry precision. We bridge the gap between complex technology and seamless business operations.</p>
+        </div>
+        <div class="about-stat">
+            <span>25+</span>
+            <p>Years of Professional Experience</p>
+        </div>
+    </div>
+
+    <div class="section" id="services">
+        <div class="section-header">
+            <h2>Our Core Solutions</h2>
+            <p>End-to-end technology procurement and infrastructure management.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Hardware Procurement</h3>
+                <p>Authorized delivery and setup of enterprise-grade equipment from industry leaders including <strong>HP, Dell, and Lenovo</strong>. We ensure your team has the right tools for peak performance.</p>
+            </div>
+            <div class="card">
+                <h3>Cloud & Software Solutions</h3>
+                <p>Scalable cloud architecture and professional software licensing management. We streamline your digital environment for maximum efficiency and security.</p>
+            </div>
+            <div class="card">
+                <h3>Managed Capabilities</h3>
+                <p>Comprehensive oversight of your IT footprint. From proactive monitoring to infrastructure continuity, we manage the technology so you can focus on the business.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
+        <p>Corporate Support Portal available via secure chat 24/7.</p>
+    </footer>
+
+    <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'd433810c9a6ed551ac5f4908db2942c35fba3ef5';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
 
 </body>
 </html>
