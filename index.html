@@ -61,7 +61,7 @@
             margin-left: 25px; 
             text-decoration: none; 
             color: var(--text-dark); 
-            font-weight: 600;
+            font-weight: 600; 
             font-size: 13px;
             text-transform: uppercase;
             transition: 0.3s;
@@ -69,10 +69,9 @@
 
         .menu a:hover { color: var(--secondary-blue); }
 
-        /* Request Quote Button in Nav */
         .quote-nav-btn {
             background: var(--primary-blue);
-            color: white !important; /* Overriding menu link color */
+            color: white !important;
             padding: 10px 20px;
             border-radius: 4px;
             margin-left: 25px;
@@ -113,7 +112,7 @@
         }
         .card h3 { color: var(--primary-blue); margin-top: 0; font-size: 20px; }
 
-        /* Strategic Connect Section */
+        /* Sales Agent Connect Section */
         #connect { background-color: var(--bg-light); text-align: center; }
         
         .connect-box {
@@ -123,24 +122,28 @@
             padding: 50px;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Ensures the button inside stays centered */
         }
 
+        /* Smaller, Centered Button */
         .connect-btn { 
             display: inline-block; 
             background: var(--primary-blue); 
             color: white; 
-            padding: 18px 35px; 
+            padding: 12px 25px; /* Reduced padding for a tighter fit */
             border-radius: 4px; 
             text-decoration: none; 
             font-weight: 700; 
             text-transform: uppercase; 
-            margin-top: 25px;
+            margin-top: 20px;
             transition: 0.3s; 
             cursor: pointer; 
             border: none; 
-            font-size: 16px;
+            font-size: 14px; /* Slightly smaller font to match the compact look */
             letter-spacing: 1px;
-            width: 100%;
+            width: auto; /* Overrides the 100% width from before */
         }
 
         .connect-btn:hover { background: var(--secondary-blue); transform: translateY(-2px); }
@@ -150,7 +153,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 32px; }
             .connect-box { padding: 30px; }
-            .menu { display: none; } /* Hide menu on mobile to maintain layout integrity */
+            .menu { display: none; } 
         }
     </style>
 </head>
@@ -197,10 +200,13 @@
 
     <div class="section" id="connect">
         <div class="connect-box">
-            <h2>Connect with an IT Strategist</h2>
-            <p>Please provide your details on our quote request page. Our team will contact you shortly.</p>
+            <h2>Connect with a Sales Agent</h2>
+            <p>
+                Please provide your details on our quote request page.<br>
+                Our team will contact you shortly.
+            </p>
             
-            <a href="quote.html" class="connect-btn">Request a Professional Quote</a>
+            <a href="quote.html" class="connect-btn">CONTACT US</a>
         </div>
     </div>
 
@@ -219,7 +225,6 @@
       c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
     })(document);
     </script>
-    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
 
 </body>
 </html>
