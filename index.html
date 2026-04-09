@@ -27,7 +27,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 15px 8%; 
+            padding: 15px 5%; 
             background: white;
             position: sticky;
             top: 0;
@@ -52,17 +52,39 @@
             text-transform: uppercase;
         }
 
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+
         .menu a { 
-            margin-left: 30px; 
+            margin-left: 25px; 
             text-decoration: none; 
             color: var(--text-dark); 
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             transition: 0.3s;
         }
 
         .menu a:hover { color: var(--secondary-blue); }
+
+        /* Request Quote Button in Nav */
+        .quote-nav-btn {
+            background: var(--primary-blue);
+            color: white !important; /* Overriding menu link color */
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-left: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .quote-nav-btn:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-1px);
+        }
 
         /* Hero Section */
         .hero { 
@@ -128,6 +150,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 32px; }
             .connect-box { padding: 30px; }
+            .menu { display: none; } /* Hide menu on mobile to maintain layout integrity */
         }
     </style>
 </head>
@@ -139,8 +162,10 @@
             <span class="logo-text">SMITH TECHNOLOGY GROUP</span>
         </a>
         <div class="menu">
-            <a href="#services">Solutions</a>
-            <a href="#connect">Connect</a>
+            <a href="manufacturers.html">Manufacturers</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="aboutus.html">Who We Are</a>
+            <a href="quote.html" class="quote-nav-btn">Request Quote</a>
         </div>
     </nav>
 
@@ -173,9 +198,9 @@
     <div class="section" id="connect">
         <div class="connect-box">
             <h2>Connect with an IT Strategist</h2>
-            <p>Please provide your details below. Our team will contact you shortly.</p>
+            <p>Please provide your details on our quote request page. Our team will contact you shortly.</p>
             
-            <button class="connect-btn" onclick="smartsupp('chat:open')">Open Inquiry Portal</button>
+            <a href="quote.html" class="connect-btn">Request a Professional Quote</a>
         </div>
     </div>
 

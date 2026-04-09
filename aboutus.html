@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Are | Smith Technology Group</title>
+    <style>
+        :root {
+            --primary-blue: #003366; 
+            --secondary-blue: #00509d;
+            --accent-blue: #e6f0ff;
+            --text-dark: #1a1a1a;
+            --text-light: #555;
+            --bg-light: #f9f9f9;
+        }
+        
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            margin: 0; 
+            color: var(--text-dark); 
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation (Consistent across all pages) */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 5%; 
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .logo-container { display: flex; align-items: center; text-decoration: none; gap: 12px; }
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo-text { font-weight: 800; font-size: 20px; color: var(--primary-blue); letter-spacing: -0.5px; text-transform: uppercase; }
+        .menu { display: flex; align-items: center; }
+        .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        .menu a:hover { color: var(--secondary-blue); }
+        .quote-nav-btn { background: var(--primary-blue); color: white !important; padding: 10px 20px; border-radius: 4px; margin-left: 25px; font-size: 13px; font-weight: 700; transition: 0.3s; }
+        .quote-nav-btn:hover { background: var(--secondary-blue); transform: translateY(-1px); }
+
+        /* Sub-Hero Header */
+        .about-header {
+            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), 
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 8%;
+            color: white;
+            text-align: center;
+        }
+
+        .about-header h1 { 
+            font-size: 42px; 
+            margin: 0; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Content Sections */
+        .content-section { padding: 80px 15%; }
+        .content-section h2 { color: var(--primary-blue); font-size: 28px; margin-bottom: 20px; text-transform: uppercase; }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .highlight-box {
+            background: var(--accent-blue);
+            padding: 40px;
+            border-left: 5px solid var(--primary-blue);
+            font-style: italic;
+            font-size: 18px;
+            color: var(--primary-blue);
+        }
+
+        /* Vision/Values Grid */
+        .values-bg { background-color: var(--bg-light); padding: 80px 8%; }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .value-card {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+        .value-card h3 { color: var(--secondary-blue); margin-top: 0; text-transform: uppercase; font-size: 18px; }
+
+        footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
+
+        @media (max-width: 992px) {
+            .two-column { grid-template-columns: 1fr; gap: 40px; }
+            .content-section { padding: 60px 8%; }
+            .menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="./Logo.png" alt="STG Logo" class="logo-img">
+            <span class="logo-text">SMITH TECHNOLOGY GROUP</span>
+        </a>
+        <div class="menu">
+            <a href="manufacturers.html">Manufacturers</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="aboutus.html">Who We Are</a>
+            <a href="quote.html" class="quote-nav-btn">Request Quote</a>
+        </div>
+    </nav>
+
+    <div class="about-header">
+        <h1>Who We Are</h1>
+    </div>
+
+    <section class="content-section">
+        <div class="two-column">
+            <div>
+                <h2>Our Mission</h2>
+                <p>Smith Technology Group (STG) is a specialized technology consultancy and small business supplier dedicated to the Aerospace and Defense sectors. We provide the strategic oversight and technical precision necessary to manage complex IT infrastructures and procurement lifecycles.</p>
+                <p>With a foundation built on 25 years of industry experience, we bridge the gap between high-level hardware requirements and mission-critical execution.</p>
+            </div>
+            <div class="highlight-box">
+                "Our commitment is to provide the technical continuity and supply chain reliability that modern defense contractors require to maintain their competitive edge."
+            </div>
+        </div>
+    </section>
+
+    <section class="values-bg">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2>The STG Advantage</h2>
+            <p>We operate as a high-touch partner, ensuring that every piece of infrastructure is optimized for performance and security.</p>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Technical Precision</h3>
+                <p>Leveraging decades of expertise in IT infrastructure to deliver solutions that meet the rigorous standards of the aerospace industry.</p>
+            </div>
+            <div class="value-card">
+                <h3>Strategic Procurement</h3>
+                <p>Streamlined access to enterprise-grade hardware from the world’s leading manufacturers, managed with total transparency.</p>
+            </div>
+            <div class="value-card">
+                <h3>Small Business Agility</h3>
+                <p>As a focused consultancy, we provide the personalized attention and rapid response times that larger vendors cannot match.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="text-align: center;">
+        <h2>Ready to collaborate?</h2>
+        <p>Contact our strategic team to discuss your next infrastructure project.</p>
+        <a href="quote.html" class="quote-nav-btn" style="display: inline-block; margin-left: 0; padding: 15px 40px;">Request a Consultation</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
+        <p>Enterprise Infrastructure Solutions & Management</p>
+    </footer>
+
+    <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'd433810c9a6ed551ac5f4908db2942c35fba3ef5';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+
+</body>
+</html>

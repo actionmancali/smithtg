@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturers | Smith Technology Group</title>
+    <style>
+        :root {
+            --primary-blue: #003366; 
+            --secondary-blue: #00509d;
+            --accent-blue: #e6f0ff;
+            --text-dark: #1a1a1a;
+            --text-light: #555;
+            --bg-light: #f9f9f9;
+        }
+        
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            margin: 0; 
+            color: var(--text-dark); 
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation (Same as index.html) */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 5%; 
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .logo-container { display: flex; align-items: center; text-decoration: none; gap: 12px; }
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo-text { font-weight: 800; font-size: 20px; color: var(--primary-blue); letter-spacing: -0.5px; text-transform: uppercase; }
+        .menu { display: flex; align-items: center; }
+        .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        .menu a:hover { color: var(--secondary-blue); }
+        .quote-nav-btn { background: var(--primary-blue); color: white !important; padding: 10px 20px; border-radius: 4px; margin-left: 25px; font-size: 13px; font-weight: 700; transition: 0.3s; }
+        .quote-nav-btn:hover { background: var(--secondary-blue); transform: translateY(-1px); }
+
+        /* Manufacturers Header */
+        .mfg-header {
+            background: var(--bg-light);
+            padding: 60px 8%;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .mfg-header h1 { 
+            font-size: 42px; 
+            color: var(--primary-blue); 
+            margin: 0 0 20px 0; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .linecard-btn {
+            display: inline-block;
+            background: var(--secondary-blue);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .linecard-btn:hover { background: var(--primary-blue); transform: translateY(-2px); }
+
+        /* Jump Menu */
+        .jump-menu {
+            padding: 20px 8%;
+            background: white;
+            text-align: center;
+            position: sticky;
+            top: 70px; /* Sits under the main nav */
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .jump-link {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: 0.2s;
+        }
+
+        .jump-link:hover { background: var(--accent-blue); }
+
+        /* Alphabetical Sections */
+        .alphabet-section { padding: 40px 8%; }
+        .letter-divider {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+            margin-bottom: 30px;
+            padding-bottom: 5px;
+        }
+
+        .mfg-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .mfg-name {
+            font-size: 15px;
+            color: var(--text-light);
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .mfg-header h1 { font-size: 32px; }
+            .menu { display: none; }
+            .jump-menu { top: 60px; padding: 10px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="./Logo.png" alt="STG Logo" class="logo-img">
+            <span class="logo-text">SMITH TECHNOLOGY GROUP</span>
+        </a>
+        <div class="menu">
+            <a href="manufacturers.html">Manufacturers</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="aboutus.html">Who We Are</a>
+            <a href="quote.html" class="quote-nav-btn">Request Quote</a>
+        </div>
+    </nav>
+
+    <div class="mfg-header">
+        <h1>Authorized Manufacturers</h1>
+        <p>A comprehensive portfolio of industry-leading hardware and infrastructure partners.</p>
+        <a href="linecard.pdf" class="linecard-btn">Get Line Card (PDF)</a>
+    </div>
+
+    <div class="jump-menu">
+        <a href="#A" class="jump-link">A</a><a href="#B" class="jump-link">B</a>
+        <a href="#C" class="jump-link">C</a><a href="#D" class="jump-link">D</a>
+        <a href="#E" class="jump-link">E</a><a href="#F" class="jump-link">F</a>
+        <a href="#G" class="jump-link">G</a><a href="#H" class="jump-link">H</a>
+        <a href="#I" class="jump-link">I</a><a href="#J" class="jump-link">J</a>
+        <a href="#K" class="jump-link">K</a><a href="#L" class="jump-link">L</a>
+        <a href="#M" class="jump-link">M</a><a href="#N" class="jump-link">N</a>
+        <a href="#O" class="jump-link">O</a><a href="#P" class="jump-link">P</a>
+        <a href="#Q" class="jump-link">Q</a><a href="#R" class="jump-link">R</a>
+        <a href="#S" class="jump-link">S</a><a href="#T" class="jump-link">T</a>
+        <a href="#U" class="jump-link">U</a><a href="#V" class="jump-link">V</a>
+        <a href="#W" class="jump-link">W</a><a href="#X" class="jump-link">X</a>
+    </div>
+
+    <section id="A" class="alphabet-section">
+        <div class="letter-divider">A</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">A.F. Machine & Tool</div>
+            <div class="mfg-name">AB Initio</div>
+            <div class="mfg-name">Abaco Systems</div>
+            <div class="mfg-name">Accel-RF Instruments Corporation</div>
+            <div class="mfg-name">Accurex</div>
+            <div class="mfg-name">Acme Industrial Company</div>
+            <div class="mfg-name">Acopian Power Supplies</div>
+            <div class="mfg-name">Acromag Inc</div>
+            <div class="mfg-name">Adafruit Industries</div>
+            <div class="mfg-name">Adobe</div>
+            <div class="mfg-name">Advance Thin Films</div>
+            <div class="mfg-name">Advanced Circuits</div>
+            <div class="mfg-name">Advantech</div>
+            <div class="mfg-name">Alpha Data</div>
+            <div class="mfg-name">Alta Data Technologies</div>
+            <div class="mfg-name">Altos Photonics</div>
+            <div class="mfg-name">AMD</div>
+            <div class="mfg-name">American Aerospace</div>
+            <div class="mfg-name">American Power Conversion (APC)</div>
+            <div class="mfg-name">Ametek Coining</div>
+            <div class="mfg-name">Ametek Creaform USA</div>
+            <div class="mfg-name">Ametek Gattan</div>
+            <div class="mfg-name">Ametek Programmable Power</div>
+            <div class="mfg-name">AMG Containers</div>
+            <div class="mfg-name">Amphenol</div>
+            <div class="mfg-name">Annapolis Micro Systems</div>
+            <div class="mfg-name">Anritsu</div>
+            <div class="mfg-name">Antcom</div>
+            <div class="mfg-name">Antrin Miniature Specialties, Inc.</div>
+            <div class="mfg-name">Apogee Labs</div>
+            <div class="mfg-name">Applied Avionics, Inc.</div>
+            <div class="mfg-name">Apposite Technologies</div>
+            <div class="mfg-name">Apricorn</div>
+            <div class="mfg-name">Archon CACI</div>
+            <div class="mfg-name">Arkham Technology</div>
+            <div class="mfg-name">Arroyo instruments</div>
+            <div class="mfg-name">Art Craft Paint, Inc.</div>
+            <div class="mfg-name">Astronics</div>
+            <div class="mfg-name">AstroNova, Inc.</div>
+            <div class="mfg-name">Asus</div>
+            <div class="mfg-name">ATT Metrology Solutions</div>
+            <div class="mfg-name">Avalanche Technology</div>
+            <div class="mfg-name">Avtech Room Alert</div>
+            <div class="mfg-name">Axiom Optics</div>
+        </div>
+    </section>
+
+    <section id="B" class="alphabet-section">
+        <div class="letter-divider">B</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">BAE Systems</div>
+            <div class="mfg-name">Baker Hughes</div>
+            <div class="mfg-name">Baltec Precision Balls</div>
+            <div class="mfg-name">BEI Precision Systems and Space</div>
+            <div class="mfg-name">Bentley Harris</div>
+            <div class="mfg-name">Beta Transformer</div>
+            <div class="mfg-name">Bird Technologies</div>
+            <div class="mfg-name">Bittree Patchbays</div>
+            <div class="mfg-name">Black Box Corporation</div>
+            <div class="mfg-name">Blue Marble Communications</div>
+            <div class="mfg-name">Blue Sky Network</div>
+            <div class="mfg-name">Boeing</div>
+            <div class="mfg-name">Bourns</div>
+            <div class="mfg-name">Bracke Manufacturing</div>
+            <div class="mfg-name">Brandywine Communications</div>
+            <div class="mfg-name">BRG Precision Products, Inc.</div>
+        </div>
+    </section>
+
+    <section id="C" class="alphabet-section">
+        <div class="letter-divider">C</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Cables to Go (C2G)</div>
+            <div class="mfg-name">CAES</div>
+            <div class="mfg-name">California Fine Wire</div>
+            <div class="mfg-name">California Gasket and Rubber</div>
+            <div class="mfg-name">Calspan Aerospace</div>
+            <div class="mfg-name">Caltex Plastics, Inc</div>
+            <div class="mfg-name">CanaKit</div>
+            <div class="mfg-name">Cannon</div>
+            <div class="mfg-name">Canoga Perkins</div>
+            <div class="mfg-name">Capax Technologies Inc</div>
+            <div class="mfg-name">Caplugs</div>
+            <div class="mfg-name">Carl Zeiss</div>
+            <div class="mfg-name">Carlisle Interconnect Technologies</div>
+            <div class="mfg-name">Carr Lane Manufacturing</div>
+            <div class="mfg-name">Centric RF</div>
+            <div class="mfg-name">Christie Digital</div>
+            <div class="mfg-name">Chroma Systems Solutions</div>
+            <div class="mfg-name">Ciao Wireless Inc</div>
+            <div class="mfg-name">CK Technologies, Inc.</div>
+            <div class="mfg-name">Clear-Com</div>
+            <div class="mfg-name">Coastal Connections</div>
+            <div class="mfg-name">Cobham</div>
+            <div class="mfg-name">Coherent</div>
+            <div class="mfg-name">Collins Aerospace</div>
+            <div class="mfg-name">Comp TIA</div>
+            <div class="mfg-name">Concurrent Real-Time</div>
+            <div class="mfg-name">Core Systems</div>
+            <div class="mfg-name">Corelis Inc.</div>
+            <div class="mfg-name">Corsair</div>
+            <div class="mfg-name">CPI Satcom and Antenna</div>
+            <div class="mfg-name">Craig Packaging</div>
+            <div class="mfg-name">Crane Aerospace & Electronics</div>
+            <div class="mfg-name">Crater Industries, LLC</div>
+            <div class="mfg-name">Curtis Wright</div>
+            <div class="mfg-name">CVI Laser Optics</div>
+            <div class="mfg-name">Cygna Labs</div>
+        </div>
+    </section>
+
+    <section id="D" class="alphabet-section">
+        <div class="letter-divider">D</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Daniels Manufacturing Corporation</div>
+            <div class="mfg-name">DAP USA</div>
+            <div class="mfg-name">Data Device Corporation</div>
+            <div class="mfg-name">Dell</div>
+            <div class="mfg-name">Dewesoft</div>
+            <div class="mfg-name">DEWETRON</div>
+            <div class="mfg-name">Diversified Crates and Fab</div>
+            <div class="mfg-name">Dolphitech</div>
+            <div class="mfg-name">Dow-Key Microwave</div>
+            <div class="mfg-name">Drager</div>
+            <div class="mfg-name">Druck</div>
+            <div class="mfg-name">DSpace</div>
+            <div class="mfg-name">Dualos, LLC</div>
+            <div class="mfg-name">DX Engineering</div>
+        </div>
+    </section>
+
+    <section id="E" class="alphabet-section">
+        <div class="letter-divider">E</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Eagle Picher</div>
+            <div class="mfg-name">East Coast Microwave</div>
+            <div class="mfg-name">Eaton</div>
+            <div class="mfg-name">Edmund Optics</div>
+            <div class="mfg-name">Embedded TS</div>
+            <div class="mfg-name">Emcor Enclosures</div>
+            <div class="mfg-name">Emcore Corporation</div>
+            <div class="mfg-name">Emerson</div>
+            <div class="mfg-name">Engage black</div>
+            <div class="mfg-name">Ensign-Bickford Aerospace and Defense (EBAD)</div>
+            <div class="mfg-name">Entegris</div>
+            <div class="mfg-name">Eravant</div>
+            <div class="mfg-name">ESE</div>
+            <div class="mfg-name">ETS Lindgren</div>
+            <div class="mfg-name">Evident Scientific</div>
+            <div class="mfg-name">Exail</div>
+            <div class="mfg-name">EXFO</div>
+            <div class="mfg-name">Extreme Engineering Solutions (X-ES)</div>
+        </div>
+    </section>
+
+    <section id="F" class="alphabet-section">
+        <div class="letter-divider">F</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Fairview Microwave</div>
+            <div class="mfg-name">FARO</div>
+            <div class="mfg-name">FAUNC America</div>
+            <div class="mfg-name">FEI-Zyfer</div>
+            <div class="mfg-name">Firebird Optics</div>
+            <div class="mfg-name">Firstmark Aerospace</div>
+            <div class="mfg-name">FLANN Microwave</div>
+            <div class="mfg-name">Fluke Corporation</div>
+            <div class="mfg-name">Frontgrade Technologies</div>
+        </div>
+    </section>
+
+    <section id="G" class="alphabet-section">
+        <div class="letter-divider">G</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Gamdan Optics</div>
+            <div class="mfg-name">GE Aerospace</div>
+            <div class="mfg-name">GE Aviation</div>
+            <div class="mfg-name">Geiger Plastics</div>
+            <div class="mfg-name">Geisler Company</div>
+            <div class="mfg-name">General Dynamics Mission Systems</div>
+            <div class="mfg-name">GGB Industires, Inc.</div>
+            <div class="mfg-name">GL Manufacturing, Inc.</div>
+            <div class="mfg-name">Glenair, Inc.</div>
+            <div class="mfg-name">Gooch & Housego</div>
+            <div class="mfg-name">Great River Technology</div>
+        </div>
+    </section>
+
+    <section id="H" class="alphabet-section">
+        <div class="letter-divider">H</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">H&H Industrial</div>
+            <div class="mfg-name">Hamamatsu</div>
+            <div class="mfg-name">HDT Global</div>
+            <div class="mfg-name">Hewlett Packard Enterprise</div>
+            <div class="mfg-name">Hewlitt Packard</div>
+            <div class="mfg-name">HiTech Global</div>
+            <div class="mfg-name">Howmet Aerospace</div>
+            <div class="mfg-name">Hydraulics International</div>
+        </div>
+    </section>
+
+    <section id="I" class="alphabet-section">
+        <div class="letter-divider">I</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">ICE Enterprises</div>
+            <div class="mfg-name">ICW USA</div>
+            <div class="mfg-name">Imagine Optics</div>
+            <div class="mfg-name">Impact-O-Graph</div>
+            <div class="mfg-name">Imprex</div>
+            <div class="mfg-name">Infinite Electronics, Inc.</div>
+            <div class="mfg-name">Intel</div>
+            <div class="mfg-name">International Super Sensors</div>
+            <div class="mfg-name">IOI Technology Corporatopm</div>
+            <div class="mfg-name">IQE</div>
+            <div class="mfg-name">Ironbox</div>
+            <div class="mfg-name">ITT Cannon</div>
+        </div>
+    </section>
+
+    <section id="J" class="alphabet-section">
+        <div class="letter-divider">J</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">J-Squared</div>
+            <div class="mfg-name">Junkosha</div>
+        </div>
+    </section>
+
+    <section id="K" class="alphabet-section">
+        <div class="letter-divider">K</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">K&L Microwave</div>
+            <div class="mfg-name">Kelton Manufacturing</div>
+            <div class="mfg-name">Kepco Power Supplies</div>
+            <div class="mfg-name">Keyence Corporation</div>
+            <div class="mfg-name">Keysight</div>
+            <div class="mfg-name">Kisters</div>
+            <div class="mfg-name">Kistler Instrument Corporation</div>
+            <div class="mfg-name">KLM Microwave</div>
+            <div class="mfg-name">Konica-Minolta</div>
+            <div class="mfg-name">Kratos Defense</div>
+            <div class="mfg-name">Kulite</div>
+            <div class="mfg-name">Kyocera</div>
+        </div>
+    </section>
+
+    <section id="L" class="alphabet-section">
+        <div class="letter-divider">L</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">L3Harris</div>
+            <div class="mfg-name">Lambda Research Optics</div>
+            <div class="mfg-name">LaseOptics</div>
+            <div class="mfg-name">Lauterbach GmbH</div>
+            <div class="mfg-name">L-com</div>
+            <div class="mfg-name">LCR Embedded System</div>
+            <div class="mfg-name">Leading Edge Metals</div>
+            <div class="mfg-name">Lee Spring</div>
+            <div class="mfg-name">Legrand</div>
+            <div class="mfg-name">Leland Gas Technologies</div>
+            <div class="mfg-name">LG Electronics</div>
+            <div class="mfg-name">Liquid Instruments</div>
+            <div class="mfg-name">Lord Corporation</div>
+            <div class="mfg-name">LTC Microwave</div>
+            <div class="mfg-name">Lumentum Operations LLC</div>
+            <div class="mfg-name">Luna Innovations</div>
+            <div class="mfg-name">Luna Labs</div>
+        </div>
+    </section>
+
+    <section id="M" class="alphabet-section">
+        <div class="letter-divider">M</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Madegtech</div>
+            <div class="mfg-name">Marki Microwave</div>
+            <div class="mfg-name">Marway Power Solutions</div>
+            <div class="mfg-name">Maury Microwave</div>
+            <div class="mfg-name">MECA Electronics</div>
+            <div class="mfg-name">MegaPhase</div>
+            <div class="mfg-name">Mercury Systems</div>
+            <div class="mfg-name">Meritec</div>
+            <div class="mfg-name">Microchip Technology</div>
+            <div class="mfg-name">Micro-Mode Products</div>
+            <div class="mfg-name">Microsemi</div>
+            <div class="mfg-name">Microsoft</div>
+            <div class="mfg-name">Micross</div>
+            <div class="mfg-name">Microwave Circuits</div>
+            <div class="mfg-name">Microwave Components</div>
+            <div class="mfg-name">Milestek</div>
+            <div class="mfg-name">MILNEC</div>
+            <div class="mfg-name">Mini-Circuits</div>
+            <div class="mfg-name">Minnesota Measurement</div>
+            <div class="mfg-name">Minnesota Wire</div>
+            <div class="mfg-name">MKS Instruments</div>
+            <div class="mfg-name">Molex</div>
+            <div class="mfg-name">Monroe Aerospace</div>
+            <div class="mfg-name">Moog</div>
+            <div class="mfg-name">Moxa</div>
+            <div class="mfg-name">Moxtek</div>
+        </div>
+    </section>
+
+    <section id="N" class="alphabet-section">
+        <div class="letter-divider">N</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Narda-MITEQ</div>
+            <div class="mfg-name">National Instruments</div>
+            <div class="mfg-name">New Wave Design</div>
+            <div class="mfg-name">Newnex</div>
+            <div class="mfg-name">Newport Corporation</div>
+            <div class="mfg-name">Nicomatic</div>
+            <div class="mfg-name">Nikon Metrology</div>
+            <div class="mfg-name">NKT Photonics</div>
+            <div class="mfg-name">Noisecom</div>
+            <div class="mfg-name">Nook Industries</div>
+            <div class="mfg-name">Norman Filter Company</div>
+            <div class="mfg-name">North Atlantic Industries</div>
+            <div class="mfg-name">Novachips</div>
+            <div class="mfg-name">NovAtel, Inc.HEXAGON</div>
+            <div class="mfg-name">Novus Power</div>
+            <div class="mfg-name">NP Photonics</div>
+            <div class="mfg-name">NTC Distributing</div>
+            <div class="mfg-name">nVent</div>
+        </div>
+    </section>
+
+    <section id="O" class="alphabet-section">
+        <div class="letter-divider">O</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Ohmite</div>
+            <div class="mfg-name">OKW Enclosures</div>
+            <div class="mfg-name">Olympic Controls</div>
+            <div class="mfg-name">Omega Engineering, Inc.</div>
+            <div class="mfg-name">Omnetics</div>
+            <div class="mfg-name">One Stop Systems</div>
+            <div class="mfg-name">Onshore Technologies</div>
+            <div class="mfg-name">OnTime Networks</div>
+            <div class="mfg-name">Optilabs</div>
+            <div class="mfg-name">Optimax</div>
+            <div class="mfg-name">Optimum Solutions</div>
+            <div class="mfg-name">Orolia</div>
+            <div class="mfg-name">Oxley Group</div>
+            <div class="mfg-name">OZ Optics Ltd.</div>
+        </div>
+    </section>
+
+    <section id="P" class="alphabet-section">
+        <div class="letter-divider">P</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">PAR Systems</div>
+            <div class="mfg-name">Panduit</div>
+            <div class="mfg-name">Parasoft</div>
+            <div class="mfg-name">Parker Hannifin</div>
+            <div class="mfg-name">Parker Lord</div>
+            <div class="mfg-name">Parket Chromatics</div>
+            <div class="mfg-name">Pasternack</div>
+            <div class="mfg-name">PCB Piezotronics</div>
+            <div class="mfg-name">Pelican</div>
+            <div class="mfg-name">Phoenix Contact</div>
+            <div class="mfg-name">Pickering Test</div>
+            <div class="mfg-name">Premier Enclosure Systems</div>
+            <div class="mfg-name">PTC</div>
+            <div class="mfg-name">Pulse Research Lab</div>
+        </div>
+    </section>
+
+    <section id="Q" class="alphabet-section">
+        <div class="letter-divider">Q</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Qphotonics</div>
+            <div class="mfg-name">Quantic BEI</div>
+            <div class="mfg-name">Quantic TRM</div>
+            <div class="mfg-name">Quantic Wenzel Associates</div>
+            <div class="mfg-name">Quantifi Photonics</div>
+            <div class="mfg-name">Quantum Composers</div>
+            <div class="mfg-name">Quantum Microwave</div>
+            <div class="mfg-name">Quantum Photonics</div>
+            <div class="mfg-name">Quarterwave</div>
+            <div class="mfg-name">Quasonix</div>
+            <div class="mfg-name">QuinStar Technology, Inc.</div>
+        </div>
+    </section>
+
+    <section id="R" class="alphabet-section">
+        <div class="letter-divider">R</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">R-CON-NDT</div>
+            <div class="mfg-name">RF-Lambda</div>
+            <div class="mfg-name">Rockwell Collins</div>
+            <div class="mfg-name">Rohde and Schwarz</div>
+        </div>
+    </section>
+
+    <section id="S" class="alphabet-section">
+        <div class="letter-divider">S</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Safran</div>
+            <div class="mfg-name">Samsung Electronics</div>
+            <div class="mfg-name">Samtec</div>
+            <div class="mfg-name">Sat-Pak Communications, Inc.</div>
+            <div class="mfg-name">Schneider Electric</div>
+            <div class="mfg-name">Screaming Circuits</div>
+            <div class="mfg-name">SEA Wire and Cable</div>
+            <div class="mfg-name">SF Cable</div>
+            <div class="mfg-name">ShowMeCables</div>
+            <div class="mfg-name">Silver Engineering, Inc.</div>
+            <div class="mfg-name">Silvus Technologies</div>
+            <div class="mfg-name">Siskiyou Corporation</div>
+            <div class="mfg-name">Southwest Antennas</div>
+            <div class="mfg-name">Southwest Microwave</div>
+            <div class="mfg-name">SpaceX</div>
+            <div class="mfg-name">SpeedGoat</div>
+            <div class="mfg-name">Stake Fasteners</div>
+            <div class="mfg-name">Standard Wire and Cable Company</div>
+            <div class="mfg-name">Starrett Products</div>
+            <div class="mfg-name">State of the Art, Inc.</div>
+            <div class="mfg-name">SteelCloud, LLC</div>
+            <div class="mfg-name">Steven Engineering</div>
+            <div class="mfg-name">Strainsert</div>
+            <div class="mfg-name">Stratasys</div>
+            <div class="mfg-name">Stuart Industries</div>
+            <div class="mfg-name">Sumimoto Corporation</div>
+            <div class="mfg-name">Summit Interconnect</div>
+            <div class="mfg-name">Sunstone Circuits</div>
+            <div class="mfg-name">SuperLogics</div>
+            <div class="mfg-name">SwageLok</div>
+        </div>
+    </section>
+
+    <section id="T" class="alphabet-section">
+        <div class="letter-divider">T</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">TBC Consoles</div>
+            <div class="mfg-name">TC Communications</div>
+            <div class="mfg-name">TDK-Lambda</div>
+            <div class="mfg-name">TE Wire and Cable</div>
+            <div class="mfg-name">Techmar Enclosures</div>
+            <div class="mfg-name">Teledyne LeCroy</div>
+            <div class="mfg-name">Teledyne Storm</div>
+            <div class="mfg-name">Texas Instruments</div>
+            <div class="mfg-name">Textron Aviation</div>
+            <div class="mfg-name">ThinkLogical</div>
+            <div class="mfg-name">Thorlabs</div>
+            <div class="mfg-name">Times Microwave</div>
+            <div class="mfg-name">Toradex</div>
+            <div class="mfg-name">Torrent Photonics</div>
+            <div class="mfg-name">Total Phase</div>
+            <div class="mfg-name">Tovey Engineering</div>
+            <div class="mfg-name">Trenton Systems</div>
+            <div class="mfg-name">Triad RF Systems</div>
+            <div class="mfg-name">Triangle Rubber</div>
+            <div class="mfg-name">Trilogy</div>
+            <div class="mfg-name">Trilogy Communications</div>
+        </div>
+    </section>
+
+    <section id="U" class="alphabet-section">
+        <div class="letter-divider">U</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Ultra Precision Control Systems</div>
+            <div class="mfg-name">UniBrain</div>
+            <div class="mfg-name">Uni-Fix</div>
+            <div class="mfg-name">United Electric Supply</div>
+            <div class="mfg-name">UniWest</div>
+        </div>
+    </section>
+
+    <section id="V" class="alphabet-section">
+        <div class="letter-divider">V</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">Valcomm International</div>
+            <div class="mfg-name">Valence Battery Company</div>
+            <div class="mfg-name">Validyne Engineering</div>
+            <div class="mfg-name">Valin Corporation</div>
+            <div class="mfg-name">Vallhalla Scientific</div>
+            <div class="mfg-name">Varjo</div>
+            <div class="mfg-name">Venable Instruments</div>
+            <div class="mfg-name">Vermont Photonics</div>
+            <div class="mfg-name">Versitron</div>
+            <div class="mfg-name">ViaLite Communications</div>
+            <div class="mfg-name">Viasat</div>
+            <div class="mfg-name">VIAVI Solutions</div>
+            <div class="mfg-name">Vicon</div>
+            <div class="mfg-name">Vishay Intertechnology</div>
+            <div class="mfg-name">VPT, Inc.</div>
+        </div>
+    </section>
+
+    <section id="W" class="alphabet-section">
+        <div class="letter-divider">W</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">W. L. Gore and Associates</div>
+            <div class="mfg-name">Walker Manufacturing Group</div>
+            <div class="mfg-name">Watlow Electric Manufacturing Company</div>
+            <div class="mfg-name">WaveFront Technology</div>
+            <div class="mfg-name">Weinschel, Inc.</div>
+            <div class="mfg-name">West Coast Solutions</div>
+            <div class="mfg-name">Winford Engineering</div>
+            <div class="mfg-name">Wolfspeed, Inc.</div>
+        </div>
+    </section>
+
+    <section id="X" class="alphabet-section">
+        <div class="letter-divider">X</div>
+        <div class="mfg-grid">
+            <div class="mfg-name">X-CelePrint</div>
+            <div class="mfg-name">Xilinx</div>
+            <div class="mfg-name">Xometry</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
+        <p>Strategic Procurement & Infrastructure Management</p>
+    </footer>
+
+    <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'd433810c9a6ed551ac5f4908db2942c35fba3ef5';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+
+</body>
+</html>

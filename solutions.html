@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions | Smith Technology Group</title>
+    <style>
+        :root {
+            --primary-blue: #003366; 
+            --secondary-blue: #00509d;
+            --accent-blue: #e6f0ff;
+            --text-dark: #1a1a1a;
+            --text-light: #555;
+            --bg-light: #f9f9f9;
+        }
+        
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            margin: 0; 
+            color: var(--text-dark); 
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation (Sitewide Standard) */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 5%; 
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .logo-container { display: flex; align-items: center; text-decoration: none; gap: 12px; }
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo-text { font-weight: 800; font-size: 20px; color: var(--primary-blue); letter-spacing: -0.5px; text-transform: uppercase; }
+        .menu { display: flex; align-items: center; }
+        .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        .menu a:hover { color: var(--secondary-blue); }
+        .quote-nav-btn { background: var(--primary-blue); color: white !important; padding: 10px 20px; border-radius: 4px; margin-left: 25px; font-size: 13px; font-weight: 700; transition: 0.3s; }
+        .quote-nav-btn:hover { background: var(--secondary-blue); transform: translateY(-1px); }
+
+        /* Solutions Sub-Hero */
+        .solutions-header {
+            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 8%;
+            color: white;
+            text-align: center;
+        }
+
+        .solutions-header h1 { 
+            font-size: 42px; 
+            margin: 0; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Introduction */
+        .intro-section { padding: 60px 15%; text-align: center; background-color: white; }
+        .intro-section h2 { color: var(--primary-blue); margin-bottom: 20px; }
+
+        /* Solution Pillars (Grid) */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 8%;
+            background-color: var(--bg-light);
+        }
+
+        .solution-card {
+            background: white;
+            padding: 50px 40px;
+            border-bottom: 5px solid var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .solution-card:hover { transform: translateY(-10px); }
+
+        .solution-card h3 { 
+            color: var(--primary-blue); 
+            text-transform: uppercase; 
+            font-size: 22px; 
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .solution-card ul { 
+            padding-left: 20px; 
+            color: var(--text-light);
+        }
+
+        .solution-card li { margin-bottom: 12px; }
+
+        /* CTA Footer */
+        .bottom-cta {
+            padding: 80px 8%;
+            text-align: center;
+            background: white;
+        }
+
+        footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
+
+        @media (max-width: 992px) {
+            .intro-section { padding: 60px 8%; }
+            .menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="./Logo.png" alt="STG Logo" class="logo-img">
+            <span class="logo-text">SMITH TECHNOLOGY GROUP</span>
+        </a>
+        <div class="menu">
+            <a href="manufacturers.html">Manufacturers</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="aboutus.html">Who We Are</a>
+            <a href="quote.html" class="quote-nav-btn">Request Quote</a>
+        </div>
+    </nav>
+
+    <div class="solutions-header">
+        <h1>Solutions & Capabilities</h1>
+    </div>
+
+    <section class="intro-section">
+        <h2>Enterprise-Grade Technical Oversight</h2>
+        <p>At Smith Technology Group, we don't just supply products; we provide the strategic framework for your IT ecosystem. Our solutions are tailored for the high-compliance, high-performance needs of the aerospace and defense industries.</p>
+    </section>
+
+    <section class="solutions-grid">
+        <div class="solution-card">
+            <h3>Infrastructure & Hardware</h3>
+            <p>Direct access to mission-critical hardware with full lifecycle support.</p>
+            <ul>
+                <li>Server & Storage Solutions</li>
+                <li>Enterprise Workstations (HP, Dell, Lenovo)</li>
+                <li>Networking & Telecommunications Gear</li>
+                <li>Secure Tactical Hardware</li>
+                <li>Procurement & Supply Chain Management</li>
+            </ul>
+        </div>
+
+        <div class="solution-card">
+            <h3>Cloud & Software</h3>
+            <p>Licensing and architecture for scalable, compliant corporate environments.</p>
+            <ul>
+                <li>Enterprise Software Licensing</li>
+                <li>Cloud Infrastructure Design</li>
+                <li>SaaS Management & Optimization</li>
+                <li>Cybersecurity Software Suites</li>
+                <li>Virtualization & DevSecOps Tools</li>
+            </ul>
+        </div>
+
+        <div class="solution-card">
+            <h3>Managed Capabilities</h3>
+            <p>Ongoing oversight to ensure technical continuity and security.</p>
+            <ul>
+                <li>IT Infrastructure Monitoring</li>
+                <li>Technology Lifecycle Planning</li>
+                <li>Vendor Relationship Management</li>
+                <li>Security Patching & Compliance</li>
+                <li>Strategic Technical Consulting</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="bottom-cta">
+        <h2>Tailored Solutions for Your Mission</h2>
+        <p>Every organization has unique requirements. Let's build a strategy that fits yours.</p>
+        <a href="quote.html" class="quote-nav-btn" style="display: inline-block; margin-left: 0; margin-top: 20px; padding: 15px 40px;">Request Quote</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
+        <p>Strategic Procurement & Infrastructure Management</p>
+    </footer>
+
+    <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'd433810c9a6ed551ac5f4908db2942c35fba3ef5';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+
+</body>
+</html>
