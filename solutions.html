@@ -18,16 +18,16 @@
             font-family: 'Helvetica Neue', Arial, sans-serif; 
             margin: 0; 
             color: var(--text-dark); 
-            line-height: 1.8;
-            scroll-behavior: smooth;
+            line-height: 1.6;
+            background-color: var(--bg-light);
         }
         
-        /* Navigation (Sitewide Standard) */
+        /* Navigation - Consistent 100px Logo Height */
         nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 15px 5%; 
+            padding: 20px 5%; 
             background: white;
             position: sticky;
             top: 0;
@@ -35,83 +35,55 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
-        .logo-container { display: flex; align-items: center; text-decoration: none; gap: 12px; }
-        .logo-img { height: 40px; width: auto; display: block; }
-        .logo-text { font-weight: 800; font-size: 20px; color: var(--primary-blue); letter-spacing: -0.5px; text-transform: uppercase; }
+        .logo-container { display: flex; align-items: center; text-decoration: none; }
+        .logo-img { height: 100px; width: auto; display: block; }
+        
         .menu { display: flex; align-items: center; }
         .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
         .menu a:hover { color: var(--secondary-blue); }
         .quote-nav-btn { background: var(--primary-blue); color: white !important; padding: 10px 20px; border-radius: 4px; margin-left: 25px; font-size: 13px; font-weight: 700; transition: 0.3s; }
-        .quote-nav-btn:hover { background: var(--secondary-blue); transform: translateY(-1px); }
 
-        /* Solutions Sub-Hero */
-        .solutions-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), 
-                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');
+        /* Page Header - Consistent 60px Padding */
+        .page-header {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
-            padding: 80px 8%;
             color: white;
+            padding: 60px 8%;
             text-align: center;
         }
 
-        .solutions-header h1 { 
-            font-size: 42px; 
-            margin: 0; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        .page-header h1 { font-size: 36px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        .page-header p { font-size: 18px; margin-top: 10px; opacity: 0.9; }
 
-        /* Introduction */
-        .intro-section { padding: 60px 15%; text-align: center; background-color: white; }
-        .intro-section h2 { color: var(--primary-blue); margin-bottom: 20px; }
-
-        /* Solution Pillars (Grid) */
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px 8%;
-            background-color: var(--bg-light);
-        }
-
+        /* Solutions Grid */
+        .solutions-section { padding: 80px 8%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
         .solution-card {
             background: white;
-            padding: 50px 40px;
-            border-bottom: 5px solid var(--primary-blue);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             transition: 0.3s;
+            border-top: 5px solid var(--primary-blue);
         }
 
-        .solution-card:hover { transform: translateY(-10px); }
-
-        .solution-card h3 { 
-            color: var(--primary-blue); 
-            text-transform: uppercase; 
-            font-size: 22px; 
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .solution-card ul { 
-            padding-left: 20px; 
-            color: var(--text-light);
-        }
-
-        .solution-card li { margin-bottom: 12px; }
-
-        /* CTA Footer */
-        .bottom-cta {
-            padding: 80px 8%;
-            text-align: center;
-            background: white;
-        }
+        .solution-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .solution-card h3 { color: var(--primary-blue); margin-top: 0; font-size: 22px; }
+        .solution-card p { color: var(--text-light); margin-bottom: 20px; }
+        
+        .feature-list { list-style: none; padding: 0; margin: 0; }
+        .feature-list li { margin-bottom: 10px; padding-left: 25px; position: relative; font-size: 14px; }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--secondary-blue); font-weight: bold; }
 
         footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
 
-        @media (max-width: 992px) {
-            .intro-section { padding: 60px 8%; }
+        @media (max-width: 768px) {
+            .logo-img { height: 60px; }
             .menu { display: none; }
+            .page-header { padding: 40px 5%; }
         }
     </style>
 </head>
@@ -119,8 +91,7 @@
 
     <nav>
         <a href="index.html" class="logo-container">
-            <img src="./Logo.png" alt="STG Logo" class="logo-img">
-            <span class="logo-text">SMITH TECHNOLOGY GROUP</span>
+            <img src="./Logo.png" alt="Smith Technology Group Logo" class="logo-img">
         </a>
         <div class="menu">
             <a href="manufacturers.html">Manufacturers</a>
@@ -130,57 +101,46 @@
         </div>
     </nav>
 
-    <div class="solutions-header">
-        <h1>Solutions & Capabilities</h1>
+    <div class="page-header">
+        <h1>Our Solutions</h1>
+        <p>Strategic IT Infrastructure Procurement & Mission-Critical Management</p>
     </div>
 
-    <section class="intro-section">
-        <h2>Enterprise-Grade Technical Oversight</h2>
-        <p>At Smith Technology Group, we don't just supply products; we provide the strategic framework for your IT ecosystem. Our solutions are tailored for the high-compliance, high-performance needs of the aerospace and defense industries.</p>
-    </section>
+    <section class="solutions-section">
+        <div class="grid">
+            <div class="solution-card">
+                <h3>Enterprise Procurement</h3>
+                <p>Streamlined acquisition strategies for high-volume hardware and software deployments.</p>
+                <ul class="feature-list">
+                    <li>Multi-vendor OEM Coordination</li>
+                    <li>Volume Licensing Management</li>
+                    <li>Lifecycle Cost Optimization</li>
+                    <li>Global Logistics & Staging</li>
+                </ul>
+            </div>
 
-    <section class="solutions-grid">
-        <div class="solution-card">
-            <h3>Infrastructure & Hardware</h3>
-            <p>Direct access to mission-critical hardware with full lifecycle support.</p>
-            <ul>
-                <li>Server & Storage Solutions</li>
-                <li>Enterprise Workstations (HP, Dell, Lenovo)</li>
-                <li>Networking & Telecommunications Gear</li>
-                <li>Secure Tactical Hardware</li>
-                <li>Procurement & Supply Chain Management</li>
-            </ul>
+            <div class="solution-card">
+                <h3>Core Infrastructure</h3>
+                <p>Designing and scaling the foundational technology that powers enterprise operations.</p>
+                <ul class="feature-list">
+                    <li>Data Center Modernization</li>
+                    <li>Hybrid Cloud Architectures</li>
+                    <li>High-Performance Computing</li>
+                    <li>Enterprise Storage Systems</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <h3>Mission-Critical Networking</h3>
+                <p>Secure, resilient connectivity solutions built for zero-downtime environments.</p>
+                <ul class="feature-list">
+                    <li>Next-Gen Firewalls & Edge Security</li>
+                    <li>Software-Defined Networking (SDN)</li>
+                    <li>Wireless & Campus Mobility</li>
+                    <li>Network Monitoring & Analytics</li>
+                </ul>
+            </div>
         </div>
-
-        <div class="solution-card">
-            <h3>Cloud & Software</h3>
-            <p>Licensing and architecture for scalable, compliant corporate environments.</p>
-            <ul>
-                <li>Enterprise Software Licensing</li>
-                <li>Cloud Infrastructure Design</li>
-                <li>SaaS Management & Optimization</li>
-                <li>Cybersecurity Software Suites</li>
-                <li>Virtualization & DevSecOps Tools</li>
-            </ul>
-        </div>
-
-        <div class="solution-card">
-            <h3>Managed Capabilities</h3>
-            <p>Ongoing oversight to ensure technical continuity and security.</p>
-            <ul>
-                <li>IT Infrastructure Monitoring</li>
-                <li>Technology Lifecycle Planning</li>
-                <li>Vendor Relationship Management</li>
-                <li>Security Patching & Compliance</li>
-                <li>Strategic Technical Consulting</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="bottom-cta">
-        <h2>Tailored Solutions for Your Mission</h2>
-        <p>Every organization has unique requirements. Let's build a strategy that fits yours.</p>
-        <a href="quote.html" class="quote-nav-btn" style="display: inline-block; margin-left: 0; margin-top: 20px; padding: 15px 40px;">Request Quote</a>
     </section>
 
     <footer>

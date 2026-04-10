@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smith Technology Group | Corporate Technology Partners</title>
+    <title>Smith Technology Group | Infrastructure & Management</title>
     <style>
         :root {
             --primary-blue: #003366; 
@@ -27,7 +27,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 15px 5%; 
+            padding: 20px 5%; 
             background: white;
             position: sticky;
             top: 0;
@@ -39,17 +39,12 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            gap: 12px;
         }
 
-        .logo-img { height: 80px; width: auto; display: block; }
-
-        .logo-text { 
-            font-weight: 800; 
-            font-size: 20px; 
-            color: var(--primary-blue); 
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
+        .logo-img { 
+            height: 100px; 
+            width: auto; 
+            display: block; 
         }
 
         .menu {
@@ -85,19 +80,19 @@
             transform: translateY(-1px);
         }
 
-        /* Hero Section */
+        /* Hero Section - Reduced Padding */
         .hero { 
             background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 80, 157, 0.85)), 
                         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white; 
-            padding: 120px 8%; 
+            padding: 80px 8%; /* Reduced from 140px to 80px */
             text-align: left; 
         }
 
-        .hero h1 { font-size: 48px; margin: 0 0 20px 0; max-width: 800px; line-height: 1.1; }
-        .hero p { font-size: 20px; max-width: 650px; opacity: 0.9; }
+        .hero h1 { font-size: 48px; margin: 0 0 25px 0; max-width: 900px; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px; }
+        .hero p { font-size: 19px; max-width: 800px; opacity: 0.95; line-height: 1.7; }
 
         /* Sections */
         .section { padding: 80px 8%; }
@@ -124,15 +119,14 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            align-items: center; /* Ensures the button inside stays centered */
+            align-items: center; 
         }
 
-        /* Smaller, Centered Button */
         .connect-btn { 
             display: inline-block; 
             background: var(--primary-blue); 
             color: white; 
-            padding: 12px 25px; /* Reduced padding for a tighter fit */
+            padding: 12px 25px; 
             border-radius: 4px; 
             text-decoration: none; 
             font-weight: 700; 
@@ -141,9 +135,9 @@
             transition: 0.3s; 
             cursor: pointer; 
             border: none; 
-            font-size: 14px; /* Slightly smaller font to match the compact look */
+            font-size: 14px; 
             letter-spacing: 1px;
-            width: auto; /* Overrides the 100% width from before */
+            width: auto; 
         }
 
         .connect-btn:hover { background: var(--secondary-blue); transform: translateY(-2px); }
@@ -151,9 +145,11 @@
         footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
+            .hero h1 { font-size: 28px; }
+            .hero { padding: 60px 8%; } /* Even tighter for mobile */
             .connect-box { padding: 30px; }
             .menu { display: none; } 
+            .logo-img { height: 60px; }
         }
     </style>
 </head>
@@ -161,8 +157,7 @@
 
     <nav>
         <a href="index.html" class="logo-container">
-            <img src="./Logo.png" alt="STG Logo" class="logo-img">
-            <span class="logo-text">SMITH TECHNOLOGY GROUP</span>
+            <img src="./Logo.png" alt="Smith Technology Group Logo" class="logo-img">
         </a>
         <div class="menu">
             <a href="manufacturers.html">Manufacturers</a>
@@ -173,8 +168,8 @@
     </nav>
 
     <div class="hero">
-        <h1>Scalable IT Infrastructure and Management for the Modern Enterprise.</h1>
-        <p>Expert-led systems management and strategic technical oversight backed by 25+ years of industry leadership.</p>
+        <h1>IT Infrastructure and Management for the Modern Enterprise.</h1>
+        <p>Backed by 25+ years of industry leadership, we deliver end-to-end infrastructure solutions through strategic partnerships with the world’s leading OEMs. From high-performance compute to complex licensing management, we provide the technical oversight necessary to fuel modern business growth.</p>
     </div>
 
     <div class="section" id="services">
