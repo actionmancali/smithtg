@@ -1,3 +1,6 @@
+I have updated your Solutions page code to reflect the 120px logo height and integrated the Hamburger Menu functionality, keeping the styling and layout consistent with your index and about pages.
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +25,12 @@
             background-color: var(--bg-light);
         }
         
-        /* Navigation */
+        /* Navigation - Updated for 120px Logo */
         nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 20px 5%; 
+            padding: 15px 5%; 
             background: white;
             position: sticky;
             top: 0;
@@ -36,7 +39,29 @@
         }
         
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 120px; width: auto; display: block; }
+        .logo-img { 
+            height: 120px; 
+            width: auto; 
+            display: block; 
+            transition: height 0.3s ease;
+        }
+
+        /* Hamburger Icon (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
         
         .menu { display: flex; align-items: center; }
         .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
@@ -83,9 +108,33 @@
         footer { text-align: center; padding: 60px 8%; background: #111; color: #888; font-size: 13px; }
         footer p { margin: 5px 0; }
 
-        @media (max-width: 768px) {
-            .logo-img { height: 60px; }
-            .menu { display: none; }
+        /* Responsive Breakpoint for Mobile (Hamburger Menu) */
+        @media (max-width: 992px) {
+            .logo-img { height: 75px; } /* Scales the 120px logo for mobile */
+            
+            .hamburger { display: flex; }
+
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .menu.active { display: flex; }
+
+            .menu a {
+                margin: 15px 5%;
+                font-size: 16px;
+            }
+
+            .quote-nav-btn { margin-left: 5% !important; text-align: center; }
+
             .page-header h1 { font-size: 28px; }
             .page-header p { font-size: 16px; }
         }
@@ -97,7 +146,14 @@
         <a href="index.html" class="logo-container">
             <img src="./Logo.png" alt="Smith Technology Group Logo" class="logo-img">
         </a>
-        <div class="menu">
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="menu" id="nav-menu">
             <a href="manufacturers.html">Manufacturers</a>
             <a href="solutions.html">Solutions</a>
             <a href="aboutus.html">Who We Are</a>
@@ -151,6 +207,22 @@
         <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
         <p>Strategic IT Infrastructure Procurement & Mission-Critical Management</p>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 
     <script type="text/javascript">
     var _smartsupp = _smartsupp || {};

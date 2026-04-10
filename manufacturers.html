@@ -28,7 +28,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 20px 5%; 
+            padding: 15px 5%; 
             background: white;
             position: sticky;
             top: 0;
@@ -37,13 +37,28 @@
         }
         
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        
-        /* Logo increased to 120px */
         .logo-img { 
             height: 120px; 
             width: auto; 
             display: block; 
             transition: height 0.3s ease;
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+            transition: 0.3s;
         }
         
         .menu { display: flex; align-items: center; }
@@ -61,66 +76,50 @@
             padding: 60px 8%;
             text-align: center;
         }
-
         .page-header h1 { font-size: 36px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
 
-        /* Jump Bar - Adjusted Top position for 140px logo header */
+        /* Jump Bar */
         .jump-bar {
             background: white;
             padding: 15px;
             text-align: center;
             position: sticky;
-            top: 180px; /* Adjusted from 140px to accommodate larger logo + nav padding */
+            top: 150px; /* Aligned with 120px logo nav */
             z-index: 999;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             border-bottom: 1px solid #eee;
         }
-
-        .jump-bar a {
-            text-decoration: none;
-            color: var(--primary-blue);
-            font-weight: 700;
-            margin: 0 8px;
-            font-size: 14px;
-        }
-
+        .jump-bar a { text-decoration: none; color: var(--primary-blue); font-weight: 700; margin: 0 8px; font-size: 14px; transition: 0.2s; }
         .jump-bar a:hover { color: var(--secondary-blue); }
 
         /* List Container */
         .list-container { padding: 40px 8% 80px; max-width: 1200px; margin: 0 auto; }
-        
-        .letter-section { 
-            margin-bottom: 50px; 
-            scroll-margin-top: 250px; /* Increased to prevent jump-bar from covering headings */
-        }
-        
-        .letter-section h2 { 
-            font-size: 32px; 
-            color: var(--primary-blue); 
-            border-bottom: 3px solid var(--primary-blue);
-            padding-bottom: 5px;
-            margin-bottom: 25px;
-        }
-
-        .brand-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 12px; 
-        }
-
-        .brand-item { 
-            font-size: 15px; 
-            color: var(--text-dark); 
-            padding: 5px 0;
-            border-bottom: 1px solid #eef2f5;
-        }
+        .letter-section { margin-bottom: 50px; scroll-margin-top: 220px; }
+        .letter-section h2 { font-size: 32px; color: var(--primary-blue); border-bottom: 3px solid var(--primary-blue); padding-bottom: 5px; margin-bottom: 25px; }
+        .brand-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+        .brand-item { font-size: 15px; color: var(--text-dark); padding: 5px 0; border-bottom: 1px solid #eef2f5; }
 
         footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
 
-        @media (max-width: 768px) {
-            .logo-img { height: 80px; }
-            .jump-bar { top: 120px; overflow-x: auto; white-space: nowrap; padding: 10px 5%; }
-            .menu { display: none; }
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .logo-img { height: 75px; }
+            .hamburger { display: flex; }
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .menu.active { display: flex; }
+            .menu a { margin: 15px 5%; font-size: 16px; }
+            .quote-nav-btn { margin-left: 5% !important; text-align: center; }
+            .jump-bar { top: 105px; overflow-x: auto; white-space: nowrap; padding: 10px 5%; }
             .brand-grid { grid-template-columns: 1fr; }
             .letter-section { scroll-margin-top: 180px; }
         }
@@ -132,7 +131,12 @@
         <a href="index.html" class="logo-container">
             <img src="./Logo.png" alt="Smith Technology Group Logo" class="logo-img">
         </a>
-        <div class="menu">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="menu" id="nav-menu">
             <a href="manufacturers.html">Manufacturers</a>
             <a href="solutions.html">Solutions</a>
             <a href="aboutus.html">Who We Are</a>
@@ -153,7 +157,6 @@
     </div>
 
     <div class="list-container">
-        
         <div class="letter-section" id="A">
             <h2>A</h2>
             <div class="brand-grid">
@@ -665,13 +668,27 @@
                 <div class="brand-item">Xometry</div>
             </div>
         </div>
-
     </div>
 
     <footer>
         <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
         <p>Strategic Procurement & Infrastructure Management</p>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 
     <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
