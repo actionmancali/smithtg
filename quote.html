@@ -22,7 +22,7 @@
             background-color: var(--bg-light);
         }
         
-        /* Navigation - Consistent 100px Logo */
+        /* Navigation */
         nav { 
             display: flex; 
             justify-content: space-between; 
@@ -36,7 +36,14 @@
         }
         
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 100px; width: auto; display: block; }
+        
+        /* Logo increased to 140px */
+        .logo-img { 
+            height: 140px; 
+            width: auto; 
+            display: block; 
+            transition: height 0.3s ease;
+        }
         
         .menu { display: flex; align-items: center; }
         .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
@@ -109,7 +116,7 @@
         footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
 
         @media (max-width: 768px) {
-            .logo-img { height: 60px; }
+            .logo-img { height: 80px; } /* Scales down for mobile browsers */
             .menu { display: none; }
             .form-row { grid-template-columns: 1fr; }
             .quote-form-container { padding: 25px; }

@@ -41,10 +41,12 @@
             text-decoration: none;
         }
 
+        /* Logo set to 140px as requested */
         .logo-img { 
-            height: 100px; 
+            height: 140px; 
             width: auto; 
             display: block; 
+            transition: height 0.3s ease;
         }
 
         .menu {
@@ -80,14 +82,14 @@
             transform: translateY(-1px);
         }
 
-        /* Hero Section - Reduced Padding */
+        /* Hero Section */
         .hero { 
             background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 80, 157, 0.85)), 
                         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white; 
-            padding: 80px 8%; /* Reduced from 140px to 80px */
+            padding: 80px 8%; 
             text-align: left; 
         }
 
@@ -144,12 +146,15 @@
 
         footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
 
+        /* Responsive Breakpoint for Mobile and All Browsers */
         @media (max-width: 768px) {
             .hero h1 { font-size: 28px; }
-            .hero { padding: 60px 8%; } /* Even tighter for mobile */
+            .hero { padding: 60px 8%; } 
             .connect-box { padding: 30px; }
             .menu { display: none; } 
-            .logo-img { height: 60px; }
+            
+            /* Scales the 140px logo down for mobile screens */
+            .logo-img { height: 80px; }
         }
     </style>
 </head>

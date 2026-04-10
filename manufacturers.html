@@ -37,7 +37,14 @@
         }
         
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 100px; width: auto; display: block; }
+        
+        /* Logo increased to 140px */
+        .logo-img { 
+            height: 140px; 
+            width: auto; 
+            display: block; 
+            transition: height 0.3s ease;
+        }
         
         .menu { display: flex; align-items: center; }
         .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
@@ -57,13 +64,13 @@
 
         .page-header h1 { font-size: 36px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
 
-        /* Jump Bar - Sticky below Nav */
+        /* Jump Bar - Adjusted Top position for 140px logo header */
         .jump-bar {
             background: white;
             padding: 15px;
             text-align: center;
             position: sticky;
-            top: 140px; 
+            top: 180px; /* Adjusted from 140px to accommodate larger logo + nav padding */
             z-index: 999;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             border-bottom: 1px solid #eee;
@@ -84,7 +91,7 @@
         
         .letter-section { 
             margin-bottom: 50px; 
-            scroll-margin-top: 210px; 
+            scroll-margin-top: 250px; /* Increased to prevent jump-bar from covering headings */
         }
         
         .letter-section h2 { 
@@ -111,10 +118,11 @@
         footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
 
         @media (max-width: 768px) {
-            .logo-img { height: 60px; }
-            .jump-bar { top: 100px; overflow-x: auto; white-space: nowrap; padding: 10px 5%; }
+            .logo-img { height: 80px; }
+            .jump-bar { top: 120px; overflow-x: auto; white-space: nowrap; padding: 10px 5%; }
             .menu { display: none; }
             .brand-grid { grid-template-columns: 1fr; }
+            .letter-section { scroll-margin-top: 180px; }
         }
     </style>
 </head>

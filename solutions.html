@@ -22,7 +22,7 @@
             background-color: var(--bg-light);
         }
         
-        /* Navigation - Consistent 100px Logo Height */
+        /* Navigation */
         nav { 
             display: flex; 
             justify-content: space-between; 
@@ -43,23 +43,23 @@
         .menu a:hover { color: var(--secondary-blue); }
         .quote-nav-btn { background: var(--primary-blue); color: white !important; padding: 10px 20px; border-radius: 4px; margin-left: 25px; font-size: 13px; font-weight: 700; transition: 0.3s; }
 
-        /* Page Header - Consistent 60px Padding */
+        /* Page Header */
         .page-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
+            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.8)), 
                         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 60px 8%;
+            padding: 80px 8%;
             text-align: center;
         }
 
-        .page-header h1 { font-size: 36px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
-        .page-header p { font-size: 18px; margin-top: 10px; opacity: 0.9; }
+        .page-header h1 { font-size: 38px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        .page-header p { font-size: 20px; margin-top: 15px; opacity: 0.9; font-weight: 300; max-width: 800px; margin-left: auto; margin-right: auto; }
 
         /* Solutions Grid */
         .solutions-section { padding: 80px 8%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         
         .solution-card {
             background: white;
@@ -68,22 +68,26 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             transition: 0.3s;
             border-top: 5px solid var(--primary-blue);
+            display: flex;
+            flex-direction: column;
         }
 
         .solution-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .solution-card h3 { color: var(--primary-blue); margin-top: 0; font-size: 22px; }
-        .solution-card p { color: var(--text-light); margin-bottom: 20px; }
+        .solution-card h3 { color: var(--primary-blue); margin-top: 0; font-size: 24px; margin-bottom: 15px; }
+        .solution-card p { color: var(--text-light); margin-bottom: 25px; font-size: 15px; }
         
-        .feature-list { list-style: none; padding: 0; margin: 0; }
-        .feature-list li { margin-bottom: 10px; padding-left: 25px; position: relative; font-size: 14px; }
+        .feature-list { list-style: none; padding: 0; margin: 0; margin-top: auto; }
+        .feature-list li { margin-bottom: 12px; padding-left: 28px; position: relative; font-size: 14px; color: var(--text-dark); }
         .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--secondary-blue); font-weight: bold; }
 
-        footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
+        footer { text-align: center; padding: 60px 8%; background: #111; color: #888; font-size: 13px; }
+        footer p { margin: 5px 0; }
 
         @media (max-width: 768px) {
             .logo-img { height: 60px; }
             .menu { display: none; }
-            .page-header { padding: 40px 5%; }
+            .page-header h1 { font-size: 28px; }
+            .page-header p { font-size: 16px; }
         }
     </style>
 </head>
@@ -102,42 +106,42 @@
     </nav>
 
     <div class="page-header">
-        <h1>Our Solutions</h1>
+        <h1>Solutions</h1>
         <p>Strategic IT Infrastructure Procurement & Mission-Critical Management</p>
     </div>
 
     <section class="solutions-section">
         <div class="grid">
             <div class="solution-card">
-                <h3>Enterprise Procurement</h3>
-                <p>Streamlined acquisition strategies for high-volume hardware and software deployments.</p>
+                <h3>Strategic Procurement</h3>
+                <p>High-efficiency acquisition strategies tailored for complex hardware and software ecosystems.</p>
                 <ul class="feature-list">
                     <li>Multi-vendor OEM Coordination</li>
-                    <li>Volume Licensing Management</li>
-                    <li>Lifecycle Cost Optimization</li>
-                    <li>Global Logistics & Staging</li>
+                    <li>Volume Licensing & Contract Management</li>
+                    <li>Total Cost of Ownership (TCO) Analysis</li>
+                    <li>Supply Chain Resilience & Staging</li>
                 </ul>
             </div>
 
             <div class="solution-card">
-                <h3>Core Infrastructure</h3>
-                <p>Designing and scaling the foundational technology that powers enterprise operations.</p>
+                <h3>IT Infrastructure</h3>
+                <p>Engineering the architectural foundation for high-availability enterprise environments.</p>
                 <ul class="feature-list">
-                    <li>Data Center Modernization</li>
-                    <li>Hybrid Cloud Architectures</li>
-                    <li>High-Performance Computing</li>
-                    <li>Enterprise Storage Systems</li>
+                    <li>Next-Gen Data Center Modernization</li>
+                    <li>Hybrid & Multi-Cloud Architecture</li>
+                    <li>High-Performance Compute (HPC)</li>
+                    <li>Mission-Critical Storage Solutions</li>
                 </ul>
             </div>
 
             <div class="solution-card">
-                <h3>Mission-Critical Networking</h3>
-                <p>Secure, resilient connectivity solutions built for zero-downtime environments.</p>
+                <h3>Mission-Critical Management</h3>
+                <p>Ensuring operational continuity through robust monitoring and security frameworks.</p>
                 <ul class="feature-list">
-                    <li>Next-Gen Firewalls & Edge Security</li>
-                    <li>Software-Defined Networking (SDN)</li>
-                    <li>Wireless & Campus Mobility</li>
-                    <li>Network Monitoring & Analytics</li>
+                    <li>Zero-Trust Network Architecture</li>
+                    <li>Real-time Infrastructure Monitoring</li>
+                    <li>Edge Security & Software-Defined Networking</li>
+                    <li>Disaster Recovery & Business Continuity</li>
                 </ul>
             </div>
         </div>
@@ -145,7 +149,7 @@
 
     <footer>
         <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
-        <p>Strategic Procurement & Infrastructure Management</p>
+        <p>Strategic IT Infrastructure Procurement & Mission-Critical Management</p>
     </footer>
 
     <script type="text/javascript">

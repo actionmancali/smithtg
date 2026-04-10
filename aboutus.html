@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who We Are | Smith Technology Group</title>
+    <title>Solutions | Smith Technology Group</title>
     <style>
         :root {
             --primary-blue: #003366; 
@@ -22,7 +22,7 @@
             background-color: var(--bg-light);
         }
         
-        /* Navigation - Consistent 100px Logo */
+        /* Navigation */
         nav { 
             display: flex; 
             justify-content: space-between; 
@@ -45,34 +45,49 @@
 
         /* Page Header */
         .page-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), 
-                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80');
+            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.8)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 60px 8%;
+            padding: 80px 8%;
             text-align: center;
         }
 
-        .page-header h1 { font-size: 36px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        .page-header h1 { font-size: 38px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        .page-header p { font-size: 20px; margin-top: 15px; opacity: 0.9; font-weight: 300; max-width: 800px; margin-left: auto; margin-right: auto; }
 
-        /* Content Section */
-        .about-section { padding: 80px 8%; max-width: 1000px; margin: 0 auto; }
+        /* Solutions Grid */
+        .solutions-section { padding: 80px 8%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         
-        .content-block { margin-bottom: 60px; }
-        .content-block h2 { color: var(--primary-blue); border-left: 4px solid var(--secondary-blue); padding-left: 20px; margin-bottom: 25px; text-transform: uppercase; font-size: 24px; }
-        .content-block p { font-size: 17px; color: var(--text-light); margin-bottom: 20px; }
+        .solution-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border-top: 5px solid var(--primary-blue);
+            display: flex;
+            flex-direction: column;
+        }
 
-        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
-        .value-item h4 { color: var(--secondary-blue); margin-bottom: 10px; font-size: 18px; }
-        .value-item p { font-size: 15px; }
+        .solution-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .solution-card h3 { color: var(--primary-blue); margin-top: 0; font-size: 24px; margin-bottom: 15px; }
+        .solution-card p { color: var(--text-light); margin-bottom: 25px; font-size: 15px; }
+        
+        .feature-list { list-style: none; padding: 0; margin: 0; margin-top: auto; }
+        .feature-list li { margin-bottom: 12px; padding-left: 28px; position: relative; font-size: 14px; color: var(--text-dark); }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--secondary-blue); font-weight: bold; }
 
-        footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
+        footer { text-align: center; padding: 60px 8%; background: #111; color: #888; font-size: 13px; }
+        footer p { margin: 5px 0; }
 
         @media (max-width: 768px) {
             .logo-img { height: 60px; }
             .menu { display: none; }
-            .about-section { padding: 40px 5%; }
+            .page-header h1 { font-size: 28px; }
+            .page-header p { font-size: 16px; }
         }
     </style>
 </head>
@@ -91,43 +106,50 @@
     </nav>
 
     <div class="page-header">
-        <h1>Who We Are</h1>
+        <h1>Solutions</h1>
+        <p>Strategic IT Infrastructure Procurement & Mission-Critical Management</p>
     </div>
 
-    <section class="about-section">
-        <div class="content-block">
-            <h2>The Smith Technology Group Advantage</h2>
-            <p>Founded on decades of experience within the aerospace and defense sectors, Smith Technology Group (STG) provides specialized IT infrastructure procurement and strategic management services. We understand that in high-stakes environments, technology isn't just a utility—it is a mission-critical asset.</p>
-            <p>Our firm bridges the gap between complex enterprise requirements and the global technology supply chain, ensuring that our clients receive verified, high-performance hardware and software solutions with maximum efficiency.</p>
-        </div>
-
-        <div class="content-block">
-            <h2>Our Core Values</h2>
-            <div class="values-grid">
-                <div class="value-item">
-                    <h4>Precision</h4>
-                    <p>Rooted in aerospace standards, we approach every procurement project with meticulous attention to detail and technical accuracy.</p>
-                </div>
-                <div class="value-item">
-                    <h4>Integrity</h4>
-                    <p>We operate as a transparent partner, providing unbiased advice and maintaining direct relationships with over 350 industry-leading OEMs.</p>
-                </div>
-                <div class="value-item">
-                    <h4>Resilience</h4>
-                    <p>We specialize in mission-critical management, designing infrastructure solutions that are built for 24/7 reliability and long-term scalability.</p>
-                </div>
+    <section class="solutions-section">
+        <div class="grid">
+            <div class="solution-card">
+                <h3>Strategic Procurement</h3>
+                <p>High-efficiency acquisition strategies tailored for complex hardware and software ecosystems.</p>
+                <ul class="feature-list">
+                    <li>Multi-vendor OEM Coordination</li>
+                    <li>Volume Licensing & Contract Management</li>
+                    <li>Total Cost of Ownership (TCO) Analysis</li>
+                    <li>Supply Chain Resilience & Staging</li>
+                </ul>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h2>Global Reach, Personal Service</h2>
-            <p>While our capabilities are global, our approach remains highly personalized. We act as an extension of your IT and procurement teams, handling the complexities of vendor management, licensing, and logistics so you can focus on your core mission.</p>
+            <div class="solution-card">
+                <h3>IT Infrastructure</h3>
+                <p>Engineering the architectural foundation for high-availability enterprise environments.</p>
+                <ul class="feature-list">
+                    <li>Next-Gen Data Center Modernization</li>
+                    <li>Hybrid & Multi-Cloud Architecture</li>
+                    <li>High-Performance Compute (HPC)</li>
+                    <li>Mission-Critical Storage Solutions</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <h3>Mission-Critical Management</h3>
+                <p>Ensuring operational continuity through robust monitoring and security frameworks.</p>
+                <ul class="feature-list">
+                    <li>Zero-Trust Network Architecture</li>
+                    <li>Real-time Infrastructure Monitoring</li>
+                    <li>Edge Security & Software-Defined Networking</li>
+                    <li>Disaster Recovery & Business Continuity</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
-        <p>Strategic Procurement & Infrastructure Management</p>
+        <p>Strategic IT Infrastructure Procurement & Mission-Critical Management</p>
     </footer>
 
     <script type="text/javascript">
