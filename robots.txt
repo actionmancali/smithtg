@@ -1,0 +1,6 @@
+# Gridworx Games - Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap for search engines
+Sitemap: https://smithtg.com/sitemap.xml
