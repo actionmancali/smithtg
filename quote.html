@@ -209,20 +209,15 @@
     }
 
     .quote-wrap {
-      max-width: 1180px;
-      margin: 0 auto;
+      max-width: 1180px; margin: 0 auto;
       padding: 72px 5% 100px;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 44px;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr 400px;
+      gap: 44px; align-items: start;
     }
 
     .form-card {
-      background: var(--white);
-      border-radius: 22px;
-      box-shadow: var(--sh-lg);
-      border: 1px solid rgba(0,0,0,.05);
+      background: var(--white); border-radius: 22px;
+      box-shadow: var(--sh-lg); border: 1px solid rgba(0,0,0,.05);
       padding: 52px 52px 48px;
       opacity: 0; transform: translateY(28px);
       transition: opacity .65s var(--ease), transform .65s var(--ease);
@@ -252,64 +247,46 @@
     .form-group.full { grid-column: 1 / -1; }
 
     label {
-      display: block;
-      font-size: .72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1.2px;
-      color: var(--blue);
+      display: block; font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.2px; color: var(--blue);
     }
     label .req { color: var(--teal); margin-left: 2px; }
 
     input, select, textarea {
-      width: 100%;
-      padding: 13px 16px;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-size: .95rem;
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: var(--off-white);
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: .95rem; font-family: 'Inter', sans-serif;
+      color: var(--text); background: var(--off-white);
       transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
-      appearance: none;
-      -webkit-appearance: none;
+      appearance: none; -webkit-appearance: none;
     }
     input:hover, select:hover, textarea:hover { border-color: rgba(0,196,180,.4); }
     input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--teal);
-      box-shadow: 0 0 0 4px rgba(0,196,180,.12);
-      background: var(--white);
+      outline: none; border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(0,196,180,.12); background: var(--white);
     }
     input::placeholder, textarea::placeholder { color: rgba(90,106,126,.45); }
 
     .select-wrap { position: relative; }
     .select-wrap::after {
-      content: '';
-      position: absolute; right: 14px; top: 50%; translate: 0 -50%;
+      content: ''; position: absolute; right: 14px; top: 50%; translate: 0 -50%;
       width: 0; height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid var(--muted);
-      pointer-events: none;
+      border-left: 5px solid transparent; border-right: 5px solid transparent;
+      border-top: 5px solid var(--muted); pointer-events: none;
     }
     select { padding-right: 36px; cursor: pointer; }
-
     textarea { height: 140px; resize: vertical; }
 
     .checkbox-group {
       display: flex; align-items: flex-start; gap: 12px;
       padding: 16px 18px;
-      background: rgba(0,196,180,.05);
-      border: 1.5px solid rgba(0,196,180,.2);
-      border-radius: 10px;
-      margin-bottom: 28px;
-      cursor: pointer;
+      background: rgba(0,196,180,.05); border: 1.5px solid rgba(0,196,180,.2);
+      border-radius: 10px; margin-bottom: 28px; cursor: pointer;
     }
     .checkbox-group input[type="checkbox"] {
       width: 18px; height: 18px; flex-shrink: 0;
-      accent-color: var(--teal);
-      margin-top: 2px; cursor: pointer;
-      padding: 0;
-      background: transparent; border: none; box-shadow: none;
+      accent-color: var(--teal); margin-top: 2px; cursor: pointer;
+      padding: 0; background: transparent; border: none; box-shadow: none;
     }
     .checkbox-group input[type="checkbox"]:focus { box-shadow: none; border-color: transparent; }
     .checkbox-group label {
@@ -322,12 +299,9 @@
     .submit-btn {
       width: 100%; height: 56px;
       background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-      color: var(--white);
-      border: none; border-radius: 12px;
-      font-family: 'Poppins', sans-serif;
-      font-size: .9rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1px;
-      cursor: pointer;
+      color: var(--white); border: none; border-radius: 12px;
+      font-family: 'Poppins', sans-serif; font-size: .9rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
       box-shadow: var(--sh-teal);
       display: flex; align-items: center; justify-content: center; gap: 10px;
       transition: transform .22s var(--ease-back), box-shadow .22s ease, filter .22s ease;
@@ -337,18 +311,12 @@
     .submit-btn svg { transition: transform .22s var(--ease-back); }
     .submit-btn:hover svg { transform: translateX(4px); }
 
-    .success-msg {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
+    .success-msg { display: none; text-align: center; padding: 40px 20px; }
     .success-msg .check-circle {
-      width: 72px; height: 72px;
-      border-radius: 50%;
+      width: 72px; height: 72px; border-radius: 50%;
       background: linear-gradient(135deg, var(--teal), var(--teal-dark));
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-      box-shadow: var(--sh-teal);
+      margin: 0 auto 20px; box-shadow: var(--sh-teal);
       animation: popIn .5s var(--ease-back);
     }
     @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -363,33 +331,24 @@
     .sidebar.visible { opacity: 1; transform: translateY(0); }
 
     .info-card {
-      background: var(--white);
-      border-radius: 18px;
-      border: 1px solid rgba(0,0,0,.05);
-      box-shadow: var(--sh-sm);
-      padding: 32px 28px;
+      background: var(--white); border-radius: 18px;
+      border: 1px solid rgba(0,0,0,.05); box-shadow: var(--sh-sm); padding: 32px 28px;
     }
-    .info-card h3 {
-      color: var(--navy); font-size: 1rem;
-      margin-bottom: 20px; letter-spacing: -.1px;
-    }
+    .info-card h3 { color: var(--navy); font-size: 1rem; margin-bottom: 20px; letter-spacing: -.1px; }
 
     .contact-item {
       display: flex; align-items: center; gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(0,0,0,.05);
+      padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,.05);
     }
     .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
     .contact-icon {
-      width: 40px; height: 40px; flex-shrink: 0;
-      border-radius: 11px;
+      width: 40px; height: 40px; flex-shrink: 0; border-radius: 11px;
       background: linear-gradient(135deg, rgba(0,196,180,.13), rgba(0,51,102,.07));
       display: flex; align-items: center; justify-content: center;
     }
     .contact-icon svg { width: 18px; height: 18px; }
     .contact-item a, .contact-item span {
-      font-size: .88rem; font-weight: 600; color: var(--navy);
-      transition: color .18s ease;
+      font-size: .88rem; font-weight: 600; color: var(--navy); transition: color .18s ease;
     }
     .contact-item a:hover { color: var(--teal-dark); }
     .contact-sub { font-size: .74rem; color: var(--muted); margin-top: 1px; display: block; font-weight: 400; }
@@ -401,22 +360,18 @@
     }
     .trust-dot {
       width: 8px; height: 8px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--blue-mid));
-      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--teal), var(--blue-mid)); flex-shrink: 0;
     }
 
     .promo-card {
       border-radius: 18px;
       background: linear-gradient(155deg, #081828 0%, #003366 100%);
-      padding: 32px 28px;
-      position: relative; overflow: hidden;
+      padding: 32px 28px; position: relative; overflow: hidden;
     }
     .promo-card::before {
-      content: ''; position: absolute;
-      bottom: -20%; right: -10%;
+      content: ''; position: absolute; bottom: -20%; right: -10%;
       width: 220px; height: 220px;
-      background: radial-gradient(circle, rgba(0,196,180,.18), transparent 65%);
-      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,196,180,.18), transparent 65%); border-radius: 50%;
     }
     .promo-card h3 { color: var(--white); font-size: .98rem; margin-bottom: 10px; position: relative; z-index: 1; }
     .promo-card p { color: rgba(255,255,255,.5); font-size: .82rem; line-height: 1.65; margin-bottom: 18px; position: relative; z-index: 1; }
@@ -424,8 +379,7 @@
       display: inline-flex; align-items: center; gap: 6px;
       color: var(--teal); font-size: .82rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: .8px;
-      transition: gap .2s ease;
-      position: relative; z-index: 1;
+      transition: gap .2s ease; position: relative; z-index: 1;
     }
     .promo-link:hover { gap: 10px; }
 
@@ -552,7 +506,8 @@
         <hr class="form-divider">
 
         <div id="form-area">
-          <form id="quote-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <!-- UPDATED: form action now points to live Formspree endpoint -->
+          <form id="quote-form" action="https://formspree.io/f/maqadeea" method="POST" novalidate>
 
             <div class="form-row">
               <div class="form-group">
@@ -675,7 +630,7 @@
           </div>
         </div>
 
-        <!-- Trust signals — UPDATED: 25+ → 35+ -->
+        <!-- Trust signals -->
         <div class="info-card">
           <h3>Why Smith Technology Group?</h3>
           <div class="trust-list">
