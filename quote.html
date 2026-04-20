@@ -1,275 +1,871 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Quote | Smith Technology Group</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Request a Quote | Smith Technology Group</title>
+  <link rel="canonical" href="https://www.smithtg.com/quote.html">
+  <link rel="icon" type="image/png" href="logoicon.png">
+  <link rel="apple-touch-icon" href="logoicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="logoicon.png">
-    <link rel="apple-touch-icon" href="logoicon.png">
-    <link rel="canonical" href="https://smithtg.com/quote.html" />
-    
-    <style>
-        :root {
-            --primary-blue: #003366; 
-            --secondary-blue: #00509d;
-            --accent-blue: #e6f0ff;
-            --text-dark: #1a1a1a;
-            --text-light: #555;
-            --bg-light: #f9f9f9;
-        }
-        
-        body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            margin: 0; 
-            color: var(--text-dark); 
-            line-height: 1.6;
-            background-color: var(--bg-light);
-        }
-        
-        /* Navigation */
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 15px 5%; 
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .logo-container { display: flex; align-items: center; text-decoration: none; }
-        
-        /* Logo set to 120px */
-        .logo-img { 
-            height: 120px; 
-            width: auto; 
-            display: block; 
-            transition: height 0.3s ease;
-        }
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --navy:      #0c1e35;
+      --blue:      #003366;
+      --blue-mid:  #0a4b8c;
+      --teal:      #00c4b4;
+      --teal-dark: #009e90;
+      --white:     #ffffff;
+      --off-white: #f5f9fd;
+      --text:      #0c1e35;
+      --muted:     #5a6a7e;
+      --border:    rgba(0,0,0,.09);
+      --nav-h:          96px;
+      --nav-h-scrolled: 66px;
+      --nav-h-sm:       62px;
+      --sh-sm:  0 2px 12px rgba(0,0,0,.06);
+      --sh-md:  0 8px 24px rgba(0,0,0,.10);
+      --sh-lg:  0 24px 56px rgba(0,0,0,.13);
+      --sh-teal:0 8px 28px rgba(0,196,180,.38);
+      --ease:      cubic-bezier(.22,1,.36,1);
+      --ease-back: cubic-bezier(.34,1.56,.64,1);
+    }
 
-        /* Hamburger Icon (Hidden on Desktop) */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-            z-index: 1100;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--off-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body.menu-open { overflow: hidden; }
+    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.1; }
+    p { color: var(--muted); }
+    a { text-decoration: none; }
 
-        .hamburger span {
-            width: 30px;
-            height: 3px;
-            background-color: var(--primary-blue);
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-        
-        .menu { display: flex; align-items: center; }
-        .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
-        .menu a:hover { color: var(--secondary-blue); }
-        .quote-nav-btn { background: var(--primary-blue); color: white !important; padding: 10px 20px; border-radius: 4px; margin-left: 25px; font-size: 13px; font-weight: 700; transition: 0.3s; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--teal), var(--blue-mid)); border-radius: 99px; }
 
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), 
-                        url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 60px 8%;
-            text-align: center;
-        }
+    /* ── Scroll Progress ── */
+    #progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--teal), var(--blue-mid));
+      z-index: 9999; pointer-events: none;
+      transition: width .08s linear;
+    }
 
-        .page-header h1 { font-size: 36px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
-        .page-header p { font-size: 18px; margin-top: 10px; opacity: 0.9; }
+    /* ── Nav ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      z-index: 1500;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px) saturate(1.6);
+      -webkit-backdrop-filter: blur(12px) saturate(1.6);
+      box-shadow: 0 1px 0 rgba(0,0,0,.07);
+      transition: height .32s var(--ease), background .32s ease, box-shadow .32s ease;
+    }
+    #navbar.scrolled {
+      height: var(--nav-h-scrolled);
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(22px) saturate(1.8);
+      -webkit-backdrop-filter: blur(22px) saturate(1.8);
+      box-shadow: 0 1px 0 rgba(0,0,0,.07), var(--sh-sm);
+    }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 70px; width: auto; transition: height .32s var(--ease); }
+    #navbar.scrolled .logo img { height: 40px; }
 
-        /* Form Section */
-        .form-section { padding: 60px 8% 100px; max-width: 800px; margin: 0 auto; }
-        
-        .quote-form-container {
-            background: white;
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+    .menu { display: flex; align-items: center; gap: 4px; }
+    .menu a {
+      color: var(--text); font-weight: 600; font-size: .8rem;
+      text-transform: uppercase; letter-spacing: .8px;
+      padding: 8px 14px; border-radius: 7px; white-space: nowrap;
+      transition: color .18s ease, background .18s ease;
+    }
+    .menu a:not(.cta):hover { background: rgba(0,196,180,.10); color: var(--teal-dark); }
+    .menu a.active { color: var(--teal-dark); background: rgba(0,196,180,.08); }
 
-        .form-group { margin-bottom: 25px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        
-        label { display: block; font-weight: 700; color: var(--primary-blue); margin-bottom: 8px; font-size: 14px; text-transform: uppercase; }
-        
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background: #fff;
-        }
+    .cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      height: 40px; padding: 0 20px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: var(--white) !important;
+      border-radius: 99px; font-weight: 700; font-size: .78rem;
+      text-transform: uppercase; letter-spacing: .8px;
+      box-shadow: var(--sh-teal);
+      transition: transform .2s var(--ease-back), box-shadow .2s ease, filter .2s ease;
+      white-space: nowrap; border: none; cursor: pointer;
+    }
+    .cta:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 14px 38px rgba(0,196,180,.48); filter: brightness(1.06); }
+    .cta .arr { display: inline-flex; transition: transform .2s var(--ease-back); }
+    .cta:hover .arr { transform: translateX(3px); }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--secondary-blue);
-            box-shadow: 0 0 5px rgba(0,80,157,0.2);
-        }
+    /* ── Hamburger ── */
+    .hamburger {
+      display: none; width: 44px; height: 44px;
+      align-items: center; justify-content: center;
+      background: rgba(0,51,102,.07); border: 1px solid rgba(0,51,102,.14);
+      border-radius: 11px; cursor: pointer;
+      position: relative; z-index: 1600;
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .hamburger:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    .hbar-wrap { display: flex; flex-direction: column; gap: 5px; pointer-events: none; }
+    .hbar {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--blue); border-radius: 99px;
+      transform-origin: center;
+      transition: transform .35s var(--ease), opacity .25s ease, width .3s ease;
+    }
+    .hamburger.open { background: rgba(0,51,102,.12); border-color: rgba(0,51,102,.22); }
+    .hamburger.open .hbar-top { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open .hbar-mid { opacity: 0; width: 0; }
+    .hamburger.open .hbar-bot { transform: translateY(-7.5px) rotate(-45deg); }
 
-        textarea { height: 150px; resize: vertical; }
+    /* ── Mobile Dropdown ── */
+    #mobile-menu {
+      display: none; position: fixed;
+      top: var(--nav-h-sm); left: 0; right: 0;
+      z-index: 1400;
+      background: var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,.14);
+      border-bottom: 3px solid var(--teal);
+      flex-direction: column; padding: 12px 0 20px;
+      max-height: calc(100vh - var(--nav-h-sm) - 20px);
+      overflow-y: auto;
+      transform: translateY(-8px); opacity: 0;
+      transition: transform .28s var(--ease), opacity .22s ease;
+    }
+    #mobile-menu.open { transform: translateY(0); opacity: 1; }
+    #mobile-menu a {
+      color: var(--text); font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      padding: 15px 7%; border-bottom: 1px solid rgba(0,0,0,.05);
+      transition: background .15s ease, color .15s ease, padding-left .18s ease;
+    }
+    #mobile-menu a:last-child { border-bottom: none; }
+    #mobile-menu a:hover { background: rgba(0,196,180,.07); color: var(--teal-dark); padding-left: calc(7% + 8px); }
+    #mobile-menu.open a { animation: dropItem .32s var(--ease) both; }
+    #mobile-menu.open a:nth-child(1) { animation-delay: .04s; }
+    #mobile-menu.open a:nth-child(2) { animation-delay: .09s; }
+    #mobile-menu.open a:nth-child(3) { animation-delay: .14s; }
+    @keyframes dropItem { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+    .mobile-cta-row { padding: 16px 7% 4px; }
+    .mobile-cta-row .cta { width: 100%; height: 50px; justify-content: center; font-size: .85rem; border-radius: 10px; }
 
-        .submit-btn {
-            background: var(--primary-blue);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 16px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-        }
+    /* ── Page Hero ── */
+    .page-hero {
+      margin-top: var(--nav-h);
+      background:
+        linear-gradient(155deg, rgba(8,22,48,.94) 0%, rgba(0,51,102,.88) 50%, rgba(10,70,130,.85) 100%),
+        url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&w=1920&q=80')
+        center/cover;
+      padding: 68px 8% 64px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 95% 10%, rgba(0,196,180,.16) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 5% 90%, rgba(0,100,200,.10) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .page-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 30px 30px; pointer-events: none;
+    }
+    .page-hero-content { position: relative; z-index: 1; max-width: 720px; }
 
-        .submit-btn:hover { background: var(--secondary-blue); transform: translateY(-2px); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(0,196,180,.13); border: 1px solid rgba(0,196,180,.32);
+      color: var(--teal); font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.3px;
+      padding: 6px 16px; border-radius: 99px;
+      margin-bottom: 22px; backdrop-filter: blur(10px);
+      animation: rise .6s var(--ease) both;
+    }
+    .badge-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2.2s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.7)} }
 
-        footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
+    .page-hero h1 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      color: var(--white); letter-spacing: -1px; margin-bottom: 16px;
+      animation: rise .68s var(--ease) .1s both;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--teal); }
+    .page-hero p {
+      color: rgba(255,255,255,.75);
+      font-size: clamp(.92rem, 1.3vw, 1.06rem);
+      max-width: 560px; line-height: 1.82;
+      animation: rise .68s var(--ease) .2s both;
+    }
 
-        /* Responsive Breakpoint for Mobile (Hamburger Menu) */
-        @media (max-width: 992px) {
-            .logo-img { height: 75px; } 
-            
-            .hamburger { display: flex; }
+    /* ── Main layout ── */
+    .quote-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 72px 5% 100px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 44px;
+      align-items: start;
+    }
 
-            .menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
+    /* ── Form card ── */
+    .form-card {
+      background: var(--white);
+      border-radius: 22px;
+      box-shadow: var(--sh-lg);
+      border: 1px solid rgba(0,0,0,.05);
+      padding: 52px 52px 48px;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s var(--ease), transform .65s var(--ease);
+    }
+    .form-card.visible { opacity: 1; transform: translateY(0); }
 
-            .menu.active { display: flex; }
+    .form-card-header { margin-bottom: 36px; }
+    .eyebrow {
+      display: inline-block; font-size: .85rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--teal-dark); margin-bottom: 10px;
+    }
+    .form-card-header h2 {
+      color: var(--navy); font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      letter-spacing: -.4px; margin-bottom: 10px;
+    }
+    .form-card-header p { font-size: .95rem; line-height: 1.75; }
 
-            .menu a {
-                margin: 15px 5%;
-                font-size: 16px;
-            }
+    /* Divider */
+    .form-divider {
+      border: none; height: 1px;
+      background: linear-gradient(90deg, var(--teal), rgba(0,196,180,.1));
+      margin-bottom: 36px;
+    }
 
-            .quote-nav-btn { margin-left: 5% !important; text-align: center; }
+    /* Form rows */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 22px; display: flex; flex-direction: column; gap: 7px; }
+    .form-group.full { grid-column: 1 / -1; }
 
-            .form-row { grid-template-columns: 1fr; }
-            .quote-form-container { padding: 25px; }
-        }
-    </style>
+    label {
+      display: block;
+      font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--blue);
+    }
+    label .req { color: var(--teal); margin-left: 2px; }
+
+    /* Inputs */
+    input, select, textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: .95rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--off-white);
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    input:hover, select:hover, textarea:hover { border-color: rgba(0,196,180,.4); }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(0,196,180,.12);
+      background: var(--white);
+    }
+    input::placeholder, textarea::placeholder { color: rgba(90,106,126,.45); }
+
+    /* Select arrow */
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '';
+      position: absolute; right: 14px; top: 50%; translate: 0 -50%;
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--muted);
+      pointer-events: none;
+    }
+    select { padding-right: 36px; cursor: pointer; }
+
+    textarea { height: 140px; resize: vertical; }
+
+    /* Checkbox */
+    .checkbox-group {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px 18px;
+      background: rgba(0,196,180,.05);
+      border: 1.5px solid rgba(0,196,180,.2);
+      border-radius: 10px;
+      margin-bottom: 28px;
+      cursor: pointer;
+    }
+    .checkbox-group input[type="checkbox"] {
+      width: 18px; height: 18px; flex-shrink: 0;
+      accent-color: var(--teal);
+      margin-top: 2px; cursor: pointer;
+      padding: 0;
+      background: transparent; border: none; box-shadow: none;
+    }
+    .checkbox-group input[type="checkbox"]:focus { box-shadow: none; border-color: transparent; }
+    .checkbox-group label {
+      font-size: .85rem; font-weight: 500;
+      text-transform: none; letter-spacing: 0;
+      color: var(--muted); cursor: pointer; line-height: 1.55;
+    }
+    .checkbox-group label strong { color: var(--navy); font-weight: 600; }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%; height: 56px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: var(--white);
+      border: none; border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: .9rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: var(--sh-teal);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: transform .22s var(--ease-back), box-shadow .22s ease, filter .22s ease;
+    }
+    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,196,180,.45); filter: brightness(1.06); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn svg { transition: transform .22s var(--ease-back); }
+    .submit-btn:hover svg { transform: translateX(4px); }
+
+    /* Success state */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .success-msg .check-circle {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: var(--sh-teal);
+      animation: popIn .5s var(--ease-back);
+    }
+    @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .success-msg h3 { color: var(--navy); font-size: 1.5rem; margin-bottom: 10px; }
+    .success-msg p { font-size: .98rem; max-width: 380px; margin: 0 auto; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      display: flex; flex-direction: column; gap: 22px;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s var(--ease) .15s, transform .65s var(--ease) .15s;
+    }
+    .sidebar.visible { opacity: 1; transform: translateY(0); }
+
+    /* Info card */
+    .info-card {
+      background: var(--white);
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,.05);
+      box-shadow: var(--sh-sm);
+      padding: 32px 28px;
+    }
+    .info-card h3 {
+      color: var(--navy); font-size: 1rem;
+      margin-bottom: 20px; letter-spacing: -.1px;
+    }
+
+    /* Contact items */
+    .contact-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,.05);
+    }
+    .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 11px;
+      background: linear-gradient(135deg, rgba(0,196,180,.13), rgba(0,51,102,.07));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-icon svg { width: 18px; height: 18px; }
+    .contact-item a, .contact-item span {
+      font-size: .88rem; font-weight: 600; color: var(--navy);
+      transition: color .18s ease;
+    }
+    .contact-item a:hover { color: var(--teal-dark); }
+    .contact-sub { font-size: .74rem; color: var(--muted); margin-top: 1px; display: block; font-weight: 400; }
+
+    /* Trust badges */
+    .trust-list {
+      display: flex; flex-direction: column; gap: 13px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: .84rem; font-weight: 500; color: var(--navy);
+    }
+    .trust-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--blue-mid));
+      flex-shrink: 0;
+    }
+
+    /* Dark promo card */
+    .promo-card {
+      border-radius: 18px;
+      background: linear-gradient(155deg, #081828 0%, #003366 100%);
+      padding: 32px 28px;
+      position: relative; overflow: hidden;
+    }
+    .promo-card::before {
+      content: ''; position: absolute;
+      bottom: -20%; right: -10%;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(0,196,180,.18), transparent 65%);
+      border-radius: 50%;
+    }
+    .promo-card h3 { color: var(--white); font-size: .98rem; margin-bottom: 10px; position: relative; z-index: 1; }
+    .promo-card p { color: rgba(255,255,255,.5); font-size: .82rem; line-height: 1.65; margin-bottom: 18px; position: relative; z-index: 1; }
+    .promo-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--teal); font-size: .82rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .8px;
+      transition: gap .2s ease;
+      position: relative; z-index: 1;
+    }
+    .promo-link:hover { gap: 10px; }
+
+    /* ── Footer ── */
+    footer {
+      background: linear-gradient(155deg, #080f1e 0%, #0f2944 100%);
+      padding: 44px 8%; position: relative; overflow: hidden;
+    }
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--teal) 50%, var(--blue-mid));
+    }
+    .footer-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+    }
+    .footer-left { display: flex; flex-direction: column; gap: 4px; }
+    .footer-left strong { color: var(--white); font-size: .92rem; font-weight: 700; }
+    .footer-left span { color: rgba(255,255,255,.32); font-size: .78rem; }
+    .footer-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .footer-right a { color: rgba(255,255,255,.45); font-size: .84rem; transition: color .2s ease; }
+    .footer-right a:hover { color: var(--teal); }
+    .footer-divider { color: rgba(255,255,255,.15); user-select: none; }
+
+    /* ── Keyframes ── */
+    @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Responsive ── */
+    @media (max-width: 992px) {
+      :root { --nav-h: var(--nav-h-sm); }
+      #navbar { padding: 0 5%; }
+      .logo img { height: 44px; }
+      #navbar.scrolled .logo img { height: 34px; }
+      .menu { display: none; }
+      .hamburger { display: flex; }
+
+      .page-hero { padding: 60px 5% 52px; background-attachment: scroll; }
+      .page-hero h1 { font-size: clamp(1.7rem, 5.5vw, 2.2rem); }
+
+      .quote-wrap {
+        grid-template-columns: 1fr;
+        padding: 52px 5% 80px;
+        gap: 28px;
+      }
+      .sidebar { order: -1; }
+      .promo-card { display: none; } /* hide on mobile for brevity */
+      .form-card { padding: 36px 28px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .footer-right { gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      #navbar { padding: 0 4%; }
+      .page-hero { padding: 52px 4% 48px; }
+      .quote-wrap { padding: 40px 4% 64px; }
+      .form-card { padding: 28px 20px; }
+      .info-card { padding: 24px 20px; }
+      footer { padding: 36px 4%; }
+      .footer-right { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .footer-divider { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="logo-container">
-            <img src="./Logo.png" alt="Smith Technology Group Logo" class="logo-img">
-        </a>
+  <div id="progress" aria-hidden="true"></div>
 
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <div class="menu" id="nav-menu">
-            <a href="manufacturers.html">Manufacturers</a>
-            <a href="solutions.html">Solutions</a>
-            <a href="aboutus.html">Who We Are</a>
-            <a href="quote.html" class="quote-nav-btn">Request Quote</a>
-        </div>
-    </nav>
-
-    <div class="page-header">
-        <h1>Request a Quote</h1>
-        <p>Enterprise Procurement & Mission-Critical Solutions</p>
+  <!-- Nav -->
+  <nav id="navbar">
+    <a href="index.html" class="logo" aria-label="Smith Technology Group home">
+      <img src="./Logo.png" alt="Smith Technology Group">
+    </a>
+    <div class="menu">
+      <a href="manufacturers.html">Manufacturers</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="aboutus.html">Who We Are</a>
+      <a href="quote.html" class="cta active">
+        Request Quote
+        <span class="arr" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+      </a>
     </div>
+    <button class="hamburger" id="hamburger"
+            aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="hbar-wrap" aria-hidden="true">
+        <span class="hbar hbar-top"></span>
+        <span class="hbar hbar-mid"></span>
+        <span class="hbar hbar-bot"></span>
+      </span>
+    </button>
+  </nav>
 
-    <section class="form-section">
-        <div class="quote-form-container">
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="first-name">First Name</label>
-                        <input type="text" id="first-name" name="first-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="last-name">Last Name</label>
-                        <input type="text" id="last-name" name="last-name" required>
-                    </div>
-                </div>
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <a href="manufacturers.html">Manufacturers</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="aboutus.html">Who We Are</a>
+    <div class="mobile-cta-row">
+      <a href="quote.html" class="cta">
+        Request a Quote
+        <span class="arr" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Work Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                </div>
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <div class="badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        Fast Response &nbsp;·&nbsp; Expert Guidance
+      </div>
+      <h1>Request a <em>Quote.</em></h1>
+      <p>Tell us about your infrastructure requirements and our team will respond with a tailored solution — typically within one business day.</p>
+    </div>
+  </header>
 
-                <div class="form-group">
-                    <label for="company">Company / Organization</label>
-                    <input type="text" id="company" name="company" required>
-                </div>
+  <main>
+    <div class="quote-wrap">
 
-                <div class="form-group">
-                    <label for="oem">Interested OEM/Manufacturer</label>
-                    <input type="text" id="oem" name="oem" placeholder="e.g., Cisco, Dell, Arista...">
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Requirement Details</label>
-                    <textarea id="message" name="message" placeholder="Please describe your hardware, software, or management requirements..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Request</button>
-            </form>
+      <!-- Form -->
+      <div class="form-card" id="form-card">
+        <div class="form-card-header">
+          <span class="eyebrow">Get in Touch</span>
+          <h2>Enterprise Procurement &amp; Infrastructure</h2>
+          <p>Fill in the details below and a specialist will be in touch to discuss your requirements.</p>
         </div>
-    </section>
+        <hr class="form-divider">
 
-    <footer>
-        <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
-        <p>Strategic Procurement & Infrastructure Management</p>
-    </footer>
+        <div id="form-area">
+          <form id="quote-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
+            <!-- Name row -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name <span class="req">*</span></label>
+                <input type="text" id="first-name" name="first-name" placeholder="Jane" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name <span class="req">*</span></label>
+                <input type="text" id="last-name" name="last-name" placeholder="Smith" required>
+              </div>
+            </div>
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            <!-- Contact row -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Work Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 (760) 000-0000">
+              </div>
+            </div>
+
+            <!-- Company -->
+            <div class="form-group">
+              <label for="company">Company / Organization <span class="req">*</span></label>
+              <input type="text" id="company" name="company" placeholder="Acme Corp" required>
+            </div>
+
+            <!-- Solution type -->
+            <div class="form-group">
+              <label for="solution">Solution Area <span class="req">*</span></label>
+              <div class="select-wrap">
+                <select id="solution" name="solution" required>
+                  <option value="" disabled selected>Select a solution area…</option>
+                  <option value="hardware">Hardware Procurement</option>
+                  <option value="cloud">Cloud &amp; Software Licensing</option>
+                  <option value="managed">Managed IT Services</option>
+                  <option value="networking">Networking &amp; Infrastructure</option>
+                  <option value="storage">Storage &amp; Data Management</option>
+                  <option value="other">Other / Multiple</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- OEM interest -->
+            <div class="form-group">
+              <label for="oem">Interested Manufacturer(s)</label>
+              <input type="text" id="oem" name="oem" placeholder="e.g. Dell, HP, Lenovo, Cisco…">
+            </div>
+
+            <!-- Details -->
+            <div class="form-group">
+              <label for="message">Requirement Details <span class="req">*</span></label>
+              <textarea id="message" name="message" placeholder="Please describe your hardware, software, or management requirements — quantities, timelines, budget range, etc." required></textarea>
+            </div>
+
+            <!-- Consent -->
+            <label class="checkbox-group">
+              <input type="checkbox" name="consent" required>
+              <span>
+                <strong>I agree to be contacted</strong> by the Smith Technology Group sales team
+                regarding my enquiry. We respect your privacy and will never share your information.
+              </span>
+            </label>
+
+            <button type="submit" class="submit-btn" id="submit-btn">
+              Send Request
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+
+          </form>
+        </div>
+
+        <!-- Success message (shown after submit) -->
+        <div class="success-msg" id="success-msg">
+          <div class="check-circle" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Request Received!</h3>
+          <p>Thank you — a member of our team will be in touch within one business day.</p>
+        </div>
+      </div><!-- /form-card -->
+
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+
+        <!-- Contact info -->
+        <div class="info-card">
+          <h3>Direct Contact</h3>
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/>
+              </svg>
+            </div>
+            <div>
+              <a href="tel:1-760-402-7441">1-760-402-7441</a>
+              <span class="contact-sub">Mon–Fri, 8am – 5pm PT</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <a href="mailto:info@smithtg.com">info@smithtg.com</a>
+              <span class="contact-sub">We respond within 24 hours</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <span>Response Time</span>
+              <span class="contact-sub">Typically within 1 business day</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust signals -->
+        <div class="info-card">
+          <h3>Why Smith Technology Group?</h3>
+          <div class="trust-list">
+            <div class="trust-item"><span class="trust-dot"></span>25+ years of enterprise IT expertise</div>
+            <div class="trust-item"><span class="trust-dot"></span>Authorized HP, Dell &amp; Lenovo partner</div>
+            <div class="trust-item"><span class="trust-dot"></span>500+ manufacturer relationships</div>
+            <div class="trust-item"><span class="trust-dot"></span>24/7 managed support available</div>
+            <div class="trust-item"><span class="trust-dot"></span>No-obligation quotes, always</div>
+            <div class="trust-item"><span class="trust-dot"></span>Dedicated account management</div>
+          </div>
+        </div>
+
+        <!-- Promo -->
+        <div class="promo-card">
+          <h3>Explore Our Manufacturers</h3>
+          <p>Over 500 authorized OEM partners across hardware, software, photonics, aerospace and more.</p>
+          <a href="manufacturers.html" class="promo-link">
+            View Full List
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+      </aside>
+
+    </div><!-- /quote-wrap -->
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>Smith Technology Group</strong>
+        <span>&copy; 2026 · Strategic IT Infrastructure &amp; Mission-Critical Management</span>
+      </div>
+      <div class="footer-right">
+        <a href="tel:1-760-402-7441">1-760-402-7441</a>
+        <span class="footer-divider">|</span>
+        <a href="mailto:info@smithtg.com">info@smithtg.com</a>
+        <span class="footer-divider">|</span>
+        <a href="https://www.smithtg.com">smithtg.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const navbar   = document.getElementById('navbar');
+      const btn      = document.getElementById('hamburger');
+      const dropdown = document.getElementById('mobile-menu');
+      const bar      = document.getElementById('progress');
+      let isOpen = false;
+
+      /* ── Mobile menu ── */
+      const openMenu = () => {
+        isOpen = true;
+        dropdown.style.display = 'flex';
+        requestAnimationFrame(() => requestAnimationFrame(() => dropdown.classList.add('open')));
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('menu-open');
+        dropdown.querySelector('a')?.focus();
+      };
+      const closeMenu = () => {
+        isOpen = false;
+        dropdown.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        dropdown.addEventListener('transitionend', () => {
+          if (!isOpen) dropdown.style.display = '';
+        }, { once: true });
+        btn.focus();
+      };
+      btn.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+      document.addEventListener('keydown', e => e.key === 'Escape' && isOpen && closeMenu());
+      dropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      document.addEventListener('click', e => {
+        if (isOpen && !navbar.contains(e.target) && !dropdown.contains(e.target)) closeMenu();
+      });
+
+      /* ── Scroll ── */
+      const onScroll = () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? `${(window.scrollY / total * 100).toFixed(1)}%` : '0%';
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ── Scroll-reveal ── */
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting) { target.classList.add('visible'); observer.unobserve(target); }
         });
+      }, { threshold: .08 });
+      document.querySelectorAll('.form-card, .sidebar').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-    </script>
+      /* ── Form: client-side validation + success state ── */
+      const form       = document.getElementById('quote-form');
+      const formArea   = document.getElementById('form-area');
+      const successMsg = document.getElementById('success-msg');
+      const submitBtn  = document.getElementById('submit-btn');
 
-    <script type="text/javascript">
+      // Highlight first invalid field on submit
+      form.addEventListener('submit', async e => {
+        if (!form.checkValidity()) {
+          e.preventDefault();
+          const first = form.querySelector(':invalid');
+          first?.focus();
+          first?.closest('.form-group, .checkbox-group')?.classList.add('shake');
+          setTimeout(() => first?.closest('.form-group, .checkbox-group')?.classList.remove('shake'), 500);
+          return;
+        }
+
+        // If using Formspree — intercept and show success without full page reload
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+          if (res.ok) {
+            formArea.style.display = 'none';
+            successMsg.style.display = 'block';
+          } else {
+            throw new Error('Network error');
+          }
+        } catch {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Send Request <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+          alert('Something went wrong — please email us directly at info@smithtg.com');
+        }
+      });
+
+    })();
+  </script>
+
+  <!-- Smartsupp -->
+  <script>
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = 'd433810c9a6ed551ac5f4908db2942c35fba3ef5';
-    window.smartsupp||(function(d) {
-      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+    window.smartsupp||(function(d){
+      var s,c,o=smartsupp=function(){o._.push(arguments)};o._=[];
       s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-      c.type='text/javascript';c.charset='utf-8';c.async=true;
-      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+      c.async=true;c.src='https://www.smartsuppchat.com/loader.js?';
+      s.parentNode.insertBefore(c,s);
     })(document);
-    </script>
+  </script>
 
 </body>
 </html>

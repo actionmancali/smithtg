@@ -1,710 +1,1191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manufacturers | Smith Technology Group</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Manufacturers | Smith Technology Group</title>
+  <link rel="canonical" href="https://www.smithtg.com/manufacturers.html">
+  <link rel="icon" type="image/png" href="logoicon.png">
+  <link rel="apple-touch-icon" href="logoicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="logoicon.png">
-    <link rel="apple-touch-icon" href="logoicon.png">
-    <link rel="canonical" href="https://smithtg.com/manufacturers.html" />
-    
-    <style>
-        :root {
-            --primary-blue: #003366; 
-            --secondary-blue: #00509d;
-            --accent-blue: #e6f0ff;
-            --text-dark: #1a1a1a;
-            --text-light: #555;
-            --bg-light: #f9f9f9;
-        }
-        
-        body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            margin: 0; 
-            color: var(--text-dark); 
-            line-height: 1.6;
-            background-color: var(--bg-light);
-            scroll-behavior: smooth;
-        }
-        
-        /* Navigation */
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 15px 5%; 
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { 
-            height: 120px; 
-            width: auto; 
-            display: block; 
-            transition: height 0.3s ease;
-        }
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --navy:      #0c1e35;
+      --blue:      #003366;
+      --blue-mid:  #0a4b8c;
+      --teal:      #00c4b4;
+      --teal-dark: #009e90;
+      --white:     #ffffff;
+      --off-white: #f5f9fd;
+      --text:      #0c1e35;
+      --muted:     #5a6a7e;
+      --border:    rgba(0,0,0,.07);
+      --nav-h:          96px;
+      --nav-h-scrolled: 66px;
+      --nav-h-sm:       62px;
+      --sh-sm:  0 2px 12px rgba(0,0,0,.06);
+      --sh-md:  0 8px 24px rgba(0,0,0,.10);
+      --sh-lg:  0 24px 56px rgba(0,0,0,.13);
+      --sh-teal:0 8px 28px rgba(0,196,180,.38);
+      --ease:      cubic-bezier(.22,1,.36,1);
+      --ease-back: cubic-bezier(.34,1.56,.64,1);
+    }
 
-        /* Hamburger Icon */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-            z-index: 1100;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body.menu-open { overflow: hidden; }
+    h1,h2,h3 { font-family: 'Poppins', sans-serif; line-height: 1.1; }
+    p { color: var(--muted); }
+    a { text-decoration: none; }
 
-        .hamburger span {
-            width: 30px;
-            height: 3px;
-            background-color: var(--primary-blue);
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-        
-        .menu { display: flex; align-items: center; }
-        .menu a { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
-        .menu a:hover { color: var(--secondary-blue); }
-        .quote-nav-btn { background: var(--primary-blue); color: white !important; padding: 10px 20px; border-radius: 4px; margin-left: 25px; font-size: 13px; font-weight: 700; transition: 0.3s; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--teal), var(--blue-mid)); border-radius: 99px; }
 
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), 
-                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 60px 8%;
-            text-align: center;
-        }
-        .page-header h1 { font-size: 36px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+    /* ── Scroll Progress ── */
+    #progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--teal), var(--blue-mid));
+      z-index: 9999; pointer-events: none;
+      transition: width .08s linear;
+    }
 
-        /* Jump Bar */
-        .jump-bar {
-            background: white;
-            padding: 15px;
-            text-align: center;
-            position: sticky;
-            top: 150px; /* Aligned with 120px logo nav */
-            z-index: 999;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-bottom: 1px solid #eee;
-        }
-        .jump-bar a { text-decoration: none; color: var(--primary-blue); font-weight: 700; margin: 0 8px; font-size: 14px; transition: 0.2s; }
-        .jump-bar a:hover { color: var(--secondary-blue); }
+    /* ── Nav ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      z-index: 1500;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px) saturate(1.6);
+      -webkit-backdrop-filter: blur(12px) saturate(1.6);
+      box-shadow: 0 1px 0 rgba(0,0,0,.07);
+      transition: height .32s var(--ease), background .32s ease, box-shadow .32s ease;
+    }
+    #navbar.scrolled {
+      height: var(--nav-h-scrolled);
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(22px) saturate(1.8);
+      -webkit-backdrop-filter: blur(22px) saturate(1.8);
+      box-shadow: 0 1px 0 rgba(0,0,0,.07), var(--sh-sm);
+    }
 
-        /* List Container */
-        .list-container { padding: 40px 8% 80px; max-width: 1200px; margin: 0 auto; }
-        .letter-section { margin-bottom: 50px; scroll-margin-top: 220px; }
-        .letter-section h2 { font-size: 32px; color: var(--primary-blue); border-bottom: 3px solid var(--primary-blue); padding-bottom: 5px; margin-bottom: 25px; }
-        .brand-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-        .brand-item { font-size: 15px; color: var(--text-dark); padding: 5px 0; border-bottom: 1px solid #eef2f5; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 70px; width: auto; transition: height .32s var(--ease); }
+    #navbar.scrolled .logo img { height: 40px; }
 
-        footer { text-align: center; padding: 50px 8%; background: #111; color: #888; font-size: 13px; }
+    .menu { display: flex; align-items: center; gap: 4px; }
+    .menu a {
+      color: var(--text); font-weight: 600; font-size: .8rem;
+      text-transform: uppercase; letter-spacing: .8px;
+      padding: 8px 14px; border-radius: 7px; white-space: nowrap;
+      transition: color .18s ease, background .18s ease;
+    }
+    .menu a:not(.cta):hover { background: rgba(0,196,180,.10); color: var(--teal-dark); }
+    .menu a.active { color: var(--teal-dark); background: rgba(0,196,180,.08); }
 
-        /* Mobile Adjustments */
-        @media (max-width: 992px) {
-            .logo-img { height: 75px; }
-            .hamburger { display: flex; }
-            .menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-            .menu.active { display: flex; }
-            .menu a { margin: 15px 5%; font-size: 16px; }
-            .quote-nav-btn { margin-left: 5% !important; text-align: center; }
-            .jump-bar { top: 105px; overflow-x: auto; white-space: nowrap; padding: 10px 5%; }
-            .brand-grid { grid-template-columns: 1fr; }
-            .letter-section { scroll-margin-top: 180px; }
-        }
-    </style>
+    .cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      height: 40px; padding: 0 20px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: var(--white) !important;
+      border-radius: 99px; font-weight: 700; font-size: .78rem;
+      text-transform: uppercase; letter-spacing: .8px;
+      box-shadow: var(--sh-teal);
+      transition: transform .2s var(--ease-back), box-shadow .2s ease, filter .2s ease;
+      white-space: nowrap; border: none; cursor: pointer;
+    }
+    .cta:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 14px 38px rgba(0,196,180,.48); filter: brightness(1.06); }
+    .cta .arr { display: inline-flex; transition: transform .2s var(--ease-back); }
+    .cta:hover .arr { transform: translateX(3px); }
+
+    /* ── Hamburger ── */
+    .hamburger {
+      display: none; width: 44px; height: 44px;
+      align-items: center; justify-content: center;
+      background: rgba(0,51,102,.07); border: 1px solid rgba(0,51,102,.14);
+      border-radius: 11px; cursor: pointer;
+      position: relative; z-index: 1600;
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .hamburger:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    .hbar-wrap { display: flex; flex-direction: column; gap: 5px; pointer-events: none; }
+    .hbar {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--blue); border-radius: 99px;
+      transform-origin: center;
+      transition: transform .35s var(--ease), opacity .25s ease, width .3s ease;
+    }
+    .hamburger.open { background: rgba(0,51,102,.12); border-color: rgba(0,51,102,.22); }
+    .hamburger.open .hbar-top { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open .hbar-mid { opacity: 0; width: 0; }
+    .hamburger.open .hbar-bot { transform: translateY(-7.5px) rotate(-45deg); }
+
+    /* ── Mobile Dropdown ── */
+    #mobile-menu {
+      display: none; position: fixed;
+      top: var(--nav-h-sm); left: 0; right: 0;
+      z-index: 1400;
+      background: var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,.14);
+      border-bottom: 3px solid var(--teal);
+      flex-direction: column; padding: 12px 0 20px;
+      max-height: calc(100vh - var(--nav-h-sm) - 20px);
+      overflow-y: auto;
+      transform: translateY(-8px); opacity: 0;
+      transition: transform .28s var(--ease), opacity .22s ease;
+    }
+    #mobile-menu.open { transform: translateY(0); opacity: 1; }
+    #mobile-menu a {
+      color: var(--text); font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      padding: 15px 7%; border-bottom: 1px solid rgba(0,0,0,.05);
+      transition: background .15s ease, color .15s ease, padding-left .18s ease;
+    }
+    #mobile-menu a:last-child { border-bottom: none; }
+    #mobile-menu a:hover { background: rgba(0,196,180,.07); color: var(--teal-dark); padding-left: calc(7% + 8px); }
+    #mobile-menu.open a { animation: dropItem .32s var(--ease) both; }
+    #mobile-menu.open a:nth-child(1) { animation-delay: .04s; }
+    #mobile-menu.open a:nth-child(2) { animation-delay: .09s; }
+    #mobile-menu.open a:nth-child(3) { animation-delay: .14s; }
+    #mobile-menu.open a:nth-child(4) { animation-delay: .19s; }
+    @keyframes dropItem { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+    .mobile-cta-row { padding: 16px 7% 4px; }
+    .mobile-cta-row .cta { width: 100%; height: 50px; justify-content: center; font-size: .85rem; border-radius: 10px; }
+
+    /* ── Page Hero ── */
+    .page-hero {
+      margin-top: var(--nav-h);
+      background:
+        linear-gradient(155deg, rgba(8,22,48,.94) 0%, rgba(0,51,102,.88) 50%, rgba(10,70,130,.85) 100%),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80')
+        center/cover;
+      padding: 72px 8% 68px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 95% 10%, rgba(0,196,180,.16) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 5% 90%, rgba(0,100,200,.10) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .page-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 30px 30px; pointer-events: none;
+    }
+    .page-hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(0,196,180,.13); border: 1px solid rgba(0,196,180,.32);
+      color: var(--teal); font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.3px;
+      padding: 6px 16px; border-radius: 99px;
+      margin-bottom: 22px; backdrop-filter: blur(10px);
+      animation: rise .6s var(--ease) both;
+    }
+    .badge-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2.2s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.7)} }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      color: var(--white); letter-spacing: -1.2px; margin-bottom: 18px;
+      animation: rise .68s var(--ease) .1s both;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--teal); }
+    .page-hero p {
+      color: rgba(255,255,255,.75);
+      font-size: clamp(.95rem, 1.4vw, 1.08rem);
+      max-width: 600px; line-height: 1.82;
+      animation: rise .68s var(--ease) .2s both;
+    }
+
+    /* ── Alphabet Jump Bar ── */
+    #jump-bar {
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 1100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(16px) saturate(1.6);
+      -webkit-backdrop-filter: blur(16px) saturate(1.6);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+      transition: top .32s var(--ease);
+    }
+    #navbar.scrolled ~ #jump-bar,
+    body.scrolled #jump-bar { top: var(--nav-h-scrolled); }
+
+    .jump-inner {
+      max-width: 1180px; margin: 0 auto;
+      padding: 0 5%;
+      display: flex; align-items: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 2px;
+      height: 52px;
+    }
+    .jump-inner::-webkit-scrollbar { display: none; }
+
+    .jump-inner a {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 32px; height: 32px; padding: 0 4px;
+      border-radius: 7px;
+      color: var(--muted); font-weight: 700; font-size: .78rem;
+      letter-spacing: .5px;
+      transition: background .15s ease, color .15s ease;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .jump-inner a:hover { background: rgba(0,196,180,.12); color: var(--teal-dark); }
+    .jump-inner a.has-items:hover { background: rgba(0,196,180,.15); color: var(--teal-dark); }
+    /* Active letter highlight (set by JS on scroll) */
+    .jump-inner a.jump-active { background: var(--teal); color: var(--white); }
+
+    /* ── Brand List ── */
+    .list-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 60px 5% 100px;
+    }
+
+    .letter-section {
+      margin-bottom: 56px;
+      /* scroll-margin accounts for nav + jump bar height */
+      scroll-margin-top: calc(var(--nav-h) + 52px + 12px);
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .55s var(--ease), transform .55s var(--ease);
+    }
+    .letter-section.visible { opacity: 1; transform: translateY(0); }
+
+    .letter-heading {
+      display: flex; align-items: center; gap: 18px;
+      margin-bottom: 22px;
+    }
+    .letter-char {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem; font-weight: 800;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--sh-md);
+    }
+    .letter-rule {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(0,51,102,.15), transparent);
+    }
+    .letter-count {
+      font-size: .72rem; font-weight: 600;
+      color: var(--teal-dark);
+      text-transform: uppercase; letter-spacing: 1px;
+      background: rgba(0,196,180,.1);
+      padding: 4px 10px; border-radius: 99px;
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: rgba(0,0,0,.05);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--sh-sm);
+    }
+    .brand-item {
+      background: var(--white);
+      padding: 13px 18px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text);
+      display: flex; align-items: center; gap: 10px;
+      transition: background .15s ease, color .15s ease;
+      cursor: default;
+    }
+    .brand-item::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: .5;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+    .brand-item:hover { background: rgba(0,196,180,.06); color: var(--blue-mid); }
+    .brand-item:hover::before { opacity: 1; transform: scale(1.4); }
+
+    /* ── Footer ── */
+    footer {
+      background: linear-gradient(155deg, #080f1e 0%, #0f2944 100%);
+      padding: 44px 8%; position: relative; overflow: hidden;
+    }
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--teal) 50%, var(--blue-mid));
+    }
+    .footer-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+    }
+    .footer-left { display: flex; flex-direction: column; gap: 4px; }
+    .footer-left strong { color: var(--white); font-size: .92rem; font-weight: 700; }
+    .footer-left span { color: rgba(255,255,255,.32); font-size: .78rem; }
+    .footer-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .footer-right a { color: rgba(255,255,255,.45); font-size: .84rem; transition: color .2s ease; }
+    .footer-right a:hover { color: var(--teal); }
+    .footer-divider { color: rgba(255,255,255,.15); user-select: none; }
+
+    /* ── Keyframes ── */
+    @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Responsive ── */
+    @media (max-width: 992px) {
+      :root { --nav-h: var(--nav-h-sm); }
+      #navbar { padding: 0 5%; }
+      .logo img { height: 44px; }
+      #navbar.scrolled .logo img { height: 34px; }
+      .menu { display: none; }
+      .hamburger { display: flex; }
+
+      .page-hero { padding: 60px 5% 52px; background-attachment: scroll; }
+      .page-hero h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+
+      #jump-bar { top: var(--nav-h-sm); }
+      .jump-inner { height: 46px; padding: 0 4%; }
+
+      .list-wrap { padding: 44px 4% 80px; }
+      .letter-section { scroll-margin-top: calc(var(--nav-h-sm) + 46px + 12px); }
+      .brand-grid { grid-template-columns: 1fr 1fr; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .footer-right { gap: 16px; }
+    }
+
+    @media (max-width: 540px) {
+      #navbar { padding: 0 4%; }
+      .page-hero { padding: 52px 4% 48px; }
+      .list-wrap { padding: 36px 4% 64px; }
+      .brand-grid { grid-template-columns: 1fr; }
+      .letter-char { width: 44px; height: 44px; font-size: 1.6rem; border-radius: 11px; }
+      footer { padding: 36px 4%; }
+      .footer-right { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .footer-divider { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="logo-container">
-            <img src="./Logo.png" alt="Smith Technology Group Logo" class="logo-img">
-        </a>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="menu" id="nav-menu">
-            <a href="manufacturers.html">Manufacturers</a>
-            <a href="solutions.html">Solutions</a>
-            <a href="aboutus.html">Who We Are</a>
-            <a href="quote.html" class="quote-nav-btn">Request Quote</a>
-        </div>
-    </nav>
+  <div id="progress" aria-hidden="true"></div>
 
-    <div class="page-header">
-        <h1>Strategic OEM Partnerships</h1>
+  <!-- Nav -->
+  <nav id="navbar">
+    <a href="index.html" class="logo" aria-label="Smith Technology Group home">
+      <img src="./Logo.png" alt="Smith Technology Group">
+    </a>
+    <div class="menu">
+      <a href="manufacturers.html" class="active">Manufacturers</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="aboutus.html">Who We Are</a>
+      <a href="quote.html" class="cta">
+        Request Quote
+        <span class="arr" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+      </a>
     </div>
+    <button class="hamburger" id="hamburger"
+            aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="hbar-wrap" aria-hidden="true">
+        <span class="hbar hbar-top"></span>
+        <span class="hbar hbar-mid"></span>
+        <span class="hbar hbar-bot"></span>
+      </span>
+    </button>
+  </nav>
 
-    <div class="jump-bar">
-        <a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a href="#D">D</a> <a href="#E">E</a> 
-        <a href="#F">F</a> <a href="#G">G</a> <a href="#H">H</a> <a href="#I">I</a> <a href="#J">J</a> 
-        <a href="#K">K</a> <a href="#L">L</a> <a href="#M">M</a> <a href="#N">N</a> <a href="#O">O</a> 
-        <a href="#P">P</a> <a href="#Q">Q</a> <a href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> 
-        <a href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a> <a href="#X">X</a>
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <a href="manufacturers.html">Manufacturers</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="aboutus.html">Who We Are</a>
+    <div class="mobile-cta-row">
+      <a href="quote.html" class="cta">
+        Request a Quote
+        <span class="arr" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+      </a>
     </div>
+  </div>
 
-    <div class="list-container">
-        <div class="letter-section" id="A">
-            <h2>A</h2>
-            <div class="brand-grid">
-                <div class="brand-item">A.F. Machine & Tool</div>
-                <div class="brand-item">AB Initio</div>
-                <div class="brand-item">Abaco Systems</div>
-                <div class="brand-item">Accel-RF Instruments Corporation</div>
-                <div class="brand-item">Accurex</div>
-                <div class="brand-item">Acme Industrial Company</div>
-                <div class="brand-item">Acopian Power Supplies</div>
-                <div class="brand-item">Acromag Inc</div>
-                <div class="brand-item">Adafruit Industries</div>
-                <div class="brand-item">Adobe</div>
-                <div class="brand-item">Advance Thin Films</div>
-                <div class="brand-item">Advanced Circuits</div>
-                <div class="brand-item">Advantech</div>
-                <div class="brand-item">Alpha Data</div>
-                <div class="brand-item">Alta Data Technologies</div>
-                <div class="brand-item">Altos Photonics</div>
-                <div class="brand-item">AMD</div>
-                <div class="brand-item">American Aerospace</div>
-                <div class="brand-item">American Power Conversion (APC)</div>
-                <div class="brand-item">Ametek Coining</div>
-                <div class="brand-item">Ametek Creaform USA</div>
-                <div class="brand-item">Ametek Gattan</div>
-                <div class="brand-item">Ametek Programmable Power</div>
-                <div class="brand-item">AMG Containers</div>
-                <div class="brand-item">Amphenol</div>
-                <div class="brand-item">Annapolis Micro Systems</div>
-                <div class="brand-item">Anritsu</div>
-                <div class="brand-item">Antcom</div>
-                <div class="brand-item">Antrin Miniature Specialties, Inc.</div>
-                <div class="brand-item">Apogee Labs</div>
-                <div class="brand-item">Applied Avionics, Inc.</div>
-                <div class="brand-item">Apposite Technologies</div>
-                <div class="brand-item">Apricorn</div>
-                <div class="brand-item">Archon CACI</div>
-                <div class="brand-item">Arkham Technology</div>
-                <div class="brand-item">Arroyo instruments</div>
-                <div class="brand-item">Art Craft Paint, Inc.</div>
-                <div class="brand-item">Astronics</div>
-                <div class="brand-item">AstroNova, Inc.</div>
-                <div class="brand-item">Asus</div>
-                <div class="brand-item">ATT Metrology Solutions</div>
-                <div class="brand-item">Avalanche Technology</div>
-                <div class="brand-item">Avtech Room Alert</div>
-                <div class="brand-item">Axiom Optics</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="B">
-            <h2>B</h2>
-            <div class="brand-grid">
-                <div class="brand-item">BAE Systems</div>
-                <div class="brand-item">Baker Hughes</div>
-                <div class="brand-item">Baltec Precision Balls</div>
-                <div class="brand-item">BEI Precision Systems and Space</div>
-                <div class="brand-item">Bentley Harris</div>
-                <div class="brand-item">Beta Transformer</div>
-                <div class="brand-item">Bird Technologies</div>
-                <div class="brand-item">Bittree Patchbays</div>
-                <div class="brand-item">Black Box Corporation</div>
-                <div class="brand-item">Blue Marble Communications</div>
-                <div class="brand-item">Blue Sky Network</div>
-                <div class="brand-item">Boeing</div>
-                <div class="brand-item">Bourns</div>
-                <div class="brand-item">Bracke Manufacturing</div>
-                <div class="brand-item">Brandywine Communications</div>
-                <div class="brand-item">BRG Precision Products, Inc.</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="C">
-            <h2>C</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Cables to Go (C2G)</div>
-                <div class="brand-item">CAES</div>
-                <div class="brand-item">California Fine Wire</div>
-                <div class="brand-item">California Gasket and Rubber</div>
-                <div class="brand-item">Calspan Aerospace</div>
-                <div class="brand-item">Caltex Plastics, Inc</div>
-                <div class="brand-item">CanaKit</div>
-                <div class="brand-item">Cannon</div>
-                <div class="brand-item">Canoga Perkins</div>
-                <div class="brand-item">Capax Technologies Inc</div>
-                <div class="brand-item">Caplugs</div>
-                <div class="brand-item">Carl Zeiss</div>
-                <div class="brand-item">Carlisle Interconnect Technologies</div>
-                <div class="brand-item">Carr Lane Manufacturing</div>
-                <div class="brand-item">Centric RF</div>
-                <div class="brand-item">Christie Digital</div>
-                <div class="brand-item">Chroma Systems Solutions</div>
-                <div class="brand-item">Ciao Wireless Inc</div>
-                <div class="brand-item">CK Technologies, Inc.</div>
-                <div class="brand-item">Clear-Com</div>
-                <div class="brand-item">Coastal Connections</div>
-                <div class="brand-item">Cobham</div>
-                <div class="brand-item">Coherent</div>
-                <div class="brand-item">Collins Aerospace</div>
-                <div class="brand-item">Comp TIA</div>
-                <div class="brand-item">Concurrent Real-Time</div>
-                <div class="brand-item">Core Systems</div>
-                <div class="brand-item">Corelis Inc.</div>
-                <div class="brand-item">Corsair</div>
-                <div class="brand-item">CPI Satcom and Antenna</div>
-                <div class="brand-item">Craig Packaging</div>
-                <div class="brand-item">Crane Aerospace & Electronics</div>
-                <div class="brand-item">Crater Industries, LLC</div>
-                <div class="brand-item">Curtis Wright</div>
-                <div class="brand-item">CVI Laser Optics</div>
-                <div class="brand-item">Cygna Labs</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="D">
-            <h2>D</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Daniels Manufacturing Corporation</div>
-                <div class="brand-item">DAP USA</div>
-                <div class="brand-item">Data Device Corporation</div>
-                <div class="brand-item">Dell</div>
-                <div class="brand-item">Dewesoft</div>
-                <div class="brand-item">DEWETRON</div>
-                <div class="brand-item">Diversified Crates and Fab</div>
-                <div class="brand-item">Dolphitech</div>
-                <div class="brand-item">Dow-Key Microwave</div>
-                <div class="brand-item">Drager</div>
-                <div class="brand-item">Druck</div>
-                <div class="brand-item">DSpace</div>
-                <div class="brand-item">Dualos, LLC</div>
-                <div class="brand-item">DX Engineering</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="E">
-            <h2>E</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Eagle Picher</div>
-                <div class="brand-item">East Coast Microwave</div>
-                <div class="brand-item">Eaton</div>
-                <div class="brand-item">Edmund Optics</div>
-                <div class="brand-item">Embedded TS</div>
-                <div class="brand-item">Emcor Enclosures</div>
-                <div class="brand-item">Emcore Corporation</div>
-                <div class="brand-item">Emerson</div>
-                <div class="brand-item">Engage black</div>
-                <div class="brand-item">Ensign-Bickford Aerospace and Defense (EBAD)</div>
-                <div class="brand-item">Entegris</div>
-                <div class="brand-item">Eravant</div>
-                <div class="brand-item">ESE</div>
-                <div class="brand-item">ETS Lindgren</div>
-                <div class="brand-item">Evident Scientific</div>
-                <div class="brand-item">Exail</div>
-                <div class="brand-item">EXFO</div>
-                <div class="brand-item">Extreme Engineering Solutions (X-ES)</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="F">
-            <h2>F</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Fairview Microwave</div>
-                <div class="brand-item">FARO</div>
-                <div class="brand-item">FAUNC America</div>
-                <div class="brand-item">FEI-Zyfer</div>
-                <div class="brand-item">Firebird Optics</div>
-                <div class="brand-item">Firstmark Aerospace</div>
-                <div class="brand-item">FLANN Microwave</div>
-                <div class="brand-item">Fluke Corporation</div>
-                <div class="brand-item">Frontgrade Technologies</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="G">
-            <h2>G</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Gamdan Optics</div>
-                <div class="brand-item">GE Aerospace</div>
-                <div class="brand-item">GE Aviation</div>
-                <div class="brand-item">Geiger Plastics</div>
-                <div class="brand-item">Geisler Company</div>
-                <div class="brand-item">General Dynamics Mission Systems</div>
-                <div class="brand-item">GGB Industires, Inc.</div>
-                <div class="brand-item">GL Manufacturing, Inc.</div>
-                <div class="brand-item">Glenair, Inc.</div>
-                <div class="brand-item">Gooch & Housego</div>
-                <div class="brand-item">Great River Technology</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="H">
-            <h2>H</h2>
-            <div class="brand-grid">
-                <div class="brand-item">H&H Industrial</div>
-                <div class="brand-item">Hamamatsu</div>
-                <div class="brand-item">HDT Global</div>
-                <div class="brand-item">Hewlett Packard Enterprise</div>
-                <div class="brand-item">Hewlitt Packard</div>
-                <div class="brand-item">HiTech Global</div>
-                <div class="brand-item">Howmet Aerospace</div>
-                <div class="brand-item">Hydraulics International</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="I">
-            <h2>I</h2>
-            <div class="brand-grid">
-                <div class="brand-item">ICE Enterprises</div>
-                <div class="brand-item">ICW USA</div>
-                <div class="brand-item">Imagine Optics</div>
-                <div class="brand-item">Impact-O-Graph</div>
-                <div class="brand-item">Imprex</div>
-                <div class="brand-item">Infinite Electronics, Inc.</div>
-                <div class="brand-item">Intel</div>
-                <div class="brand-item">International Super Sensors</div>
-                <div class="brand-item">IOI Technology Corporatopm</div>
-                <div class="brand-item">IQE</div>
-                <div class="brand-item">Ironbox</div>
-                <div class="brand-item">ITT Cannon</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="J">
-            <h2>J</h2>
-            <div class="brand-grid">
-                <div class="brand-item">J-Squared</div>
-                <div class="brand-item">Junkosha</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="K">
-            <h2>K</h2>
-            <div class="brand-grid">
-                <div class="brand-item">K&L Microwave</div>
-                <div class="brand-item">Kelton Manufacturing</div>
-                <div class="brand-item">Kepco Power Supplies</div>
-                <div class="brand-item">Keyence Corporation</div>
-                <div class="brand-item">Keysight</div>
-                <div class="brand-item">Kisters</div>
-                <div class="brand-item">Kistler Instrument Corporation</div>
-                <div class="brand-item">KLM Microwave</div>
-                <div class="brand-item">Konica-Minolta</div>
-                <div class="brand-item">Kratos Defense</div>
-                <div class="brand-item">Kulite</div>
-                <div class="brand-item">Kyocera</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="L">
-            <h2>L</h2>
-            <div class="brand-grid">
-                <div class="brand-item">L3Harris</div>
-                <div class="brand-item">Lambda Research Optics</div>
-                <div class="brand-item">LaseOptics</div>
-                <div class="brand-item">Lauterbach GmbH</div>
-                <div class="brand-item">L-com</div>
-                <div class="brand-item">LCR Embedded System</div>
-                <div class="brand-item">Leading Edge Metals</div>
-                <div class="brand-item">Lee Spring</div>
-                <div class="brand-item">Legrand</div>
-                <div class="brand-item">Leland Gas Technologies</div>
-                <div class="brand-item">LG Electronics</div>
-                <div class="brand-item">Liquid Instruments</div>
-                <div class="brand-item">Lord Corporation</div>
-                <div class="brand-item">LTC Microwave</div>
-                <div class="brand-item">Lumentum Operations LLC</div>
-                <div class="brand-item">Luna Innovations</div>
-                <div class="brand-item">Luna Labs</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="M">
-            <h2>M</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Madegtech</div>
-                <div class="brand-item">Marki Microwave</div>
-                <div class="brand-item">Marway Power Solutions</div>
-                <div class="brand-item">Maury Microwave</div>
-                <div class="brand-item">MECA Electronics</div>
-                <div class="brand-item">MegaPhase</div>
-                <div class="brand-item">Mercury Systems</div>
-                <div class="brand-item">Meritec</div>
-                <div class="brand-item">Microchip Technology</div>
-                <div class="brand-item">Micro-Mode Products</div>
-                <div class="brand-item">Microsemi</div>
-                <div class="brand-item">Microsoft</div>
-                <div class="brand-item">Micross</div>
-                <div class="brand-item">Microwave Circuits</div>
-                <div class="brand-item">Microwave Components</div>
-                <div class="brand-item">Milestek</div>
-                <div class="brand-item">MILNEC</div>
-                <div class="brand-item">Mini-Circuits</div>
-                <div class="brand-item">Minnesota Measurement</div>
-                <div class="brand-item">Minnesota Wire</div>
-                <div class="brand-item">MKS Instruments</div>
-                <div class="brand-item">Molex</div>
-                <div class="brand-item">Monroe Aerospace</div>
-                <div class="brand-item">Moog</div>
-                <div class="brand-item">Moxa</div>
-                <div class="brand-item">Moxtek</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="N">
-            <h2>N</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Narda-MITEQ</div>
-                <div class="brand-item">National Instruments</div>
-                <div class="brand-item">New Wave Design</div>
-                <div class="brand-item">Newnex</div>
-                <div class="brand-item">Newport Corporation</div>
-                <div class="brand-item">Nicomatic</div>
-                <div class="brand-item">Nikon Metrology</div>
-                <div class="brand-item">NKT Photonics</div>
-                <div class="brand-item">Noisecom</div>
-                <div class="brand-item">Nook Industries</div>
-                <div class="brand-item">Norman Filter Company</div>
-                <div class="brand-item">North Atlantic Industries</div>
-                <div class="brand-item">Novachips</div>
-                <div class="brand-item">NovAtel, Inc.HEXAGON</div>
-                <div class="brand-item">Novus Power</div>
-                <div class="brand-item">NP Photonics</div>
-                <div class="brand-item">NTC Distributing</div>
-                <div class="brand-item">nVent</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="O">
-            <h2>O</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Ohmite</div>
-                <div class="brand-item">OKW Enclosures</div>
-                <div class="brand-item">Olympic Controls</div>
-                <div class="brand-item">Omega Engineering, Inc.</div>
-                <div class="brand-item">Omnetics</div>
-                <div class="brand-item">One Stop Systems</div>
-                <div class="brand-item">Onshore Technologies</div>
-                <div class="brand-item">OnTime Networks</div>
-                <div class="brand-item">Optilabs</div>
-                <div class="brand-item">Optimax</div>
-                <div class="brand-item">Optimum Solutions</div>
-                <div class="brand-item">Orolia</div>
-                <div class="brand-item">Oxley Group</div>
-                <div class="brand-item">OZ Optics Ltd.</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="P">
-            <h2>P</h2>
-            <div class="brand-grid">
-                <div class="brand-item">PAR Systems</div>
-                <div class="brand-item">Panduit</div>
-                <div class="brand-item">Parasoft</div>
-                <div class="brand-item">Parker Hannifin</div>
-                <div class="brand-item">Parker Lord</div>
-                <div class="brand-item">Parket Chromatics</div>
-                <div class="brand-item">Pasternack</div>
-                <div class="brand-item">PCB Piezotronics</div>
-                <div class="brand-item">Pelican</div>
-                <div class="brand-item">Phoenix Contact</div>
-                <div class="brand-item">Pickering Test</div>
-                <div class="brand-item">Premier Enclosure Systems</div>
-                <div class="brand-item">PTC</div>
-                <div class="brand-item">Pulse Research Lab</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="Q">
-            <h2>Q</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Qphotonics</div>
-                <div class="brand-item">Quantic BEI</div>
-                <div class="brand-item">Quantic TRM</div>
-                <div class="brand-item">Quantic Wenzel Associates</div>
-                <div class="brand-item">Quantifi Photonics</div>
-                <div class="brand-item">Quantum Composers</div>
-                <div class="brand-item">Quantum Microwave</div>
-                <div class="brand-item">Quantum Photonics</div>
-                <div class="brand-item">Quarterwave</div>
-                <div class="brand-item">Quasonix</div>
-                <div class="brand-item">QuinStar Technology, Inc.</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="R">
-            <h2>R</h2>
-            <div class="brand-grid">
-                <div class="brand-item">R-CON-NDT</div>
-                <div class="brand-item">RF-Lambda</div>
-                <div class="brand-item">Rockwell Collins</div>
-                <div class="brand-item">Rohde and Schwarz</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="S">
-            <h2>S</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Safran</div>
-                <div class="brand-item">Samsung Electronics</div>
-                <div class="brand-item">Samtec</div>
-                <div class="brand-item">Sat-Pak Communications, Inc.</div>
-                <div class="brand-item">Schneider Electric</div>
-                <div class="brand-item">Screaming Circuits</div>
-                <div class="brand-item">SEA Wire and Cable</div>
-                <div class="brand-item">SF Cable</div>
-                <div class="brand-item">ShowMeCables</div>
-                <div class="brand-item">Silver Engineering, Inc.</div>
-                <div class="brand-item">Silvus Technologies</div>
-                <div class="brand-item">Siskiyou Corporation</div>
-                <div class="brand-item">Southwest Antennas</div>
-                <div class="brand-item">Southwest Microwave</div>
-                <div class="brand-item">SpaceX</div>
-                <div class="brand-item">SpeedGoat</div>
-                <div class="brand-item">Stake Fasteners</div>
-                <div class="brand-item">Standard Wire and Cable Company</div>
-                <div class="brand-item">Starrett Products</div>
-                <div class="brand-item">State of the Art, Inc.</div>
-                <div class="brand-item">SteelCloud, LLC</div>
-                <div class="brand-item">Steven Engineering</div>
-                <div class="brand-item">Strainsert</div>
-                <div class="brand-item">Stratasys</div>
-                <div class="brand-item">Stuart Industries</div>
-                <div class="brand-item">Sumimoto Corporation</div>
-                <div class="brand-item">Summit Interconnect</div>
-                <div class="brand-item">Sunstone Circuits</div>
-                <div class="brand-item">SuperLogics</div>
-                <div class="brand-item">SwageLok</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="T">
-            <h2>T</h2>
-            <div class="brand-grid">
-                <div class="brand-item">TBC Consoles</div>
-                <div class="brand-item">TC Communications</div>
-                <div class="brand-item">TDK-Lambda</div>
-                <div class="brand-item">TE Wire and Cable</div>
-                <div class="brand-item">Techmar Enclosures</div>
-                <div class="brand-item">Teledyne LeCroy</div>
-                <div class="brand-item">Teledyne Storm</div>
-                <div class="brand-item">Texas Instruments</div>
-                <div class="brand-item">Textron Aviation</div>
-                <div class="brand-item">ThinkLogical</div>
-                <div class="brand-item">Thorlabs</div>
-                <div class="brand-item">Times Microwave</div>
-                <div class="brand-item">Toradex</div>
-                <div class="brand-item">Torrent Photonics</div>
-                <div class="brand-item">Total Phase</div>
-                <div class="brand-item">Tovey Engineering</div>
-                <div class="brand-item">Trenton Systems</div>
-                <div class="brand-item">Triad RF Systems</div>
-                <div class="brand-item">Triangle Rubber</div>
-                <div class="brand-item">Trilogy</div>
-                <div class="brand-item">Trilogy Communications</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="U">
-            <h2>U</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Ultra Precision Control Systems</div>
-                <div class="brand-item">UniBrain</div>
-                <div class="brand-item">Uni-Fix</div>
-                <div class="brand-item">United Electric Supply</div>
-                <div class="brand-item">UniWest</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="V">
-            <h2>V</h2>
-            <div class="brand-grid">
-                <div class="brand-item">Valcomm International</div>
-                <div class="brand-item">Valence Battery Company</div>
-                <div class="brand-item">Validyne Engineering</div>
-                <div class="brand-item">Valin Corporation</div>
-                <div class="brand-item">Vallhalla Scientific</div>
-                <div class="brand-item">Varjo</div>
-                <div class="brand-item">Venable Instruments</div>
-                <div class="brand-item">Vermont Photonics</div>
-                <div class="brand-item">Versitron</div>
-                <div class="brand-item">ViaLite Communications</div>
-                <div class="brand-item">Viasat</div>
-                <div class="brand-item">VIAVI Solutions</div>
-                <div class="brand-item">Vicon</div>
-                <div class="brand-item">Vishay Intertechnology</div>
-                <div class="brand-item">VPT, Inc.</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="W">
-            <h2>W</h2>
-            <div class="brand-grid">
-                <div class="brand-item">W. L. Gore and Associates</div>
-                <div class="brand-item">Walker Manufacturing Group</div>
-                <div class="brand-item">Watlow Electric Manufacturing Company</div>
-                <div class="brand-item">WaveFront Technology</div>
-                <div class="brand-item">Weinschel, Inc.</div>
-                <div class="brand-item">West Coast Solutions</div>
-                <div class="brand-item">Winford Engineering</div>
-                <div class="brand-item">Wolfspeed, Inc.</div>
-            </div>
-        </div>
-
-        <div class="letter-section" id="X">
-            <h2>X</h2>
-            <div class="brand-grid">
-                <div class="brand-item">X-CelePrint</div>
-                <div class="brand-item">Xilinx</div>
-                <div class="brand-item">Xometry</div>
-            </div>
-        </div>
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <div class="badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        500+ Strategic Partners
+      </div>
+      <h1>Our <em>Manufacturer</em> Network</h1>
+      <p>From aerospace and defense to enterprise computing and photonics — we maintain authorized relationships with hundreds of the world's most trusted technology manufacturers.</p>
     </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2026 Smith Technology Group. All Rights Reserved.</p>
-        <p>Strategic Procurement & Infrastructure Management</p>
-    </footer>
+  <!-- Alphabet Jump Bar -->
+  <div id="jump-bar" role="navigation" aria-label="Jump to letter">
+    <div class="jump-inner">
+      <a href="#A">A</a><a href="#B">B</a><a href="#C">C</a><a href="#D">D</a>
+      <a href="#E">E</a><a href="#F">F</a><a href="#G">G</a><a href="#H">H</a>
+      <a href="#I">I</a><a href="#J">J</a><a href="#K">K</a><a href="#L">L</a>
+      <a href="#M">M</a><a href="#N">N</a><a href="#O">O</a><a href="#P">P</a>
+      <a href="#Q">Q</a><a href="#R">R</a><a href="#S">S</a><a href="#T">T</a>
+      <a href="#U">U</a><a href="#V">V</a><a href="#W">W</a><a href="#X">X</a>
+    </div>
+  </div>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
+  <!-- Brand List -->
+  <main>
+    <div class="list-wrap">
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+      <div class="letter-section" id="A">
+        <div class="letter-heading">
+          <div class="letter-char">A</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">42 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">A.F. Machine &amp; Tool</div>
+          <div class="brand-item">AB Initio</div>
+          <div class="brand-item">Abaco Systems</div>
+          <div class="brand-item">Accel-RF Instruments Corporation</div>
+          <div class="brand-item">Accurex</div>
+          <div class="brand-item">Acme Industrial Company</div>
+          <div class="brand-item">Acopian Power Supplies</div>
+          <div class="brand-item">Acromag Inc</div>
+          <div class="brand-item">Adafruit Industries</div>
+          <div class="brand-item">Adobe</div>
+          <div class="brand-item">Advance Thin Films</div>
+          <div class="brand-item">Advanced Circuits</div>
+          <div class="brand-item">Advantech</div>
+          <div class="brand-item">Alpha Data</div>
+          <div class="brand-item">Alta Data Technologies</div>
+          <div class="brand-item">Altos Photonics</div>
+          <div class="brand-item">AMD</div>
+          <div class="brand-item">American Aerospace</div>
+          <div class="brand-item">American Power Conversion (APC)</div>
+          <div class="brand-item">Ametek Coining</div>
+          <div class="brand-item">Ametek Creaform USA</div>
+          <div class="brand-item">Ametek Gattan</div>
+          <div class="brand-item">Ametek Programmable Power</div>
+          <div class="brand-item">AMG Containers</div>
+          <div class="brand-item">Amphenol</div>
+          <div class="brand-item">Annapolis Micro Systems</div>
+          <div class="brand-item">Anritsu</div>
+          <div class="brand-item">Antcom</div>
+          <div class="brand-item">Antrin Miniature Specialties, Inc.</div>
+          <div class="brand-item">Apogee Labs</div>
+          <div class="brand-item">Applied Avionics, Inc.</div>
+          <div class="brand-item">Apposite Technologies</div>
+          <div class="brand-item">Apricorn</div>
+          <div class="brand-item">Archon CACI</div>
+          <div class="brand-item">Arkham Technology</div>
+          <div class="brand-item">Arroyo Instruments</div>
+          <div class="brand-item">Art Craft Paint, Inc.</div>
+          <div class="brand-item">Astronics</div>
+          <div class="brand-item">AstroNova, Inc.</div>
+          <div class="brand-item">Asus</div>
+          <div class="brand-item">ATT Metrology Solutions</div>
+          <div class="brand-item">Avalanche Technology</div>
+          <div class="brand-item">Avtech Room Alert</div>
+          <div class="brand-item">Axiom Optics</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="B">
+        <div class="letter-heading">
+          <div class="letter-char">B</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">16 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">BAE Systems</div>
+          <div class="brand-item">Baker Hughes</div>
+          <div class="brand-item">Baltec Precision Balls</div>
+          <div class="brand-item">BEI Precision Systems and Space</div>
+          <div class="brand-item">Bentley Harris</div>
+          <div class="brand-item">Beta Transformer</div>
+          <div class="brand-item">Bird Technologies</div>
+          <div class="brand-item">Bittree Patchbays</div>
+          <div class="brand-item">Black Box Corporation</div>
+          <div class="brand-item">Blue Marble Communications</div>
+          <div class="brand-item">Blue Sky Network</div>
+          <div class="brand-item">Boeing</div>
+          <div class="brand-item">Bourns</div>
+          <div class="brand-item">Bracke Manufacturing</div>
+          <div class="brand-item">Brandywine Communications</div>
+          <div class="brand-item">BRG Precision Products, Inc.</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="C">
+        <div class="letter-heading">
+          <div class="letter-char">C</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">36 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Cables to Go (C2G)</div>
+          <div class="brand-item">CAES</div>
+          <div class="brand-item">California Fine Wire</div>
+          <div class="brand-item">California Gasket and Rubber</div>
+          <div class="brand-item">Calspan Aerospace</div>
+          <div class="brand-item">Caltex Plastics, Inc</div>
+          <div class="brand-item">CanaKit</div>
+          <div class="brand-item">Cannon</div>
+          <div class="brand-item">Canoga Perkins</div>
+          <div class="brand-item">Capax Technologies Inc</div>
+          <div class="brand-item">Caplugs</div>
+          <div class="brand-item">Carl Zeiss</div>
+          <div class="brand-item">Carlisle Interconnect Technologies</div>
+          <div class="brand-item">Carr Lane Manufacturing</div>
+          <div class="brand-item">Centric RF</div>
+          <div class="brand-item">Christie Digital</div>
+          <div class="brand-item">Chroma Systems Solutions</div>
+          <div class="brand-item">Ciao Wireless Inc</div>
+          <div class="brand-item">CK Technologies, Inc.</div>
+          <div class="brand-item">Clear-Com</div>
+          <div class="brand-item">Coastal Connections</div>
+          <div class="brand-item">Cobham</div>
+          <div class="brand-item">Coherent</div>
+          <div class="brand-item">Collins Aerospace</div>
+          <div class="brand-item">Comp TIA</div>
+          <div class="brand-item">Concurrent Real-Time</div>
+          <div class="brand-item">Core Systems</div>
+          <div class="brand-item">Corelis Inc.</div>
+          <div class="brand-item">Corsair</div>
+          <div class="brand-item">CPI Satcom and Antenna</div>
+          <div class="brand-item">Craig Packaging</div>
+          <div class="brand-item">Crane Aerospace &amp; Electronics</div>
+          <div class="brand-item">Crater Industries, LLC</div>
+          <div class="brand-item">Curtis Wright</div>
+          <div class="brand-item">CVI Laser Optics</div>
+          <div class="brand-item">Cygna Labs</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="D">
+        <div class="letter-heading">
+          <div class="letter-char">D</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">14 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Daniels Manufacturing Corporation</div>
+          <div class="brand-item">DAP USA</div>
+          <div class="brand-item">Data Device Corporation</div>
+          <div class="brand-item">Dell</div>
+          <div class="brand-item">Dewesoft</div>
+          <div class="brand-item">DEWETRON</div>
+          <div class="brand-item">Diversified Crates and Fab</div>
+          <div class="brand-item">Dolphitech</div>
+          <div class="brand-item">Dow-Key Microwave</div>
+          <div class="brand-item">Drager</div>
+          <div class="brand-item">Druck</div>
+          <div class="brand-item">DSpace</div>
+          <div class="brand-item">Dualos, LLC</div>
+          <div class="brand-item">DX Engineering</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="E">
+        <div class="letter-heading">
+          <div class="letter-char">E</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">18 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Eagle Picher</div>
+          <div class="brand-item">East Coast Microwave</div>
+          <div class="brand-item">Eaton</div>
+          <div class="brand-item">Edmund Optics</div>
+          <div class="brand-item">Embedded TS</div>
+          <div class="brand-item">Emcor Enclosures</div>
+          <div class="brand-item">Emcore Corporation</div>
+          <div class="brand-item">Emerson</div>
+          <div class="brand-item">Engage Black</div>
+          <div class="brand-item">Ensign-Bickford Aerospace and Defense (EBAD)</div>
+          <div class="brand-item">Entegris</div>
+          <div class="brand-item">Eravant</div>
+          <div class="brand-item">ESE</div>
+          <div class="brand-item">ETS Lindgren</div>
+          <div class="brand-item">Evident Scientific</div>
+          <div class="brand-item">Exail</div>
+          <div class="brand-item">EXFO</div>
+          <div class="brand-item">Extreme Engineering Solutions (X-ES)</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="F">
+        <div class="letter-heading">
+          <div class="letter-char">F</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">9 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Fairview Microwave</div>
+          <div class="brand-item">FARO</div>
+          <div class="brand-item">FANUC America</div>
+          <div class="brand-item">FEI-Zyfer</div>
+          <div class="brand-item">Firebird Optics</div>
+          <div class="brand-item">Firstmark Aerospace</div>
+          <div class="brand-item">FLANN Microwave</div>
+          <div class="brand-item">Fluke Corporation</div>
+          <div class="brand-item">Frontgrade Technologies</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="G">
+        <div class="letter-heading">
+          <div class="letter-char">G</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">11 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Gamdan Optics</div>
+          <div class="brand-item">GE Aerospace</div>
+          <div class="brand-item">GE Aviation</div>
+          <div class="brand-item">Geiger Plastics</div>
+          <div class="brand-item">Geisler Company</div>
+          <div class="brand-item">General Dynamics Mission Systems</div>
+          <div class="brand-item">GGB Industries, Inc.</div>
+          <div class="brand-item">GL Manufacturing, Inc.</div>
+          <div class="brand-item">Glenair, Inc.</div>
+          <div class="brand-item">Gooch &amp; Housego</div>
+          <div class="brand-item">Great River Technology</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="H">
+        <div class="letter-heading">
+          <div class="letter-char">H</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">8 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">H&amp;H Industrial</div>
+          <div class="brand-item">Hamamatsu</div>
+          <div class="brand-item">HDT Global</div>
+          <div class="brand-item">Hewlett Packard Enterprise</div>
+          <div class="brand-item">Hewlett Packard</div>
+          <div class="brand-item">HiTech Global</div>
+          <div class="brand-item">Howmet Aerospace</div>
+          <div class="brand-item">Hydraulics International</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="I">
+        <div class="letter-heading">
+          <div class="letter-char">I</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">12 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">ICE Enterprises</div>
+          <div class="brand-item">ICW USA</div>
+          <div class="brand-item">Imagine Optics</div>
+          <div class="brand-item">Impact-O-Graph</div>
+          <div class="brand-item">Imprex</div>
+          <div class="brand-item">Infinite Electronics, Inc.</div>
+          <div class="brand-item">Intel</div>
+          <div class="brand-item">International Super Sensors</div>
+          <div class="brand-item">IOI Technology Corporation</div>
+          <div class="brand-item">IQE</div>
+          <div class="brand-item">Ironbox</div>
+          <div class="brand-item">ITT Cannon</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="J">
+        <div class="letter-heading">
+          <div class="letter-char">J</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">2 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">J-Squared</div>
+          <div class="brand-item">Junkosha</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="K">
+        <div class="letter-heading">
+          <div class="letter-char">K</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">12 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">K&amp;L Microwave</div>
+          <div class="brand-item">Kelton Manufacturing</div>
+          <div class="brand-item">Kepco Power Supplies</div>
+          <div class="brand-item">Keyence Corporation</div>
+          <div class="brand-item">Keysight</div>
+          <div class="brand-item">Kisters</div>
+          <div class="brand-item">Kistler Instrument Corporation</div>
+          <div class="brand-item">KLM Microwave</div>
+          <div class="brand-item">Konica-Minolta</div>
+          <div class="brand-item">Kratos Defense</div>
+          <div class="brand-item">Kulite</div>
+          <div class="brand-item">Kyocera</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="L">
+        <div class="letter-heading">
+          <div class="letter-char">L</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">17 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">L3Harris</div>
+          <div class="brand-item">Lambda Research Optics</div>
+          <div class="brand-item">LaseOptics</div>
+          <div class="brand-item">Lauterbach GmbH</div>
+          <div class="brand-item">L-com</div>
+          <div class="brand-item">LCR Embedded System</div>
+          <div class="brand-item">Leading Edge Metals</div>
+          <div class="brand-item">Lee Spring</div>
+          <div class="brand-item">Legrand</div>
+          <div class="brand-item">Leland Gas Technologies</div>
+          <div class="brand-item">LG Electronics</div>
+          <div class="brand-item">Liquid Instruments</div>
+          <div class="brand-item">Lord Corporation</div>
+          <div class="brand-item">LTC Microwave</div>
+          <div class="brand-item">Lumentum Operations LLC</div>
+          <div class="brand-item">Luna Innovations</div>
+          <div class="brand-item">Luna Labs</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="M">
+        <div class="letter-heading">
+          <div class="letter-char">M</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">26 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Madgetech</div>
+          <div class="brand-item">Marki Microwave</div>
+          <div class="brand-item">Marway Power Solutions</div>
+          <div class="brand-item">Maury Microwave</div>
+          <div class="brand-item">MECA Electronics</div>
+          <div class="brand-item">MegaPhase</div>
+          <div class="brand-item">Mercury Systems</div>
+          <div class="brand-item">Meritec</div>
+          <div class="brand-item">Microchip Technology</div>
+          <div class="brand-item">Micro-Mode Products</div>
+          <div class="brand-item">Microsemi</div>
+          <div class="brand-item">Microsoft</div>
+          <div class="brand-item">Micross</div>
+          <div class="brand-item">Microwave Circuits</div>
+          <div class="brand-item">Microwave Components</div>
+          <div class="brand-item">Milestek</div>
+          <div class="brand-item">MILNEC</div>
+          <div class="brand-item">Mini-Circuits</div>
+          <div class="brand-item">Minnesota Measurement</div>
+          <div class="brand-item">Minnesota Wire</div>
+          <div class="brand-item">MKS Instruments</div>
+          <div class="brand-item">Molex</div>
+          <div class="brand-item">Monroe Aerospace</div>
+          <div class="brand-item">Moog</div>
+          <div class="brand-item">Moxa</div>
+          <div class="brand-item">Moxtek</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="N">
+        <div class="letter-heading">
+          <div class="letter-char">N</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">18 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Narda-MITEQ</div>
+          <div class="brand-item">National Instruments</div>
+          <div class="brand-item">New Wave Design</div>
+          <div class="brand-item">Newnex</div>
+          <div class="brand-item">Newport Corporation</div>
+          <div class="brand-item">Nicomatic</div>
+          <div class="brand-item">Nikon Metrology</div>
+          <div class="brand-item">NKT Photonics</div>
+          <div class="brand-item">Noisecom</div>
+          <div class="brand-item">Nook Industries</div>
+          <div class="brand-item">Norman Filter Company</div>
+          <div class="brand-item">North Atlantic Industries</div>
+          <div class="brand-item">Novachips</div>
+          <div class="brand-item">NovAtel, Inc. HEXAGON</div>
+          <div class="brand-item">Novus Power</div>
+          <div class="brand-item">NP Photonics</div>
+          <div class="brand-item">NTC Distributing</div>
+          <div class="brand-item">nVent</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="O">
+        <div class="letter-heading">
+          <div class="letter-char">O</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">14 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Ohmite</div>
+          <div class="brand-item">OKW Enclosures</div>
+          <div class="brand-item">Olympic Controls</div>
+          <div class="brand-item">Omega Engineering, Inc.</div>
+          <div class="brand-item">Omnetics</div>
+          <div class="brand-item">One Stop Systems</div>
+          <div class="brand-item">Onshore Technologies</div>
+          <div class="brand-item">OnTime Networks</div>
+          <div class="brand-item">Optilabs</div>
+          <div class="brand-item">Optimax</div>
+          <div class="brand-item">Optimum Solutions</div>
+          <div class="brand-item">Orolia</div>
+          <div class="brand-item">Oxley Group</div>
+          <div class="brand-item">OZ Optics Ltd.</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="P">
+        <div class="letter-heading">
+          <div class="letter-char">P</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">14 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">PAR Systems</div>
+          <div class="brand-item">Panduit</div>
+          <div class="brand-item">Parasoft</div>
+          <div class="brand-item">Parker Hannifin</div>
+          <div class="brand-item">Parker Lord</div>
+          <div class="brand-item">Parker Chromatics</div>
+          <div class="brand-item">Pasternack</div>
+          <div class="brand-item">PCB Piezotronics</div>
+          <div class="brand-item">Pelican</div>
+          <div class="brand-item">Phoenix Contact</div>
+          <div class="brand-item">Pickering Test</div>
+          <div class="brand-item">Premier Enclosure Systems</div>
+          <div class="brand-item">PTC</div>
+          <div class="brand-item">Pulse Research Lab</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="Q">
+        <div class="letter-heading">
+          <div class="letter-char">Q</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">11 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Qphotonics</div>
+          <div class="brand-item">Quantic BEI</div>
+          <div class="brand-item">Quantic TRM</div>
+          <div class="brand-item">Quantic Wenzel Associates</div>
+          <div class="brand-item">Quantifi Photonics</div>
+          <div class="brand-item">Quantum Composers</div>
+          <div class="brand-item">Quantum Microwave</div>
+          <div class="brand-item">Quantum Photonics</div>
+          <div class="brand-item">Quarterwave</div>
+          <div class="brand-item">Quasonix</div>
+          <div class="brand-item">QuinStar Technology, Inc.</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="R">
+        <div class="letter-heading">
+          <div class="letter-char">R</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">4 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">R-CON-NDT</div>
+          <div class="brand-item">RF-Lambda</div>
+          <div class="brand-item">Rockwell Collins</div>
+          <div class="brand-item">Rohde and Schwarz</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="S">
+        <div class="letter-heading">
+          <div class="letter-char">S</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">31 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Safran</div>
+          <div class="brand-item">Samsung Electronics</div>
+          <div class="brand-item">Samtec</div>
+          <div class="brand-item">Sat-Pak Communications, Inc.</div>
+          <div class="brand-item">Schneider Electric</div>
+          <div class="brand-item">Screaming Circuits</div>
+          <div class="brand-item">SEA Wire and Cable</div>
+          <div class="brand-item">SF Cable</div>
+          <div class="brand-item">ShowMeCables</div>
+          <div class="brand-item">Silver Engineering, Inc.</div>
+          <div class="brand-item">Silvus Technologies</div>
+          <div class="brand-item">Siskiyou Corporation</div>
+          <div class="brand-item">Southwest Antennas</div>
+          <div class="brand-item">Southwest Microwave</div>
+          <div class="brand-item">SpaceX</div>
+          <div class="brand-item">SpeedGoat</div>
+          <div class="brand-item">Stake Fasteners</div>
+          <div class="brand-item">Standard Wire and Cable Company</div>
+          <div class="brand-item">Starrett Products</div>
+          <div class="brand-item">State of the Art, Inc.</div>
+          <div class="brand-item">SteelCloud, LLC</div>
+          <div class="brand-item">Steven Engineering</div>
+          <div class="brand-item">Strainsert</div>
+          <div class="brand-item">Stratasys</div>
+          <div class="brand-item">Stuart Industries</div>
+          <div class="brand-item">Sumitomo Corporation</div>
+          <div class="brand-item">Summit Interconnect</div>
+          <div class="brand-item">Sunstone Circuits</div>
+          <div class="brand-item">SuperLogics</div>
+          <div class="brand-item">Swagelok</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="T">
+        <div class="letter-heading">
+          <div class="letter-char">T</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">21 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">TBC Consoles</div>
+          <div class="brand-item">TC Communications</div>
+          <div class="brand-item">TDK-Lambda</div>
+          <div class="brand-item">TE Wire and Cable</div>
+          <div class="brand-item">Techmar Enclosures</div>
+          <div class="brand-item">Teledyne LeCroy</div>
+          <div class="brand-item">Teledyne Storm</div>
+          <div class="brand-item">Texas Instruments</div>
+          <div class="brand-item">Textron Aviation</div>
+          <div class="brand-item">ThinkLogical</div>
+          <div class="brand-item">Thorlabs</div>
+          <div class="brand-item">Times Microwave</div>
+          <div class="brand-item">Toradex</div>
+          <div class="brand-item">Torrent Photonics</div>
+          <div class="brand-item">Total Phase</div>
+          <div class="brand-item">Tovey Engineering</div>
+          <div class="brand-item">Trenton Systems</div>
+          <div class="brand-item">Triad RF Systems</div>
+          <div class="brand-item">Triangle Rubber</div>
+          <div class="brand-item">Trilogy</div>
+          <div class="brand-item">Trilogy Communications</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="U">
+        <div class="letter-heading">
+          <div class="letter-char">U</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">5 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Ultra Precision Control Systems</div>
+          <div class="brand-item">UniBrain</div>
+          <div class="brand-item">Uni-Fix</div>
+          <div class="brand-item">United Electric Supply</div>
+          <div class="brand-item">UniWest</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="V">
+        <div class="letter-heading">
+          <div class="letter-char">V</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">15 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">Valcomm International</div>
+          <div class="brand-item">Valence Battery Company</div>
+          <div class="brand-item">Validyne Engineering</div>
+          <div class="brand-item">Valin Corporation</div>
+          <div class="brand-item">Valhalla Scientific</div>
+          <div class="brand-item">Varjo</div>
+          <div class="brand-item">Venable Instruments</div>
+          <div class="brand-item">Vermont Photonics</div>
+          <div class="brand-item">Versitron</div>
+          <div class="brand-item">ViaLite Communications</div>
+          <div class="brand-item">Viasat</div>
+          <div class="brand-item">VIAVI Solutions</div>
+          <div class="brand-item">Vicon</div>
+          <div class="brand-item">Vishay Intertechnology</div>
+          <div class="brand-item">VPT, Inc.</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="W">
+        <div class="letter-heading">
+          <div class="letter-char">W</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">8 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">W. L. Gore and Associates</div>
+          <div class="brand-item">Walker Manufacturing Group</div>
+          <div class="brand-item">Watlow Electric Manufacturing Company</div>
+          <div class="brand-item">WaveFront Technology</div>
+          <div class="brand-item">Weinschel, Inc.</div>
+          <div class="brand-item">West Coast Solutions</div>
+          <div class="brand-item">Winford Engineering</div>
+          <div class="brand-item">Wolfspeed, Inc.</div>
+        </div>
+      </div>
+
+      <div class="letter-section" id="X">
+        <div class="letter-heading">
+          <div class="letter-char">X</div>
+          <div class="letter-rule"></div>
+          <span class="letter-count">3 partners</span>
+        </div>
+        <div class="brand-grid">
+          <div class="brand-item">X-CelePrint</div>
+          <div class="brand-item">Xilinx</div>
+          <div class="brand-item">Xometry</div>
+        </div>
+      </div>
+
+    </div><!-- /list-wrap -->
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>Smith Technology Group</strong>
+        <span>&copy; 2026 · Strategic IT Infrastructure &amp; Mission-Critical Management</span>
+      </div>
+      <div class="footer-right">
+        <a href="tel:1-760-402-7441">1-760-402-7441</a>
+        <span class="footer-divider">|</span>
+        <a href="mailto:info@smithtg.com">info@smithtg.com</a>
+        <span class="footer-divider">|</span>
+        <a href="https://www.smithtg.com">smithtg.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const navbar   = document.getElementById('navbar');
+      const btn      = document.getElementById('hamburger');
+      const dropdown = document.getElementById('mobile-menu');
+      const jumpBar  = document.getElementById('jump-bar');
+      const bar      = document.getElementById('progress');
+      let isOpen = false;
+
+      /* ── Mobile menu ── */
+      const openMenu = () => {
+        isOpen = true;
+        dropdown.style.display = 'flex';
+        requestAnimationFrame(() => requestAnimationFrame(() => dropdown.classList.add('open')));
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('menu-open');
+        dropdown.querySelector('a')?.focus();
+      };
+      const closeMenu = () => {
+        isOpen = false;
+        dropdown.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        dropdown.addEventListener('transitionend', () => {
+          if (!isOpen) dropdown.style.display = '';
+        }, { once: true });
+        btn.focus();
+      };
+      btn.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+      document.addEventListener('keydown', e => e.key === 'Escape' && isOpen && closeMenu());
+      dropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      document.addEventListener('click', e => {
+        if (isOpen && !navbar.contains(e.target) && !dropdown.contains(e.target)) closeMenu();
+      });
+
+      /* ── Scroll: nav + progress + jump-bar top offset ── */
+      const onScroll = () => {
+        const scrolled = window.scrollY > 40;
+        navbar.classList.toggle('scrolled', scrolled);
+
+        // Adjust jump bar top to match whichever nav height is active
+        const navH = scrolled
+          ? getComputedStyle(document.documentElement).getPropertyValue('--nav-h-scrolled').trim()
+          : getComputedStyle(document.documentElement).getPropertyValue('--nav-h').trim();
+        jumpBar.style.top = navH;
+
+        // Progress bar
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? `${(window.scrollY / total * 100).toFixed(1)}%` : '0%';
+
+        // Highlight active jump letter
+        highlightLetter();
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ── Highlight active letter in jump bar ── */
+      const sections   = document.querySelectorAll('.letter-section');
+      const jumpLinks  = document.querySelectorAll('#jump-bar a');
+      const navHSm     = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h-sm'));
+      const jumpH      = 52;
+      const offset     = navHSm + jumpH + 16;
+
+      function highlightLetter() {
+        let active = null;
+        sections.forEach(sec => {
+          if (sec.getBoundingClientRect().top <= offset + 10) active = sec.id;
         });
-
-        document.querySelectorAll('.menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
+        jumpLinks.forEach(a => {
+          a.classList.toggle('jump-active', a.getAttribute('href') === `#${active}`);
         });
-    </script>
+      }
 
-    <script type="text/javascript">
+      /* ── Scroll-reveal ── */
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting) { target.classList.add('visible'); observer.unobserve(target); }
+        });
+      }, { threshold: .06 });
+      sections.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+  <!-- Smartsupp -->
+  <script>
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = 'd433810c9a6ed551ac5f4908db2942c35fba3ef5';
-    window.smartsupp||(function(d) {
-      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+    window.smartsupp||(function(d){
+      var s,c,o=smartsupp=function(){o._.push(arguments)};o._=[];
       s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-      c.type='text/javascript';c.charset='utf-8';c.async=true;
-      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+      c.async=true;c.src='https://www.smartsuppchat.com/loader.js?';
+      s.parentNode.insertBefore(c,s);
     })(document);
-    </script>
+  </script>
 
 </body>
 </html>
