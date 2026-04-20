@@ -103,7 +103,7 @@
       display:flex;
       align-items:center;
       gap:22px;
-      height:100%; /* use full nav height so children can center vertically */
+      height:100%;
     }
 
     /* Standard menu links: inline-flex & centered */
@@ -111,7 +111,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      height:100%;               /* match nav container height for vertical centering */
+      height:100%;
       text-decoration:none;
       color:var(--text-dark);
       font-weight:600;
@@ -119,19 +119,18 @@
       text-transform:uppercase;
       letter-spacing:0.6px;
       position:relative;
-      padding:0 12px;            /* horizontal padding only */
+      padding:0 12px;
       transition:color 180ms ease, background 180ms ease;
       line-height:1;
       white-space:nowrap;
     }
 
-    /* Underline (positioned above bottom so it shows above nav bottom) */
     .menu a::after{
       content:'';
       position:absolute;
       left:12px;
       right:12px;
-      bottom:14px;               /* positioned to be visually just above the nav bottom */
+      bottom:14px;
       width:auto;
       height:2px;
       background:var(--accent-teal);
@@ -142,31 +141,32 @@
     }
     .menu a:hover::after{transform:scaleX(1)}
 
-    /* Recreate the CTA button from scratch and ensure centered text */
-    .quote-nav-btn{
+    /* CTA shared style (used by both connect-btn and quote-nav-btn) */
+    .cta {
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      height:44px;                /* consistent visual button height */
-      padding:0 18px;             /* horizontal padding */
+      padding:12px 28px;
       background:linear-gradient(135deg,var(--accent-teal), #009999);
       color:#fff;
       border-radius:8px;
       font-weight:700;
       text-transform:uppercase;
-      letter-spacing:0.6px;
+      letter-spacing:0.8px;
       border:none;
-      box-shadow:var(--shadow-sm);
+      box-shadow:var(--shadow-md);
       transition:transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
-      line-height:1;              /* important so text is vertically centered */
+      line-height:1;
       font-size:0.875rem;
       white-space:nowrap;
-      margin-left:6px;            /* slight separation from other menu items */
     }
-    .quote-nav-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);filter:brightness(1.02)}
+    .cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);filter:brightness(1.02)}
 
-    /* On desktop ensure CTA baseline aligns: use align-self center (menu items already centered) */
-    .quote-nav-btn { align-self:center; }
+    /* Request Quote button now matches connect button via .cta */
+    .quote-nav-btn{
+      margin-left:6px;
+      align-self:center;
+    }
 
     /* Hamburger (mobile) */
     .hamburger{
@@ -282,7 +282,6 @@
       .logo-img{max-height: calc(var(--nav-height-mobile) - 16px)}
       nav.scrolled .logo-img{transform:scale(0.85)}
 
-      /* on smaller screens hide the inline menu and use hamburger */
       .menu{display:none}
       .hamburger{display:flex}
 
@@ -348,7 +347,8 @@
       <a href="manufacturers.html">Manufacturers</a>
       <a href="solutions.html">Solutions</a>
       <a href="aboutus.html">Who We Are</a>
-      <a href="quote.html" class="quote-nav-btn">Request Quote</a>
+      <!-- Use both .cta and .quote-nav-btn so it matches Connect Now style exactly -->
+      <a href="quote.html" class="cta quote-nav-btn">Request Quote</a>
     </div>
   </nav>
 
@@ -396,7 +396,7 @@
       <div class="connect-box" role="region" aria-label="Connect with sales">
         <h2 id="connect-heading">Connect with a Sales Agent</h2>
         <p>Need expert guidance on your infrastructure requirements? Provide your details on our quote request page and our team will contact you shortly.</p>
-        <a href="quote.html" class="connect-btn" aria-label="Connect Now">Connect Now</a>
+        <a href="quote.html" class="connect-btn cta" aria-label="Connect Now">Connect Now</a>
       </div>
     </section>
   </main>
