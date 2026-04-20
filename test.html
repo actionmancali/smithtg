@@ -16,10 +16,10 @@
   <style>
     :root{
       /* layout / spacing */
-      --nav-height: 120px;   /* desktop nav container height (fixed to avoid reflow) */
+      --nav-height: 120px;
       --nav-height-mobile: 72px;
 
-      /* color palette */
+      /* colors */
       --primary-blue: #003366;
       --secondary-blue: #00509d;
       --accent-teal: #00a8a8;
@@ -34,12 +34,11 @@
       --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
       --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
       --shadow-lg: 0 10px 32px rgba(0,0,0,0.12);
-      --shadow-hover: 0 16px 40px rgba(0,0,0,0.15);
+      --shadow-hover: 0 20px 50px rgba(0,0,0,0.14);
 
       --border-light: #e6e6e6;
     }
 
-    /* reset */
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
@@ -52,13 +51,12 @@
       scroll-behavior:smooth;
     }
 
-    /* Headings */
     h1,h2,h3{font-family:'Poppins',sans-serif;margin:0}
     h1{font-size:clamp(1.5rem,4vw,3rem);line-height:1.05}
     h2{font-size:clamp(1.25rem,2.5vw,2.25rem)}
     p{color:var(--text-light);font-size:1rem}
 
-    /* NAV (fixed container height to avoid layout shifts) */
+    /* NAV (fixed container to prevent layout jitter) */
     nav{
       height:var(--nav-height);
       display:flex;
@@ -72,16 +70,14 @@
       box-shadow:var(--shadow-sm);
       transition:box-shadow 240ms ease, background 240ms ease;
       will-change:box-shadow, background;
-      overflow:visible; /* allow scaled logo to overflow visually without altering layout */
+      overflow:visible;
     }
 
-    /* scrolled state changes only visuals (no height change) */
     nav.scrolled{
       box-shadow:var(--shadow-md);
       background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.95));
     }
 
-    /* Logo space remains stable */
     .logo-container{
       display:flex;
       align-items:center;
@@ -93,28 +89,25 @@
     }
     .logo-container:hover{transform:scale(1.02)}
 
-    /* logo uses transform for visual scaling (no layout reflow) */
     .logo-img{
       display:block;
       height:auto;
-      max-height: calc(var(--nav-height) - 24px); /* keep inside nav visually */
+      max-height: calc(var(--nav-height) - 24px);
       width:auto;
       transform-origin:left center;
       transition:transform 240ms ease, filter 240ms ease;
       will-change:transform, filter;
     }
 
-    /* visually shrink logo on scroll (transform only) */
     nav.scrolled .logo-img{
-      transform:scale(0.62); /* tune to match previous ~70px visual */
+      transform:scale(0.62);
       filter:drop-shadow(0 2px 6px rgba(0,0,0,0.06));
     }
 
-    /* Menu */
     .menu{
       display:flex;
       align-items:center;
-      gap:28px;
+      gap:22px;
     }
     .menu a{
       text-decoration:none;
@@ -127,8 +120,6 @@
       padding-bottom:6px;
       transition:color 180ms ease;
     }
-
-    /* underline hover effect retained */
     .menu a::after{
       content:'';
       position:absolute;
@@ -141,26 +132,22 @@
     }
     .menu a:hover::after{width:100%}
 
-    /* Top-right nav button: same color/look as other menu items (per your request) */
+    /* Make Request Quote a visible CTA (same style as hero/connect buttons) */
     .quote-nav-btn{
-      background:transparent;
-      color:var(--text-dark);
-      padding:8px 14px;
-      border-radius:6px;
+      background:linear-gradient(135deg,var(--accent-teal), #009999);
+      color:#fff;
+      padding:10px 18px;
+      border-radius:8px;
       font-weight:700;
       text-transform:uppercase;
       letter-spacing:0.6px;
-      border:2px solid transparent;
-      transition:background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+      border:none;
+      box-shadow:var(--shadow-sm);
+      transition:transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
     }
-    .quote-nav-btn:hover{
-      background:var(--accent-blue);
-      color:var(--accent-teal);
-      border-color:var(--border-light);
-      transform:translateY(-2px);
-    }
+    .quote-nav-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);filter:brightness(1.02)}
 
-    /* Hamburger (mobile) */
+    /* Hamburger */
     .hamburger{
       display:none;
       flex-direction:column;
@@ -171,144 +158,114 @@
       justify-content:center;
     }
     .hamburger span{
-      width:30px;
-      height:3px;
-      background:var(--primary-blue);
-      border-radius:3px;
-      transition:all 200ms ease;
+      width:30px;height:3px;background:var(--primary-blue);border-radius:3px;transition:all 200ms ease;
     }
     .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
     .hamburger.active span:nth-child(2){opacity:0}
     .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
 
-    /* HERO */
+    /* HERO: now uses an img element to ensure the entire image is visible (object-fit: contain) */
     .hero{
-      background:
-        linear-gradient(135deg, rgba(0,51,102,0.86), rgba(0,80,157,0.86)),
-        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80');
-      background-size:cover;
-      background-position:center;
-      background-attachment:fixed;
-      color:#ffffff;
-      padding:120px 8%;
       position:relative;
+      padding:120px 8%;
       overflow:hidden;
+      display:flex;
+      align-items:center;
+      min-height:360px;
+      background:linear-gradient(135deg, rgba(0,51,102,0.86), rgba(0,80,157,0.86));
+      color:#fff;
     }
-    .hero::before{
+
+    /* background image element that scales to show the entire image (contain) */
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:contain; /* entire image visible, no cropping */
+      object-position:center;
+      opacity:0.14; /* subtle so text remains readable */
+      pointer-events:none;
+      z-index:0;
+    }
+
+    /* gradient overlay to keep text readable */
+    .hero::after{
       content:'';
       position:absolute;
       inset:0;
-      background:radial-gradient(ellipse at top right, rgba(0,168,168,0.06), transparent);
+      background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25));
+      z-index:1;
       pointer-events:none;
     }
-    .hero > *{position:relative; z-index:2}
-    .hero h1{
-      margin-bottom:20px;
-      color:#fff;
-      text-shadow:0 3px 10px rgba(0,0,0,0.35);
-      animation:slideInUp .7s ease-out both;
-    }
-    .hero p{
-      margin-bottom:24px;
-      color:#fff;
-      text-shadow:0 1px 6px rgba(0,0,0,0.28);
-      opacity:1;
-      animation:slideInUp .7s ease-out .15s both;
-    }
-    .hero-cta{
-      display:inline-block;
-      background:linear-gradient(135deg,var(--accent-teal), #009999);
-      color:white;
-      padding:12px 28px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:700;
-      letter-spacing:0.8px;
-      text-transform:uppercase;
-      transition:transform 180ms ease, box-shadow 180ms ease;
-      box-shadow:var(--shadow-md);
-    }
-    .hero-cta:hover{transform:translateY(-3px); box-shadow:var(--shadow-hover)}
 
-    /* Sections */
+    .hero .hero-content{position:relative;z-index:2;max-width:900px}
+    .hero h1{margin-bottom:18px;color:#fff;text-shadow:0 3px 10px rgba(0,0,0,0.35);animation:slideInUp .7s ease-out both}
+    .hero p{margin-bottom:20px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,0.28);animation:slideInUp .7s ease-out .12s both}
+    .hero-cta{display:inline-block;background:linear-gradient(135deg,var(--accent-teal), #009999);color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;box-shadow:var(--shadow-md);transition:transform 180ms ease}
+    .hero-cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+
     .section{padding:100px 8%}
     .section-header{text-align:center;margin-bottom:64px}
-    .section-header h2{color:var(--primary-blue);margin-bottom:12px; position:relative}
-    .section-header h2::after{
-      content:'';
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
-      bottom:-10px;
-      width:56px;
-      height:3px;
-      background:var(--accent-teal);
-      border-radius:2px;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:32px;
-      max-width:1400px;
-      margin:0 auto;
-    }
+    .section-header h2{color:var(--primary-blue);margin-bottom:12px;position:relative}
+    .section-header h2::after{content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:-10px;width:56px;height:3px;background:var(--accent-teal);border-radius:2px}
 
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;max-width:1400px;margin:0 auto}
+
+    /* Enhanced card hover animation: scale, rotate slight, strong shadow, animated top-accent strip */
     .card{
       background:var(--bg-white);
       padding:40px;
       border-radius:12px;
       box-shadow:var(--shadow-md);
       border:1px solid var(--border-light);
-      border-top:4px solid var(--primary-blue);
-      transition:transform .35s cubic-bezier(.2,1,.3,1), box-shadow .35s ease, border-top-color .35s ease;
       position:relative;
-      overflow:hidden;
+      overflow:visible;
+      transition:transform .45s cubic-bezier(.2,1,.3,1), box-shadow .45s ease, border-top-color .35s ease;
+      transform-origin:center;
     }
-    .card:hover{transform:translateY(-12px); box-shadow:var(--shadow-hover); border-top-color:var(--accent-teal)}
-    .card h3{color:var(--primary-blue); margin-bottom:12px}
+    .card::before{
+      content:'';
+      position:absolute;
+      top:0;left:0;
+      width:0;height:6px;
+      background:linear-gradient(90deg,var(--accent-teal), #00d4d4);
+      border-top-left-radius:12px;border-top-right-radius:12px;
+      transition:width .45s cubic-bezier(.2,1,.3,1);
+    }
+    .card .card-inner{position:relative;z-index:2}
+    .card:hover, .card:focus-within{
+      transform:translateY(-14px) scale(1.03) rotate(-0.6deg);
+      box-shadow:var(--shadow-hover);
+    }
+    .card:hover::before, .card:focus-within::before{width:100%}
+    .card h3{color:var(--primary-blue);margin-bottom:12px}
     .card p{color:var(--text-light)}
 
-    /* Connect section */
-    #connect{background:linear-gradient(135deg,var(--bg-light),#f0f8ff);text-align:center;padding:100px 8% 120px;position:relative}
-    .connect-box{
-      max-width:720px;margin:0 auto;background:var(--bg-white);padding:56px;border-radius:12px;box-shadow:var(--shadow-lg);border:1px solid var(--border-light)
-    }
+    /* Connect */
+    #connect{background:linear-gradient(135deg,var(--bg-light),#f0f8ff);text-align:center;padding:100px 8%;position:relative}
+    .connect-box{max-width:720px;margin:0 auto;background:var(--bg-white);padding:56px;border-radius:12px;box-shadow:var(--shadow-lg);border:1px solid var(--border-light)}
     .connect-box h2{color:var(--primary-blue);margin-bottom:12px}
-    .connect-btn{
-      display:inline-block;background:linear-gradient(135deg,var(--accent-teal),#009999);color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;box-shadow:var(--shadow-md)
-    }
+    .connect-btn{display:inline-block;background:linear-gradient(135deg,var(--accent-teal),#009999);color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;box-shadow:var(--shadow-md)}
     .connect-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
 
-    /* Footer */
-    footer{
-      background:linear-gradient(135deg,#001f3f,var(--primary-blue));
-      color:var(--text-muted);
-      padding:56px 8%;
-      text-align:center;
-      border-top:3px solid var(--accent-teal)
-    }
+    footer{background:linear-gradient(135deg,#001f3f,var(--primary-blue));color:var(--text-muted);padding:56px 8%;text-align:center;border-top:3px solid var(--accent-teal)}
     footer p{margin:8px 0;color:var(--text-muted)}
     footer p:first-child{color:#fff;font-weight:700}
-
     footer a{color:var(--accent-teal);text-decoration:none}
     footer a:hover{text-decoration:underline}
 
-    /* Animations */
     @keyframes slideInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-    /* Responsive adjustments */
-    /* Tablet */
+    /* Responsive */
     @media (max-width: 992px){
-      :root{ /* allow smaller nav height visually on mobile without changing default desktop variable */
-      }
       nav{height:var(--nav-height-mobile)}
       .logo-img{max-height: calc(var(--nav-height-mobile) - 16px)}
-      nav.scrolled .logo-img{transform:scale(0.85)} /* less aggressive on mobile */
+      nav.scrolled .logo-img{transform:scale(0.85)}
 
-      .menu{display:none; /* hide menu on smaller screens; hamburger shown instead */ }
+      .menu{display:none}
       .hamburger{display:flex}
 
-      /* menu dropdown styles when active */
       .menu.active{
         display:flex;
         flex-direction:column;
@@ -318,30 +275,21 @@
         width:100%;
         background:var(--bg-white);
         box-shadow:var(--shadow-md);
-        padding:10px 0;
+        padding:8px 0;
         gap:0;
         animation:slideDown .22s ease-out;
+        z-index:1150;
       }
-      .menu.active a{
-        display:block;
-        padding:12px 6%;
-        font-size:1rem;
-        border-bottom:1px solid var(--border-light);
-      }
+      .menu.active a{display:block;padding:12px 6%;font-size:1rem;border-bottom:1px solid var(--border-light)}
       .menu.active a::after{display:none}
-      .quote-nav-btn{ /* ensure full-width feeling on mobile menu */
-        width:calc(100% - 12%);
-        display:inline-block;
-        margin:6px 6%;
-        padding:12px 18px;
-      }
+      .quote-nav-btn{width:calc(100% - 12%);margin:8px 6%;padding:12px 18px}
 
-      .hero{padding:64px 6%; background-attachment:scroll}
+      .hero{padding:64px 6%;background-attachment:scroll}
+      .hero-bg{object-fit:cover;opacity:0.12} /* on small screens use cover to fill vertically */
       .section{padding:64px 6%}
       .connect-box{padding:36px}
     }
 
-    /* Small phones */
     @media (max-width:480px){
       nav{height:var(--nav-height-mobile)}
       .logo-img{max-height:calc(var(--nav-height-mobile)-16px)}
@@ -371,14 +319,16 @@
       <a href="manufacturers.html">Manufacturers</a>
       <a href="solutions.html">Solutions</a>
       <a href="aboutus.html">Who We Are</a>
-      <!-- top-right link styled same as other menu items per request -->
       <a href="quote.html" class="quote-nav-btn">Request Quote</a>
     </div>
   </nav>
 
   <main>
     <header class="hero" role="banner" aria-label="Hero">
-      <div>
+      <!-- hero-bg image ensures the entire image is visible (object-fit: contain) -->
+      <img class="hero-bg" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80" alt="Infrastructure and technology background" aria-hidden="true">
+
+      <div class="hero-content">
         <h1>IT Infrastructure and Management for the Modern Enterprise.</h1>
         <p>Backed by 25+ years of industry leadership, we deliver end-to-end infrastructure solutions through strategic partnerships with the world's leading OEMs. From high-performance compute to cloud integration, we empower your organization with mission-critical technology.</p>
         <a href="quote.html" class="hero-cta" aria-label="Get Started Today">Get Started Today</a>
@@ -392,19 +342,25 @@
       </div>
 
       <div class="grid" role="list">
-        <article class="card" role="listitem" aria-labelledby="card-1-title">
-          <h3 id="card-1-title">Hardware Procurement</h3>
-          <p>Authorized delivery and setup of enterprise-grade equipment from industry leaders including <strong>HP, Dell, and Lenovo</strong>. We provide comprehensive procurement services with rapid deployment capabilities.</p>
+        <article class="card" role="listitem" aria-labelledby="card-1-title" tabindex="0">
+          <div class="card-inner">
+            <h3 id="card-1-title">Hardware Procurement</h3>
+            <p>Authorized delivery and setup of enterprise-grade equipment from industry leaders including <strong>HP, Dell, and Lenovo</strong>. We provide comprehensive procurement services with rapid deployment capabilities.</p>
+          </div>
         </article>
 
-        <article class="card" role="listitem" aria-labelledby="card-2-title">
-          <h3 id="card-2-title">Cloud & Software Solutions</h3>
-          <p>Scalable cloud architecture and professional software licensing management for corporate portfolios. Our experts ensure optimal resource allocation and cost-efficiency across your infrastructure.</p>
+        <article class="card" role="listitem" aria-labelledby="card-2-title" tabindex="0">
+          <div class="card-inner">
+            <h3 id="card-2-title">Cloud & Software Solutions</h3>
+            <p>Scalable cloud architecture and professional software licensing management for corporate portfolios. Our experts ensure optimal resource allocation and cost-efficiency across your infrastructure.</p>
+          </div>
         </article>
 
-        <article class="card" role="listitem" aria-labelledby="card-3-title">
-          <h3 id="card-3-title">Managed Capabilities</h3>
-          <p>Comprehensive oversight of your IT footprint, ensuring infrastructure continuity and technical security. We provide 24/7 monitoring and support for mission-critical systems.</p>
+        <article class="card" role="listitem" aria-labelledby="card-3-title" tabindex="0">
+          <div class="card-inner">
+            <h3 id="card-3-title">Managed Capabilities</h3>
+            <p>Comprehensive oversight of your IT footprint, ensuring infrastructure continuity and technical security. We provide 24/7 monitoring and support for mission-critical systems.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -427,12 +383,10 @@
   </footer>
 
   <script>
-    // Elements
     const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
 
-    // Toggle mobile menu
     function toggleMenu(open){
       const isOpen = typeof open === 'boolean' ? open : !navMenu.classList.contains('active');
       if(isOpen){
@@ -451,7 +405,6 @@
       toggleMenu();
     });
 
-    // allow keyboard opening via Enter/Space
     hamburger.addEventListener('keydown', (e) => {
       if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
@@ -459,30 +412,19 @@
       }
     });
 
-    // Close menu when a link is clicked (mobile)
     document.querySelectorAll('.menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggleMenu(false);
-      });
+      link.addEventListener('click', () => toggleMenu(false));
     });
 
-    // Close menu when clicking outside navbar (useful on mobile)
     document.addEventListener('click', (e) => {
-      if (!navbar.contains(e.target)) {
-        toggleMenu(false);
-      }
+      if (!navbar.contains(e.target)) toggleMenu(false);
     });
 
-    // Smooth, non-jittery nav visual on scroll: only toggle visual styles (no layout changes)
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
     });
 
-    // Intersection Observer to trigger card animations (lightweight)
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -498,7 +440,6 @@
   </script>
 
   <script type="text/javascript">
-    /* smartsupp chat (keeps original key) - corrected guard */
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = 'd433810c9a6ed551ac5f4908db2942c35fba3ef5';
     window.smartsupp || (function(d) {
