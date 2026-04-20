@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Smith Technology Group | Infrastructure & Management</title>
 
-  <!-- Canonical -->
   <link rel="canonical" href="https://www.smithtg.com/">
-
   <link rel="icon" type="image/png" href="logoicon.png">
   <link rel="apple-touch-icon" href="logoicon.png">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -23,18 +20,17 @@
 
       --primary-blue: #003366;
       --primary-blue-dark: #001f3f;
-      --secondary-blue: #00509d;
       --accent-teal: #00a8a8;
       --accent-blue: #e6f0ff;
+      --bg-white: #ffffff;
+      --bg-light: #f9f9f9;
       --text-dark: #1a1a1a;
       --text-light: #555;
       --text-muted: #888;
-      --bg-light: #f9f9f9;
-      --bg-white: #ffffff;
       --border-light: #e6e6e6;
 
       --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
       --shadow-lg: 0 10px 32px rgba(0,0,0,0.12);
       --shadow-hover: 0 16px 40px rgba(0,0,0,0.15);
     }
@@ -84,16 +80,7 @@
     .logo-container { display: flex; align-items: center; height: 100%; padding: 0; text-decoration: none; transition: transform 200ms ease; will-change: transform; }
     .logo-container:hover { transform: scale(1.02); }
 
-    .logo-img {
-      display: block;
-      height: auto;
-      max-height: calc(var(--nav-height) - 24px);
-      width: auto;
-      transform-origin: left center;
-      transition: transform 240ms ease, filter 240ms ease;
-      will-change: transform, filter;
-    }
-
+    .logo-img { display: block; height: auto; max-height: calc(var(--nav-height) - 24px); width: auto; transform-origin: left center; transition: transform 240ms ease, filter 240ms ease; will-change: transform, filter; }
     nav.scrolled .logo-img { transform: scale(0.62); filter: drop-shadow(0 2px 6px rgba(0,0,0,0.06)); }
 
     .menu { display: flex; align-items: center; gap: 22px; height: 100%; }
@@ -130,7 +117,6 @@
     }
     .menu a:hover::after { transform: scaleX(1); }
 
-    /* CTA */
     .cta {
       display: inline-flex;
       align-items: center;
@@ -154,11 +140,11 @@
 
     .quote-nav-btn { margin-left: 8px; }
 
-    /* Hamburger */
+    /* Hamburger button */
     .hamburger {
       display: none;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       align-items: center;
       justify-content: center;
       border-radius: 8px;
@@ -166,35 +152,35 @@
       border: none;
       cursor: pointer;
     }
-    .hamburger:focus { outline: 2px solid rgba(0,168,168,0.25); outline-offset: 2px; }
+    .hamburger:focus { outline: 2px solid rgba(0,168,168,0.18); outline-offset: 2px; }
 
-    .hamburger .bar {
+    .hamburger-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 24px;
+      height: 18px;
+      transform-origin: center;
+    }
+
+    .bar {
       display: block;
-      width: 22px;
-      height: 2.5px;
+      width: 24px;
+      height: 3px;
       background: var(--primary-blue);
       border-radius: 2px;
       transition: transform 240ms cubic-bezier(.2,.9,.3,1), opacity 180ms ease;
       transform-origin: center;
     }
 
-    /* Hamburger active -> X:
-       - top bar rotates + moves down
-       - middle bar fades out
-       - bottom bar rotates + moves up
-    */
-    .hamburger.active .bar-top {
-      transform: translateY(7px) rotate(45deg);
-    }
-    .hamburger.active .bar-middle {
-      opacity: 0;
-      transform: scaleX(0.2);
-    }
-    .hamburger.active .bar-bottom {
-      transform: translateY(-7px) rotate(-45deg);
-    }
+    /* Active state: top & bottom rotate and move, middle fades */
+    .hamburger.active .bar-top { transform: translateY(6px) rotate(45deg); }
+    .hamburger.active .bar-middle { opacity: 0; transform: scaleX(0.2); }
+    .hamburger.active .bar-bottom { transform: translateY(-6px) rotate(-45deg); }
 
-    /* Mobile menu (hidden by default, shown when active) */
+    /* Mobile menu styles */
     @media (max-width: 992px) {
       .menu { display: none; }
       .hamburger { display: flex; }
@@ -210,19 +196,12 @@
         box-shadow: var(--shadow-md);
         padding: 12px 0;
         gap: 0;
-        z-index: 1300; /* ensure it sits above other page content */
+        z-index: 1300;
         animation: slideDown 0.22s ease-out;
       }
 
-      .menu.active a {
-        display: block;
-        padding: 12px 6%;
-        font-size: 1rem;
-        border-bottom: 1px solid var(--border-light);
-      }
-
+      .menu.active a { display: block; padding: 12px 6%; font-size: 1rem; border-bottom: 1px solid var(--border-light); }
       .menu.active a::after { display: none; }
-
       .menu.active a:hover { background: var(--accent-blue); color: var(--accent-teal); }
 
       .cta {
@@ -234,7 +213,7 @@
       }
     }
 
-    /* ===== HERO restored (background-image cover) ===== */
+    /* HERO (restored as requested) */
     .hero {
       background: linear-gradient(135deg, rgba(0, 51, 102, 0.85), rgba(0, 80, 157, 0.85)),
                   url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80');
@@ -298,7 +277,7 @@
     }
     .hero-cta:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); background: linear-gradient(135deg, #009999, #007777); }
 
-    /* Sections, grid, cards, connect and footer (kept as before) */
+    /* Sections / Grid / Cards / Connect / Footer (kept previously) */
     .section { padding: 100px 8%; transition: all 0.3s ease; }
     .section-header { text-align: center; margin-bottom: 70px; animation: fadeInUp 0.8s ease-out; }
     .section-header h2 { color: var(--primary-blue); margin-bottom: 15px; position: relative; padding-bottom: 20px; }
@@ -337,7 +316,6 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Responsive */
     @media (max-width: 992px) {
       nav { height: var(--nav-height-mobile); }
       .logo-img { max-height: calc(var(--nav-height-mobile) - 16px); }
@@ -388,9 +366,11 @@
     </a>
 
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
-      <span class="bar bar-top" aria-hidden="true"></span>
-      <span class="bar bar-middle" aria-hidden="true"></span>
-      <span class="bar bar-bottom" aria-hidden="true"></span>
+      <span class="hamburger-inner" aria-hidden="true">
+        <span class="bar bar-top"></span>
+        <span class="bar bar-middle"></span>
+        <span class="bar bar-bottom"></span>
+      </span>
     </button>
 
     <div class="menu" id="nav-menu" role="navigation" aria-label="Primary">
@@ -456,55 +436,97 @@
   </footer>
 
   <script>
-    // Header/menu behavior
-    const navbar = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
+    // Header/menu behavior with improved hamburger + accessibility
+    (function(){
+      const navbar = document.getElementById('navbar');
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      let lastFocused = null;
 
-    function toggleMenu(open) {
-      const isOpen = typeof open === 'boolean' ? open : !navMenu.classList.contains('active');
-      if (isOpen) {
+      function openMenu() {
         navMenu.classList.add('active');
         hamburger.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
         document.body.classList.add('menu-open');
-      } else {
+
+        // move focus to first link for a11y
+        const firstLink = navMenu.querySelector('a');
+        if (firstLink) {
+          lastFocused = document.activeElement;
+          firstLink.focus();
+        }
+
+        // listen for Escape to close
+        document.addEventListener('keydown', onKeyDown);
+      }
+
+      function closeMenu() {
         navMenu.classList.remove('active');
         hamburger.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
+
+        // restore focus to hamburger for keyboard users
+        if (lastFocused && lastFocused !== document.activeElement) {
+          hamburger.focus();
+        }
+
+        document.removeEventListener('keydown', onKeyDown);
       }
-    }
 
-    // Click handler
-    hamburger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
+      function toggleMenu() {
+        if (navMenu.classList.contains('active')) closeMenu();
+        else openMenu();
+      }
 
-    // Keyboard support (Enter / Space)
-    hamburger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
+      function onKeyDown(e) {
+        if (e.key === 'Escape') {
+          closeMenu();
+        }
+      }
+
+      // Click/tap hamburger
+      hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
         toggleMenu();
-      }
-    });
+      });
 
-    // Close menu when a nav link is clicked
-    document.querySelectorAll('.menu a').forEach(link => {
-      link.addEventListener('click', () => toggleMenu(false));
-    });
+      // Keyboard open/close (Enter / Space)
+      hamburger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
 
-    // Close menu when clicking outside the nav
-    document.addEventListener('click', (e) => {
-      if (!navbar.contains(e.target)) toggleMenu(false);
-    });
+      // Close when clicking a nav link
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          closeMenu();
+        });
+      });
 
-    // Nav shrink on scroll (logo scale) — no layout change to avoid jitter
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-    });
+      // Close when clicking outside nav area
+      document.addEventListener('click', (e) => {
+        if (!navbar.contains(e.target)) closeMenu();
+      });
+
+      // Prevent touches from propagating to body when menu open (helps some Android behavior)
+      document.addEventListener('touchmove', function(e){
+        if (document.body.classList.contains('menu-open')) {
+          // only if the touch is outside the menu, prevent body scroll
+          if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+            e.preventDefault();
+          }
+        }
+      }, { passive: false });
+
+      // nav shrink on scroll (logo scale) — no layout change to avoid jitter
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+      });
+    })();
   </script>
 
   <script type="text/javascript">
@@ -514,4 +536,9 @@
       var s, c, o = smartsupp = function(){ o._.push(arguments) }; o._ = [];
       s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
       c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
-      c.src = 'https://www.smarts*
+      c.src = 'https://www.smartsuppchat.com/loader.js?';
+      s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+</body>
+</html>
