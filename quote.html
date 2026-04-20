@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ── Tokens ── */
     :root {
       --navy:      #0c1e35;
       --blue:      #003366;
@@ -54,7 +53,6 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: linear-gradient(var(--teal), var(--blue-mid)); border-radius: 99px; }
 
-    /* ── Scroll Progress ── */
     #progress {
       position: fixed; top: 0; left: 0;
       height: 3px; width: 0%;
@@ -63,7 +61,6 @@
       transition: width .08s linear;
     }
 
-    /* ── Nav ── */
     #navbar {
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--nav-h);
@@ -112,7 +109,6 @@
     .cta .arr { display: inline-flex; transition: transform .2s var(--ease-back); }
     .cta:hover .arr { transform: translateX(3px); }
 
-    /* ── Hamburger ── */
     .hamburger {
       display: none; width: 44px; height: 44px;
       align-items: center; justify-content: center;
@@ -134,7 +130,6 @@
     .hamburger.open .hbar-mid { opacity: 0; width: 0; }
     .hamburger.open .hbar-bot { transform: translateY(-7.5px) rotate(-45deg); }
 
-    /* ── Mobile Dropdown ── */
     #mobile-menu {
       display: none; position: fixed;
       top: var(--nav-h-sm); left: 0; right: 0;
@@ -165,7 +160,6 @@
     .mobile-cta-row { padding: 16px 7% 4px; }
     .mobile-cta-row .cta { width: 100%; height: 50px; justify-content: center; font-size: .85rem; border-radius: 10px; }
 
-    /* ── Page Hero ── */
     .page-hero {
       margin-top: var(--nav-h);
       background:
@@ -214,7 +208,6 @@
       animation: rise .68s var(--ease) .2s both;
     }
 
-    /* ── Main layout ── */
     .quote-wrap {
       max-width: 1180px;
       margin: 0 auto;
@@ -225,7 +218,6 @@
       align-items: start;
     }
 
-    /* ── Form card ── */
     .form-card {
       background: var(--white);
       border-radius: 22px;
@@ -249,14 +241,12 @@
     }
     .form-card-header p { font-size: .95rem; line-height: 1.75; }
 
-    /* Divider */
     .form-divider {
       border: none; height: 1px;
       background: linear-gradient(90deg, var(--teal), rgba(0,196,180,.1));
       margin-bottom: 36px;
     }
 
-    /* Form rows */
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .form-group { margin-bottom: 22px; display: flex; flex-direction: column; gap: 7px; }
     .form-group.full { grid-column: 1 / -1; }
@@ -269,7 +259,6 @@
     }
     label .req { color: var(--teal); margin-left: 2px; }
 
-    /* Inputs */
     input, select, textarea {
       width: 100%;
       padding: 13px 16px;
@@ -292,7 +281,6 @@
     }
     input::placeholder, textarea::placeholder { color: rgba(90,106,126,.45); }
 
-    /* Select arrow */
     .select-wrap { position: relative; }
     .select-wrap::after {
       content: '';
@@ -307,7 +295,6 @@
 
     textarea { height: 140px; resize: vertical; }
 
-    /* Checkbox */
     .checkbox-group {
       display: flex; align-items: flex-start; gap: 12px;
       padding: 16px 18px;
@@ -332,7 +319,6 @@
     }
     .checkbox-group label strong { color: var(--navy); font-weight: 600; }
 
-    /* Submit */
     .submit-btn {
       width: 100%; height: 56px;
       background: linear-gradient(135deg, var(--teal), var(--teal-dark));
@@ -351,7 +337,6 @@
     .submit-btn svg { transition: transform .22s var(--ease-back); }
     .submit-btn:hover svg { transform: translateX(4px); }
 
-    /* Success state */
     .success-msg {
       display: none;
       text-align: center;
@@ -370,7 +355,6 @@
     .success-msg h3 { color: var(--navy); font-size: 1.5rem; margin-bottom: 10px; }
     .success-msg p { font-size: .98rem; max-width: 380px; margin: 0 auto; }
 
-    /* ── Sidebar ── */
     .sidebar {
       display: flex; flex-direction: column; gap: 22px;
       opacity: 0; transform: translateY(28px);
@@ -378,7 +362,6 @@
     }
     .sidebar.visible { opacity: 1; transform: translateY(0); }
 
-    /* Info card */
     .info-card {
       background: var(--white);
       border-radius: 18px;
@@ -391,7 +374,6 @@
       margin-bottom: 20px; letter-spacing: -.1px;
     }
 
-    /* Contact items */
     .contact-item {
       display: flex; align-items: center; gap: 14px;
       padding: 14px 0;
@@ -412,10 +394,7 @@
     .contact-item a:hover { color: var(--teal-dark); }
     .contact-sub { font-size: .74rem; color: var(--muted); margin-top: 1px; display: block; font-weight: 400; }
 
-    /* Trust badges */
-    .trust-list {
-      display: flex; flex-direction: column; gap: 13px;
-    }
+    .trust-list { display: flex; flex-direction: column; gap: 13px; }
     .trust-item {
       display: flex; align-items: center; gap: 12px;
       font-size: .84rem; font-weight: 500; color: var(--navy);
@@ -426,7 +405,6 @@
       flex-shrink: 0;
     }
 
-    /* Dark promo card */
     .promo-card {
       border-radius: 18px;
       background: linear-gradient(155deg, #081828 0%, #003366 100%);
@@ -451,7 +429,6 @@
     }
     .promo-link:hover { gap: 10px; }
 
-    /* ── Footer ── */
     footer {
       background: linear-gradient(155deg, #080f1e 0%, #0f2944 100%);
       padding: 44px 8%; position: relative; overflow: hidden;
@@ -473,10 +450,8 @@
     .footer-right a:hover { color: var(--teal); }
     .footer-divider { color: rgba(255,255,255,.15); user-select: none; }
 
-    /* ── Keyframes ── */
     @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ── Responsive ── */
     @media (max-width: 992px) {
       :root { --nav-h: var(--nav-h-sm); }
       #navbar { padding: 0 5%; }
@@ -484,20 +459,13 @@
       #navbar.scrolled .logo img { height: 34px; }
       .menu { display: none; }
       .hamburger { display: flex; }
-
       .page-hero { padding: 60px 5% 52px; background-attachment: scroll; }
       .page-hero h1 { font-size: clamp(1.7rem, 5.5vw, 2.2rem); }
-
-      .quote-wrap {
-        grid-template-columns: 1fr;
-        padding: 52px 5% 80px;
-        gap: 28px;
-      }
+      .quote-wrap { grid-template-columns: 1fr; padding: 52px 5% 80px; gap: 28px; }
       .sidebar { order: -1; }
-      .promo-card { display: none; } /* hide on mobile for brevity */
+      .promo-card { display: none; }
       .form-card { padding: 36px 28px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
-
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
       .footer-right { gap: 16px; }
     }
@@ -586,7 +554,6 @@
         <div id="form-area">
           <form id="quote-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
 
-            <!-- Name row -->
             <div class="form-row">
               <div class="form-group">
                 <label for="first-name">First Name <span class="req">*</span></label>
@@ -598,7 +565,6 @@
               </div>
             </div>
 
-            <!-- Contact row -->
             <div class="form-row">
               <div class="form-group">
                 <label for="email">Work Email <span class="req">*</span></label>
@@ -610,13 +576,11 @@
               </div>
             </div>
 
-            <!-- Company -->
             <div class="form-group">
               <label for="company">Company / Organization <span class="req">*</span></label>
               <input type="text" id="company" name="company" placeholder="Acme Corp" required>
             </div>
 
-            <!-- Solution type -->
             <div class="form-group">
               <label for="solution">Solution Area <span class="req">*</span></label>
               <div class="select-wrap">
@@ -632,19 +596,16 @@
               </div>
             </div>
 
-            <!-- OEM interest -->
             <div class="form-group">
               <label for="oem">Interested Manufacturer(s)</label>
               <input type="text" id="oem" name="oem" placeholder="e.g. Dell, HP, Lenovo, Cisco…">
             </div>
 
-            <!-- Details -->
             <div class="form-group">
               <label for="message">Requirement Details <span class="req">*</span></label>
               <textarea id="message" name="message" placeholder="Please describe your hardware, software, or management requirements — quantities, timelines, budget range, etc." required></textarea>
             </div>
 
-            <!-- Consent -->
             <label class="checkbox-group">
               <input type="checkbox" name="consent" required>
               <span>
@@ -661,7 +622,7 @@
           </form>
         </div>
 
-        <!-- Success message (shown after submit) -->
+        <!-- Success message -->
         <div class="success-msg" id="success-msg">
           <div class="check-circle" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -680,7 +641,7 @@
           <div class="contact-item">
             <div class="contact-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/>
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
             </div>
             <div>
@@ -714,11 +675,11 @@
           </div>
         </div>
 
-        <!-- Trust signals -->
+        <!-- Trust signals — UPDATED: 25+ → 35+ -->
         <div class="info-card">
           <h3>Why Smith Technology Group?</h3>
           <div class="trust-list">
-            <div class="trust-item"><span class="trust-dot"></span>25+ years of enterprise IT expertise</div>
+            <div class="trust-item"><span class="trust-dot"></span>35+ years of enterprise IT expertise</div>
             <div class="trust-item"><span class="trust-dot"></span>Authorized HP, Dell &amp; Lenovo partner</div>
             <div class="trust-item"><span class="trust-dot"></span>500+ manufacturer relationships</div>
             <div class="trust-item"><span class="trust-dot"></span>24/7 managed support available</div>
@@ -767,7 +728,6 @@
       const bar      = document.getElementById('progress');
       let isOpen = false;
 
-      /* ── Mobile menu ── */
       const openMenu = () => {
         isOpen = true;
         dropdown.style.display = 'flex';
@@ -795,7 +755,6 @@
         if (isOpen && !navbar.contains(e.target) && !dropdown.contains(e.target)) closeMenu();
       });
 
-      /* ── Scroll ── */
       const onScroll = () => {
         navbar.classList.toggle('scrolled', window.scrollY > 40);
         const total = document.documentElement.scrollHeight - window.innerHeight;
@@ -803,7 +762,6 @@
       };
       window.addEventListener('scroll', onScroll, { passive: true });
 
-      /* ── Scroll-reveal ── */
       const observer = new IntersectionObserver(entries => {
         entries.forEach(({ target, isIntersecting }) => {
           if (isIntersecting) { target.classList.add('visible'); observer.unobserve(target); }
@@ -811,13 +769,11 @@
       }, { threshold: .08 });
       document.querySelectorAll('.form-card, .sidebar').forEach(el => observer.observe(el));
 
-      /* ── Form: client-side validation + success state ── */
       const form       = document.getElementById('quote-form');
       const formArea   = document.getElementById('form-area');
       const successMsg = document.getElementById('success-msg');
       const submitBtn  = document.getElementById('submit-btn');
 
-      // Highlight first invalid field on submit
       form.addEventListener('submit', async e => {
         if (!form.checkValidity()) {
           e.preventDefault();
@@ -828,7 +784,6 @@
           return;
         }
 
-        // If using Formspree — intercept and show success without full page reload
         e.preventDefault();
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
