@@ -23,6 +23,7 @@
       --text:      #0c1e35;
       --muted:     #5a6a7e;
       --border:    rgba(0,0,0,.09);
+      --error:     #e03e3e;
       --nav-h:          96px;
       --nav-h-scrolled: 66px;
       --nav-h-sm:       62px;
@@ -267,6 +268,40 @@
     }
     input::placeholder, textarea::placeholder { color: rgba(90,106,126,.45); }
 
+    /* ── Error states ── */
+    .form-group.has-error input,
+    .form-group.has-error select,
+    .form-group.has-error textarea {
+      border-color: var(--error);
+      box-shadow: 0 0 0 3px rgba(224,62,62,.1);
+    }
+    .form-group.has-error label { color: var(--error); }
+    .field-error {
+      font-size: .72rem; color: var(--error); font-weight: 600;
+      letter-spacing: .3px; margin-top: 2px; display: none;
+    }
+    .form-group.has-error .field-error { display: block; }
+    .checkbox-group.has-error {
+      border-color: var(--error);
+      background: rgba(224,62,62,.04);
+    }
+    .checkbox-group.has-error .checkbox-error {
+      display: block;
+      font-size: .72rem; color: var(--error); font-weight: 600;
+      margin-top: 6px; letter-spacing: .3px;
+    }
+    .checkbox-error { display: none; }
+
+    /* ── Shake animation ── */
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-6px); }
+      40%      { transform: translateX(6px); }
+      60%      { transform: translateX(-4px); }
+      80%      { transform: translateX(4px); }
+    }
+    .shake { animation: shake .4s var(--ease) both; }
+
     .select-wrap { position: relative; }
     .select-wrap::after {
       content: ''; position: absolute; right: 14px; top: 50%; translate: 0 -50%;
@@ -282,7 +317,9 @@
       padding: 16px 18px;
       background: rgba(0,196,180,.05); border: 1.5px solid rgba(0,196,180,.2);
       border-radius: 10px; margin-bottom: 28px; cursor: pointer;
+      flex-direction: column;
     }
+    .checkbox-group-inner { display: flex; align-items: flex-start; gap: 12px; }
     .checkbox-group input[type="checkbox"] {
       width: 18px; height: 18px; flex-shrink: 0;
       accent-color: var(--teal); margin-top: 2px; cursor: pointer;
@@ -306,10 +343,11 @@
       display: flex; align-items: center; justify-content: center; gap: 10px;
       transition: transform .22s var(--ease-back), box-shadow .22s ease, filter .22s ease;
     }
-    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,196,180,.45); filter: brightness(1.06); }
+    .submit-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,196,180,.45); filter: brightness(1.06); }
     .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: .7; cursor: not-allowed; }
     .submit-btn svg { transition: transform .22s var(--ease-back); }
-    .submit-btn:hover svg { transform: translateX(4px); }
+    .submit-btn:hover:not(:disabled) svg { transform: translateX(4px); }
 
     .success-msg { display: none; text-align: center; padding: 40px 20px; }
     .success-msg .check-circle {
@@ -506,17 +544,18 @@
         <hr class="form-divider">
 
         <div id="form-area">
-          <!-- UPDATED: form action now points to live Formspree endpoint -->
           <form id="quote-form" action="https://formspree.io/f/maqadeea" method="POST" novalidate>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="first-name">First Name <span class="req">*</span></label>
                 <input type="text" id="first-name" name="first-name" placeholder="Jane" required>
+                <span class="field-error">Please enter your first name.</span>
               </div>
               <div class="form-group">
                 <label for="last-name">Last Name <span class="req">*</span></label>
                 <input type="text" id="last-name" name="last-name" placeholder="Smith" required>
+                <span class="field-error">Please enter your last name.</span>
               </div>
             </div>
 
@@ -524,6 +563,7 @@
               <div class="form-group">
                 <label for="email">Work Email <span class="req">*</span></label>
                 <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+                <span class="field-error">Please enter a valid email address.</span>
               </div>
               <div class="form-group">
                 <label for="phone">Phone Number</label>
@@ -534,6 +574,7 @@
             <div class="form-group">
               <label for="company">Company / Organization <span class="req">*</span></label>
               <input type="text" id="company" name="company" placeholder="Acme Corp" required>
+              <span class="field-error">Please enter your company name.</span>
             </div>
 
             <div class="form-group">
@@ -549,6 +590,7 @@
                   <option value="other">Other / Multiple</option>
                 </select>
               </div>
+              <span class="field-error">Please select a solution area.</span>
             </div>
 
             <div class="form-group">
@@ -559,15 +601,19 @@
             <div class="form-group">
               <label for="message">Requirement Details <span class="req">*</span></label>
               <textarea id="message" name="message" placeholder="Please describe your hardware, software, or management requirements — quantities, timelines, budget range, etc." required></textarea>
+              <span class="field-error">Please describe your requirements.</span>
             </div>
 
-            <label class="checkbox-group">
-              <input type="checkbox" name="consent" required>
-              <span>
-                <strong>I agree to be contacted</strong> by the Smith Technology Group sales team
-                regarding my enquiry. We respect your privacy and will never share your information.
-              </span>
-            </label>
+            <div class="checkbox-group" id="consent-group">
+              <div class="checkbox-group-inner">
+                <input type="checkbox" id="consent" name="consent" required>
+                <label for="consent">
+                  <strong>I agree to be contacted</strong> by the Smith Technology Group sales team
+                  regarding my enquiry. We respect your privacy and will never share your information.
+                </label>
+              </div>
+              <span class="checkbox-error">Please tick the box to agree before submitting.</span>
+            </div>
 
             <button type="submit" class="submit-btn" id="submit-btn">
               Send Request
@@ -590,7 +636,6 @@
       <!-- Sidebar -->
       <aside class="sidebar" id="sidebar">
 
-        <!-- Contact info -->
         <div class="info-card">
           <h3>Direct Contact</h3>
           <div class="contact-item">
@@ -630,7 +675,6 @@
           </div>
         </div>
 
-        <!-- Trust signals -->
         <div class="info-card">
           <h3>Why Smith Technology Group?</h3>
           <div class="trust-list">
@@ -643,7 +687,6 @@
           </div>
         </div>
 
-        <!-- Promo -->
         <div class="promo-card">
           <h3>Explore Our Manufacturers</h3>
           <p>Over 500 authorized OEM partners across hardware, software, photonics, aerospace and more.</p>
@@ -658,7 +701,6 @@
     </div><!-- /quote-wrap -->
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-inner">
       <div class="footer-left">
@@ -677,10 +719,10 @@
 
   <script>
     (() => {
-      const navbar   = document.getElementById('navbar');
-      const btn      = document.getElementById('hamburger');
-      const dropdown = document.getElementById('mobile-menu');
-      const bar      = document.getElementById('progress');
+      const navbar      = document.getElementById('navbar');
+      const btn         = document.getElementById('hamburger');
+      const dropdown    = document.getElementById('mobile-menu');
+      const bar         = document.getElementById('progress');
       let isOpen = false;
 
       const openMenu = () => {
@@ -724,24 +766,68 @@
       }, { threshold: .08 });
       document.querySelectorAll('.form-card, .sidebar').forEach(el => observer.observe(el));
 
-      const form       = document.getElementById('quote-form');
-      const formArea   = document.getElementById('form-area');
-      const successMsg = document.getElementById('success-msg');
-      const submitBtn  = document.getElementById('submit-btn');
+      // ── Form handling ──
+      const form         = document.getElementById('quote-form');
+      const formArea     = document.getElementById('form-area');
+      const successMsg   = document.getElementById('success-msg');
+      const submitBtn    = document.getElementById('submit-btn');
+      const consentGroup = document.getElementById('consent-group');
+
+      // Clear error state when user starts correcting a field
+      form.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('input', () => {
+          const group = field.closest('.form-group');
+          if (group) group.classList.remove('has-error');
+        });
+        field.addEventListener('change', () => {
+          const group = field.closest('.form-group');
+          if (group) group.classList.remove('has-error');
+          if (field.name === 'consent') consentGroup.classList.remove('has-error');
+        });
+      });
 
       form.addEventListener('submit', async e => {
-        if (!form.checkValidity()) {
-          e.preventDefault();
-          const first = form.querySelector(':invalid');
-          first?.focus();
-          first?.closest('.form-group, .checkbox-group')?.classList.add('shake');
-          setTimeout(() => first?.closest('.form-group, .checkbox-group')?.classList.remove('shake'), 500);
+        e.preventDefault();
+
+        // Validate all required fields manually
+        let firstError = null;
+        let valid = true;
+
+        // Clear previous errors
+        form.querySelectorAll('.form-group').forEach(g => g.classList.remove('has-error'));
+        consentGroup.classList.remove('has-error');
+
+        // Check each required input/select/textarea
+        form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+          if (field.type === 'checkbox') return; // handle separately
+          const group = field.closest('.form-group');
+          if (!field.value.trim() || (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value))) {
+            valid = false;
+            if (group) {
+              group.classList.add('has-error', 'shake');
+              setTimeout(() => group.classList.remove('shake'), 500);
+              if (!firstError) firstError = group;
+            }
+          }
+        });
+
+        // Check consent checkbox
+        const consent = form.querySelector('#consent');
+        if (!consent.checked) {
+          valid = false;
+          consentGroup.classList.add('has-error', 'shake');
+          setTimeout(() => consentGroup.classList.remove('shake'), 500);
+          if (!firstError) firstError = consentGroup;
+        }
+
+        if (!valid) {
+          firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
 
-        e.preventDefault();
+        // All valid — submit to Formspree
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
+        submitBtn.innerHTML = 'Sending&hellip;';
 
         try {
           const res = await fetch(form.action, {
@@ -749,16 +835,20 @@
             body: new FormData(form),
             headers: { Accept: 'application/json' }
           });
+
           if (res.ok) {
             formArea.style.display = 'none';
             successMsg.style.display = 'block';
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
           } else {
-            throw new Error('Network error');
+            const data = await res.json().catch(() => ({}));
+            throw new Error(data?.error || 'Server error');
           }
-        } catch {
+        } catch (err) {
+          console.error('Form error:', err);
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Send Request <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
-          alert('Something went wrong — please email us directly at info@smithtg.com');
+          alert('Something went wrong — please email us directly at info@smithtg.com or call 1-760-402-7441.');
         }
       });
 
