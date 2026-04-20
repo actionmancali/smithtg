@@ -98,7 +98,7 @@
       filter:drop-shadow(0 2px 6px rgba(0,0,0,0.06));
     }
 
-    /* Menu: ensure items are vertically centered */
+    /* Menu container occupies nav height so child inline-flex items can center vertically */
     .menu{
       display:flex;
       align-items:center;
@@ -106,12 +106,12 @@
       height:100%;
     }
 
-    /* Standard menu links: inline-flex & centered */
+    /* Menu links: inline-flex but DO NOT force height:100% (this was causing the large CTA) */
     .menu a{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      height:100%;
+      height:auto;               /* important: do NOT fill nav height */
       text-decoration:none;
       color:var(--text-dark);
       font-weight:600;
@@ -119,19 +119,19 @@
       text-transform:uppercase;
       letter-spacing:0.6px;
       position:relative;
-      padding:0 12px;
+      padding:8px 12px;          /* small vertical padding to preserve click area */
       transition:color 180ms ease, background 180ms ease;
       line-height:1;
       white-space:nowrap;
     }
 
+    /* Underline effect */
     .menu a::after{
       content:'';
       position:absolute;
       left:12px;
       right:12px;
-      bottom:14px;
-      width:auto;
+      bottom:8px;                /* smaller bottom offset because anchors have their own padding */
       height:2px;
       background:var(--accent-teal);
       transform:scaleX(0);
@@ -141,12 +141,13 @@
     }
     .menu a:hover::after{transform:scaleX(1)}
 
-    /* CTA shared style (used by both connect-btn and quote-nav-btn) */
+    /* Shared CTA style (matches Connect Now) - explicit fixed height so it won't stretch */
     .cta {
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:12px 28px;
+      height:40px;                 /* streamlined vertical size */
+      padding:0 22px;              /* horizontal padding */
       background:linear-gradient(135deg,var(--accent-teal), #009999);
       color:#fff;
       border-radius:8px;
@@ -162,11 +163,8 @@
     }
     .cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);filter:brightness(1.02)}
 
-    /* Request Quote button now matches connect button via .cta */
-    .quote-nav-btn{
-      margin-left:6px;
-      align-self:center;
-    }
+    /* Slight separation so CTA doesn't touch other links */
+    .quote-nav-btn{ margin-left:8px; }
 
     /* Hamburger (mobile) */
     .hamburger{
@@ -303,8 +301,7 @@
       .menu.active a::after{display:none}
 
       /* On mobile, CTA becomes full width and remains centered */
-      .quote-nav-btn{
-        display:inline-flex;
+      .cta{
         height:auto;
         padding:12px 18px;
         width:calc(100% - 12%);
@@ -347,7 +344,8 @@
       <a href="manufacturers.html">Manufacturers</a>
       <a href="solutions.html">Solutions</a>
       <a href="aboutus.html">Who We Are</a>
-      <!-- Use both .cta and .quote-nav-btn so it matches Connect Now style exactly -->
+
+      <!-- CTA now uses .cta (same rules as Connect Now). It is explicitly sized (height:40px) so it won't stretch. -->
       <a href="quote.html" class="cta quote-nav-btn">Request Quote</a>
     </div>
   </nav>
