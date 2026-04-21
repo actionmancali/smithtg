@@ -7,6 +7,19 @@
   <link rel="canonical" href="https://www.smithtg.com/">
   <link rel="icon" type="image/png" href="logoicon.png">
   <link rel="apple-touch-icon" href="logoicon.png">
+
+  <!-- Site identity & SEO -->
+  <meta name="description" content="End-to-end IT infrastructure solutions — strategic hardware procurement, hybrid cloud, and 24/7 managed services. 35+ years of enterprise expertise. 500+ OEM partners.">
+  <meta name="author" content="Smith Technology Group">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Smith Technology Group">
+  <meta property="og:title" content="Smith Technology Group | IT Infrastructure & Management">
+  <meta property="og:description" content="End-to-end IT infrastructure solutions — strategic hardware procurement, hybrid cloud, and 24/7 managed services. 35+ years of enterprise expertise. 500+ OEM partners.">
+  <meta property="og:url" content="https://www.smithtg.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.smithtg.com/Logo.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -399,6 +412,47 @@
       .footer-divider { display: none; }
     }
   </style>
+
+  <!-- Structured data: WebSite + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.smithtg.com/#website",
+        "name": "Smith Technology Group",
+        "url": "https://www.smithtg.com/",
+        "description": "End-to-end IT infrastructure solutions — strategic hardware procurement, hybrid cloud, and 24/7 managed services.",
+        "publisher": { "@id": "https://www.smithtg.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.smithtg.com/#organization",
+        "name": "Smith Technology Group",
+        "alternateName": "STG",
+        "url": "https://www.smithtg.com/",
+        "logo": "https://www.smithtg.com/Logo.png",
+        "description": "Smith Technology Group is an enterprise IT infrastructure company specializing in strategic hardware procurement, hybrid cloud architecture, and mission-critical managed services. Authorized partner of HP, Dell, and Lenovo with 500+ manufacturer relationships and 35+ years of industry expertise.",
+        "foundingLocation": "United States",
+        "telephone": "+1-760-402-7441",
+        "email": "info@smithtg.com",
+        "sameAs": [
+          "https://www.smithtg.com"
+        ],
+        "areaServed": "United States",
+        "knowsAbout": [
+          "IT Infrastructure",
+          "Hardware Procurement",
+          "Managed IT Services",
+          "Cloud Architecture",
+          "Enterprise Networking",
+          "Data Centre Management"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -450,7 +504,6 @@
     <!-- Hero -->
     <header class="hero">
       <div class="hero-content">
-        <!-- UPDATED badge: removed "Trusted Since 1999", updated to 35+ -->
         <div class="badge">
           <span class="badge-dot" aria-hidden="true"></span>
           35+ Years of Expertise &nbsp;·&nbsp; Built for Enterprise
@@ -467,9 +520,7 @@
           <a href="solutions.html" class="ghost-btn">View Solutions</a>
         </div>
         <div class="hero-stats">
-          <!-- UPDATED: 25+ → 35+ -->
           <div class="stat"><span class="stat-n">35<em>+</em></span><span class="stat-l">Years Experience</span></div>
-          <!-- UPDATED: 3+ Tier-1 OEM Partners → 500+ Manufacturer Partners -->
           <div class="stat"><span class="stat-n">500<em>+</em></span><span class="stat-l">Manufacturer Partners</span></div>
           <div class="stat"><span class="stat-n">24<em>/7</em></span><span class="stat-l">Managed Support</span></div>
         </div>
