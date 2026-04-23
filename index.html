@@ -271,7 +271,6 @@
     }
     .section-header p { font-size: 1.02rem; max-width: 540px; margin: 0 auto; line-height: 1.8; }
 
-    /* Sol-card styles (swapped in from solutions.html) */
     .reveal {
       opacity: 0; transform: translateY(28px);
       transition: opacity .65s var(--ease), transform .65s var(--ease);
@@ -336,6 +335,36 @@
       transition: gap .2s ease, color .2s ease; margin-top: auto;
     }
     .sol-link:hover { gap: 12px; color: var(--teal); }
+
+    /* Industries strip */
+    .industries-strip {
+      background: linear-gradient(155deg, #081828 0%, #003366 55%, #0a3d6b 100%);
+      padding: 88px 8%; position: relative; overflow: hidden;
+    }
+    .industries-strip::before {
+      content: ''; position: absolute; bottom: -20%; right: -8%; width: 440px; height: 440px;
+      background: radial-gradient(circle, rgba(0,196,180,.14), transparent 65%);
+      border-radius: 50%; animation: floatOrb 9s ease-in-out infinite;
+    }
+    .industries-strip::after {
+      content: ''; position: absolute; top: -15%; left: -8%; width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(0,100,200,.11), transparent 65%);
+      border-radius: 50%; animation: floatOrb 13s ease-in-out infinite reverse;
+    }
+    .industries-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
+    .industries-header { margin-bottom: 52px; }
+    .industries-header .eyebrow { color: rgba(0,196,180,.8); }
+    .industries-header h2 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: -.5px; margin-top: 10px; }
+    .ind-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .ind-item {
+      display: flex; align-items: center; gap: 13px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
+      border-radius: 12px; padding: 16px 18px;
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .ind-item:hover { background: rgba(0,196,180,.1); border-color: rgba(0,196,180,.25); }
+    .ind-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    .ind-item span { color: rgba(255,255,255,.72); font-size: .875rem; font-weight: 500; }
 
     #connect {
       background: linear-gradient(155deg, #ecf4ff 0%, #e6f5f4 50%, #eef5ff 100%);
@@ -406,6 +435,8 @@
       .section-header { margin-bottom: 52px; }
       .sol-grid { grid-template-columns: 1fr; gap: 20px; }
       .sol-card { padding: 34px 28px; }
+      .industries-strip { padding: 72px 5%; }
+      .ind-grid { grid-template-columns: 1fr 1fr; }
       .connect-box { padding: 52px 36px; }
       #connect::before, #connect::after { display: none; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -420,6 +451,7 @@
       .ghost-btn { width: 100%; justify-content: center; }
       .section { padding: 68px 4%; }
       .sol-card { padding: 28px 22px; }
+      .ind-grid { grid-template-columns: 1fr; }
       .connect-box { padding: 40px 22px; margin: 0; }
       footer { padding: 36px 4%; }
       .footer-right { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -536,7 +568,7 @@
       </div>
     </header>
 
-    <!-- Services — now using sol-cards from solutions.html -->
+    <!-- Core Solutions -->
     <section class="section" id="services" aria-labelledby="services-heading">
       <div class="section-header">
         <span class="eyebrow">What We Do</span>
@@ -615,7 +647,29 @@
       </div>
     </section>
 
-    <!-- Connect -->
+    <!-- Industries Served — copied from solutions.html -->
+    <section class="industries-strip" aria-labelledby="industries-heading-home">
+      <div class="industries-inner">
+        <div class="industries-header reveal">
+          <span class="eyebrow">Industries Served</span>
+          <h2 id="industries-heading-home">Built for Mission-Critical Environments</h2>
+        </div>
+        <div class="ind-grid reveal">
+          <div class="ind-item"><span class="ind-dot"></span><span>Aerospace &amp; Defense</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Federal Government</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Healthcare &amp; Life Sciences</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Financial Services</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Higher Education</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Energy &amp; Utilities</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Manufacturing</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Telecommunications</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Research &amp; Development</span></div>
+          <div class="ind-item"><span class="ind-dot"></span><span>Transportation &amp; Logistics</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect with a Sales Agent -->
     <section id="connect" class="section" aria-labelledby="connect-heading">
       <div class="connect-box">
         <span class="eyebrow">Let's Talk</span>
