@@ -9,13 +9,13 @@
   <link rel="apple-touch-icon" href="logoicon.png">
 
   <!-- Site identity & SEO -->
-  <meta name="description" content="End-to-end IT infrastructure solutions — strategic hardware procurement, hybrid cloud, and 24/7 managed services. 35+ years of enterprise expertise. 500+ OEM partners.">
+  <meta name="description" content="End-to-end IT infrastructure solutions — strategic hardware procurement, hybrid cloud, and 24/7 managed services. 35+ years of enterprise expertise. 350+ OEM partners.">
   <meta name="author" content="Smith Technology Group">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Smith Technology Group">
   <meta property="og:title" content="Smith Technology Group | IT Infrastructure & Management">
-  <meta property="og:description" content="End-to-end IT infrastructure solutions — strategic hardware procurement, hybrid cloud, and 24/7 managed services. 35+ years of enterprise expertise. 500+ OEM partners.">
+  <meta property="og:description" content="End-to-end IT infrastructure solutions — strategic hardware procurement, hybrid cloud, and 24/7 managed services. 35+ years of enterprise expertise. 350+ OEM partners.">
   <meta property="og:url" content="https://www.smithtg.com/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.smithtg.com/Logo.png">
@@ -125,19 +125,41 @@
     .cta .arr { display: inline-flex; transition: transform .2s var(--ease-back); }
     .cta:hover .arr { transform: translateX(3px); }
 
-    .ghost-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      height: 50px; padding: 0 28px;
+    /* ── Hero primary CTA ── */
+    .hero-cta-primary {
+      display: inline-flex; align-items: center; gap: 9px;
+      height: 52px; padding: 0 34px;
       background: linear-gradient(135deg, var(--teal), var(--teal-dark));
       color: var(--white) !important;
-      border-radius: 99px;
-      font-size: .82rem; font-weight: 700;
+      border-radius: 99px; font-weight: 700; font-size: .9rem;
       text-transform: uppercase; letter-spacing: .8px;
       box-shadow: var(--sh-teal);
-      border: none; cursor: pointer;
-      transition: transform .2s var(--ease-back), box-shadow .2s ease, filter .2s ease;
+      transition: transform .22s var(--ease-back), box-shadow .22s ease, filter .22s ease;
+      white-space: nowrap; border: none; cursor: pointer;
     }
-    .ghost-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 14px 38px rgba(0,196,180,.48); filter: brightness(1.06); }
+    .hero-cta-primary:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 18px 44px rgba(0,196,180,.52); filter: brightness(1.07); }
+    .hero-cta-primary .arr { display: inline-flex; transition: transform .22s var(--ease-back); }
+    .hero-cta-primary:hover .arr { transform: translateX(4px); }
+
+    /* ── Hero secondary CTA (outline ghost) ── */
+    .hero-cta-secondary {
+      display: inline-flex; align-items: center; gap: 9px;
+      height: 52px; padding: 0 32px;
+      background: transparent;
+      color: var(--white) !important;
+      border: 2px solid rgba(255,255,255,.45);
+      border-radius: 99px; font-weight: 700; font-size: .9rem;
+      text-transform: uppercase; letter-spacing: .8px;
+      transition: border-color .22s ease, background .22s ease, transform .22s var(--ease-back);
+      white-space: nowrap; cursor: pointer;
+    }
+    .hero-cta-secondary:hover {
+      border-color: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.1);
+      transform: translateY(-2px);
+    }
+    .hero-cta-secondary .arr { display: inline-flex; transition: transform .22s var(--ease-back); }
+    .hero-cta-secondary:hover .arr { transform: translateX(4px); }
 
     .hamburger {
       display: none;
@@ -198,6 +220,7 @@
     .mobile-cta-row { padding: 16px 7% 4px; }
     .mobile-cta-row .cta { width: 100%; height: 50px; justify-content: center; font-size: .85rem; border-radius: 10px; }
 
+    /* ── Hero ── */
     .hero {
       margin-top: var(--nav-h);
       background:
@@ -205,7 +228,7 @@
         url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80')
         center/cover;
       color: var(--white);
-      padding: 52px 8% 48px;
+      padding: 72px 8% 68px;
       position: relative; overflow: hidden;
       display: flex; flex-direction: column; justify-content: center;
     }
@@ -251,11 +274,56 @@
 
     .hero-actions {
       display: flex; align-items: center; gap: 14px;
-      margin-top: 28px; flex-wrap: wrap;
+      margin-top: 32px; flex-wrap: wrap;
       animation: rise .68s var(--ease) .3s both;
     }
-    .hero-actions .cta { height: 50px; padding: 0 30px; font-size: .875rem; }
 
+    /* ── Trust / Stats Strip ── */
+    .trust-strip {
+      background: linear-gradient(90deg, #081828 0%, #0c2340 50%, #081828 100%);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative; overflow: hidden;
+    }
+    .trust-strip::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(0,196,180,.04) 50%, transparent 100%);
+      pointer-events: none;
+    }
+    .trust-strip-inner {
+      max-width: 1180px; margin: 0 auto;
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .trust-stat {
+      display: flex; align-items: center; gap: 16px;
+      padding: 26px 20px;
+      border-right: 1px solid rgba(255,255,255,.07);
+      transition: background .25s ease;
+    }
+    .trust-stat:last-child { border-right: none; }
+    .trust-stat:hover { background: rgba(0,196,180,.05); }
+    .trust-stat-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 11px;
+      background: linear-gradient(135deg, rgba(0,196,180,.18), rgba(0,51,102,.2));
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(0,196,180,.2);
+    }
+    .trust-stat-icon svg { width: 18px; height: 18px; }
+    .trust-stat-text { display: flex; flex-direction: column; gap: 1px; }
+    .trust-stat-num {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: 1.35rem; color: var(--white); line-height: 1;
+    }
+    .trust-stat-num em { font-style: normal; color: var(--teal); }
+    .trust-stat-label {
+      font-size: .68rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.1px;
+      color: rgba(255,255,255,.38);
+    }
+
+    /* ── Sections ── */
     .section { padding: 110px 8%; }
     .section-header { text-align: center; margin-bottom: 72px; }
     .eyebrow {
@@ -279,6 +347,7 @@
     .reveal-d1 { transition-delay: .1s; }
     .reveal-d2 { transition-delay: .2s; }
 
+    /* ── Solution Cards ── */
     .sol-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -336,7 +405,7 @@
     }
     .sol-link:hover { gap: 12px; color: var(--teal); }
 
-    /* Industries strip */
+    /* ── Industries strip ── */
     .industries-strip {
       background: linear-gradient(155deg, #081828 0%, #003366 55%, #0a3d6b 100%);
       padding: 88px 8%; position: relative; overflow: hidden;
@@ -366,6 +435,7 @@
     .ind-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
     .ind-item span { color: rgba(255,255,255,.72); font-size: .875rem; font-weight: 500; }
 
+    /* ── Connect / CTA ── */
     #connect {
       background: linear-gradient(155deg, #ecf4ff 0%, #e6f5f4 50%, #eef5ff 100%);
       text-align: center; position: relative; overflow: hidden;
@@ -397,8 +467,29 @@
     .connect-box .eyebrow { display: block; margin-bottom: 10px; }
     .connect-box h2 { color: var(--navy); font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -.4px; margin-bottom: 14px; }
     .connect-box > p { font-size: 1.03rem; line-height: 1.78; max-width: 460px; margin: 0 auto; }
-    .connect-box .cta { margin-top: 32px; height: 52px; padding: 0 40px; font-size: .9rem; }
+    .connect-actions {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      margin-top: 32px; flex-wrap: wrap;
+    }
+    .connect-box .cta { height: 52px; padding: 0 36px; font-size: .88rem; }
+    .connect-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: 52px; padding: 0 30px;
+      background: transparent;
+      color: var(--blue-mid) !important;
+      border: 2px solid rgba(10,75,140,.25);
+      border-radius: 99px; font-weight: 700; font-size: .88rem;
+      text-transform: uppercase; letter-spacing: .8px;
+      transition: border-color .22s ease, background .22s ease, transform .22s var(--ease-back);
+      cursor: pointer;
+    }
+    .connect-secondary:hover {
+      border-color: var(--blue-mid);
+      background: rgba(10,75,140,.05);
+      transform: translateY(-2px);
+    }
 
+    /* ── Footer ── */
     footer {
       background: linear-gradient(155deg, #080f1e 0%, #0f2944 100%);
       padding: 44px 8%; position: relative; overflow: hidden;
@@ -422,6 +513,7 @@
 
     @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* ── Responsive ── */
     @media (max-width: 992px) {
       :root { --nav-h: var(--nav-h-sm); }
       #navbar { padding: 0 5%; }
@@ -429,8 +521,13 @@
       #navbar.scrolled .logo img { height: 34px; }
       .menu { display: none; }
       .hamburger { display: flex; }
-      .hero { padding: 44px 6% 40px; background-attachment: scroll; }
+      .hero { padding: 52px 6% 48px; background-attachment: scroll; }
       .hero h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+      .trust-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .trust-stat { border-right: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07); }
+      .trust-stat:nth-child(2) { border-right: none; }
+      .trust-stat:nth-child(3), .trust-stat:nth-child(4) { border-bottom: none; }
+      .trust-stat:nth-child(4) { border-right: none; }
       .section { padding: 84px 6%; }
       .section-header { margin-bottom: 52px; }
       .sol-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -445,14 +542,20 @@
 
     @media (max-width: 480px) {
       #navbar { padding: 0 4%; }
-      .hero { padding: 40px 4% 36px; }
+      .hero { padding: 44px 4% 40px; }
       .hero h1 { font-size: 1.65rem; letter-spacing: -.5px; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
-      .ghost-btn { width: 100%; justify-content: center; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .hero-cta-primary, .hero-cta-secondary { width: 100%; justify-content: center; }
+      .trust-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .trust-stat { padding: 20px 14px; }
+      .trust-stat-icon { width: 34px; height: 34px; border-radius: 9px; }
+      .trust-stat-num { font-size: 1.15rem; }
       .section { padding: 68px 4%; }
       .sol-card { padding: 28px 22px; }
       .ind-grid { grid-template-columns: 1fr; }
       .connect-box { padding: 40px 22px; margin: 0; }
+      .connect-actions { flex-direction: column; }
+      .connect-secondary { width: 100%; justify-content: center; }
       footer { padding: 36px 4%; }
       .footer-right { flex-direction: column; align-items: flex-start; gap: 10px; }
       .footer-divider { display: none; }
@@ -479,13 +582,11 @@
         "alternateName": "STG",
         "url": "https://www.smithtg.com/",
         "logo": "https://www.smithtg.com/Logo.png",
-        "description": "Smith Technology Group is an enterprise IT infrastructure company specializing in strategic hardware procurement, hybrid cloud architecture, and mission-critical managed services. Authorized partner of HP, Dell, and Lenovo with 500+ manufacturer relationships and 35+ years of industry expertise.",
+        "description": "Smith Technology Group is an enterprise IT infrastructure company specializing in strategic hardware procurement, hybrid cloud architecture, and mission-critical managed services.",
         "foundingLocation": "United States",
         "telephone": "+1-760-402-7441",
         "email": "info@smithtg.com",
-        "sameAs": [
-          "https://www.smithtg.com"
-        ],
+        "sameAs": ["https://www.smithtg.com"],
         "areaServed": "United States",
         "knowsAbout": [
           "IT Infrastructure",
@@ -530,7 +631,7 @@
     </button>
   </nav>
 
-  <!-- Dropdown mobile menu -->
+  <!-- Mobile dropdown -->
   <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
     <a href="manufacturers.html">Our Partners</a>
     <a href="solutions.html">Solutions</a>
@@ -555,18 +656,83 @@
           35+ Years of Expertise &nbsp;·&nbsp; Built for Enterprise
         </div>
         <h1>Strategic Infrastructure. <em>Mission-Critical Management.</em></h1>
-        <p>With 35 years of industry leadership, Smith Technology Group provides elite hardware procurement and end-to-end infrastructure management. Through strategic partnerships with leading OEMs, we deliver mission-critical solutions to the most vital sectors—from Biotech and Finance to Aerospace and Defense.</p>
+        <p>With 35 years of industry leadership, Smith Technology Group provides elite hardware procurement and end-to-end infrastructure management. Through strategic partnerships with leading OEMs, we deliver the right technology — on time, on spec, and on budget.</p>
         <div class="hero-actions">
-          <a href="quote.html" class="cta">
+          <a href="quote.html" class="hero-cta-primary">
             Get Started Today
             <span class="arr" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </span>
           </a>
-          <a href="solutions.html" class="ghost-btn">View Solutions</a>
+          <a href="solutions.html" class="hero-cta-secondary">
+            View Solutions
+            <span class="arr" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </a>
         </div>
       </div>
     </header>
+
+    <!-- Trust / Credibility Strip -->
+    <div class="trust-strip" aria-label="Company at a glance">
+      <div class="trust-strip-inner">
+
+        <div class="trust-stat">
+          <div class="trust-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="trust-stat-text">
+            <span class="trust-stat-num">35<em>+</em></span>
+            <span class="trust-stat-label">Years of Experience</span>
+          </div>
+        </div>
+
+        <div class="trust-stat">
+          <div class="trust-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="trust-stat-text">
+            <span class="trust-stat-num">350<em>+</em></span>
+            <span class="trust-stat-label">Manufacturer Partners</span>
+          </div>
+        </div>
+
+        <div class="trust-stat">
+          <div class="trust-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <div class="trust-stat-text">
+            <span class="trust-stat-num">10<em>+</em></span>
+            <span class="trust-stat-label">Industries Served</span>
+          </div>
+        </div>
+
+        <div class="trust-stat">
+          <div class="trust-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 19v3"/>
+            </svg>
+          </div>
+          <div class="trust-stat-text">
+            <span class="trust-stat-num">1<em>-Day</em></span>
+            <span class="trust-stat-label">Quote Response Time</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <!-- Core Solutions -->
     <section class="section" id="services" aria-labelledby="services-heading">
@@ -630,13 +796,13 @@
             </svg>
           </div>
           <h3>Mission-Critical Management</h3>
-          <p>Ensuring operational continuity through robust monitoring, security frameworks, and 24/7 expert support for the systems your business cannot afford to lose.</p>
+          <p>Ensuring operational continuity through robust monitoring, security frameworks, and expert support for the systems your business cannot afford to lose.</p>
           <ul class="feature-list">
             <li>Zero-trust network architecture</li>
             <li>Real-time infrastructure monitoring</li>
             <li>Edge security &amp; software-defined networking</li>
             <li>Disaster recovery &amp; business continuity</li>
-            <li>24/7 NOC &amp; helpdesk support</li>
+            <li>Dedicated account management</li>
           </ul>
           <a href="quote.html" class="sol-link">
             Get a Quote
@@ -647,7 +813,7 @@
       </div>
     </section>
 
-    <!-- Industries Served — copied from solutions.html -->
+    <!-- Industries Served -->
     <section class="industries-strip" aria-labelledby="industries-heading-home">
       <div class="industries-inner">
         <div class="industries-header reveal">
@@ -669,18 +835,24 @@
       </div>
     </section>
 
-    <!-- Connect with a Sales Agent -->
+    <!-- Connect CTA -->
     <section id="connect" class="section" aria-labelledby="connect-heading">
       <div class="connect-box">
         <span class="eyebrow">Let's Talk</span>
-        <h2 id="connect-heading">Connect with a Sales Agent</h2>
-        <p>Need expert guidance?<br>Our team is ready to help you find the right solution.</p>
-        <a href="quote.html" class="cta">
-          Connect Now
-          <span class="arr" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </span>
-        </a>
+        <h2 id="connect-heading">Ready to Get Started?</h2>
+        <p>Whether you have a specific requirement in mind or just want to explore what's possible — our team is ready to help you find the right solution.</p>
+        <div class="connect-actions">
+          <a href="quote.html" class="cta">
+            Request a Quote
+            <span class="arr" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </a>
+          <a href="solutions.html" class="connect-secondary">
+            Explore Solutions
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
