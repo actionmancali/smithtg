@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ── Tokens ── */
     :root {
       --navy:      #0c1e35;
       --blue:      #003366;
@@ -27,6 +26,8 @@
       --nav-h:          96px;
       --nav-h-scrolled: 66px;
       --nav-h-sm:       62px;
+      --jump-h:         52px;
+      --search-h:       48px;
       --sh-sm:  0 2px 12px rgba(0,0,0,.06);
       --sh-md:  0 8px 24px rgba(0,0,0,.10);
       --sh-lg:  0 24px 56px rgba(0,0,0,.13);
@@ -54,7 +55,6 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: linear-gradient(var(--teal), var(--blue-mid)); border-radius: 99px; }
 
-    /* ── Scroll Progress ── */
     #progress {
       position: fixed; top: 0; left: 0;
       height: 3px; width: 0%;
@@ -83,7 +83,6 @@
       -webkit-backdrop-filter: blur(22px) saturate(1.8);
       box-shadow: 0 1px 0 rgba(0,0,0,.07), var(--sh-sm);
     }
-
     .logo { display: flex; align-items: center; }
     .logo img { height: 70px; width: auto; transition: height .32s var(--ease); }
     #navbar.scrolled .logo img { height: 40px; }
@@ -225,11 +224,10 @@
       backdrop-filter: blur(16px) saturate(1.6);
       -webkit-backdrop-filter: blur(16px) saturate(1.6);
       border-bottom: 1px solid rgba(0,0,0,.07);
-      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
       transition: top .32s var(--ease);
     }
-    #navbar.scrolled ~ #jump-bar,
-    body.scrolled #jump-bar { top: var(--nav-h-scrolled); }
+    #navbar.scrolled ~ #jump-bar { top: var(--nav-h-scrolled); }
 
     .jump-inner {
       max-width: 1180px; margin: 0 auto;
@@ -238,7 +236,7 @@
       overflow-x: auto;
       scrollbar-width: none;
       gap: 2px;
-      height: 52px;
+      height: var(--jump-h);
     }
     .jump-inner::-webkit-scrollbar { display: none; }
 
@@ -252,9 +250,90 @@
       white-space: nowrap; flex-shrink: 0;
     }
     .jump-inner a:hover { background: rgba(0,196,180,.12); color: var(--teal-dark); }
-    .jump-inner a.has-items:hover { background: rgba(0,196,180,.15); color: var(--teal-dark); }
-    /* Active letter highlight (set by JS on scroll) */
     .jump-inner a.jump-active { background: var(--teal); color: var(--white); }
+
+    /* ── Disabled jump letters (Y, Z) ── */
+    .jump-disabled {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 32px; height: 32px; padding: 0 4px;
+      border-radius: 7px;
+      color: rgba(90,106,126,.28);
+      font-weight: 700; font-size: .78rem; letter-spacing: .5px;
+      white-space: nowrap; flex-shrink: 0;
+      cursor: not-allowed;
+      user-select: none;
+    }
+
+    /* ── Search Bar ── */
+    #search-bar {
+      position: sticky;
+      top: calc(var(--nav-h) + var(--jump-h));
+      z-index: 1090;
+      background: var(--off-white);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      transition: top .32s var(--ease);
+    }
+    #navbar.scrolled ~ #jump-bar ~ #search-bar { top: calc(var(--nav-h-scrolled) + var(--jump-h)); }
+
+    .search-bar-inner {
+      max-width: 1180px; margin: 0 auto;
+      padding: 0 5%;
+      height: var(--search-h);
+      display: flex; align-items: center; gap: 16px;
+    }
+
+    .search-wrap {
+      flex: 1; max-width: 480px;
+      display: flex; align-items: center; gap: 10px;
+      background: var(--white);
+      border: 1.5px solid rgba(0,0,0,.1);
+      border-radius: 10px;
+      padding: 0 12px;
+      height: 34px;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .search-wrap:focus-within {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0,196,180,.12);
+    }
+    .search-wrap svg { flex-shrink: 0; opacity: .4; transition: opacity .2s ease; }
+    .search-wrap:focus-within svg { opacity: .7; }
+
+    #brand-search {
+      flex: 1; border: none; outline: none; background: transparent;
+      font-family: 'Inter', sans-serif; font-size: .875rem; color: var(--text);
+      min-width: 0;
+    }
+    #brand-search::placeholder { color: var(--muted); opacity: .7; }
+
+    .search-clear {
+      display: none;
+      align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0;
+      background: rgba(0,0,0,.12); border: none;
+      border-radius: 50%; cursor: pointer;
+      color: var(--text); font-size: .7rem; line-height: 1;
+      transition: background .15s ease;
+      padding: 0;
+    }
+    .search-clear:hover { background: rgba(0,0,0,.22); }
+
+    .search-count {
+      font-size: .78rem; font-weight: 600;
+      color: var(--muted); white-space: nowrap;
+      transition: opacity .2s ease;
+    }
+    .search-count.hidden { opacity: 0; pointer-events: none; }
+
+    /* ── No Results ── */
+    #no-results {
+      display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      padding: 80px 20px; text-align: center; gap: 14px;
+    }
+    #no-results svg { opacity: .25; }
+    #no-results p { font-size: 1rem; color: var(--muted); }
+    #no-results strong { color: var(--navy); }
 
     /* ── Brand List ── */
     .list-wrap {
@@ -265,8 +344,7 @@
 
     .letter-section {
       margin-bottom: 56px;
-      /* scroll-margin accounts for nav + jump bar height */
-      scroll-margin-top: calc(var(--nav-h) + 52px + 12px);
+      scroll-margin-top: calc(var(--nav-h) + var(--jump-h) + var(--search-h) + 12px);
       opacity: 0; transform: translateY(22px);
       transition: opacity .55s var(--ease), transform .55s var(--ease);
     }
@@ -284,8 +362,7 @@
       width: 52px; height: 52px;
       border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      box-shadow: var(--sh-md);
+      flex-shrink: 0; box-shadow: var(--sh-md);
     }
     .letter-rule {
       flex: 1; height: 1px;
@@ -311,8 +388,7 @@
     .brand-item {
       background: var(--white);
       padding: 13px 18px;
-      font-size: .9rem;
-      font-weight: 500;
+      font-size: .9rem; font-weight: 500;
       color: var(--text);
       display: flex; align-items: center; gap: 10px;
       transition: background .15s ease, color .15s ease;
@@ -321,14 +397,20 @@
     .brand-item::before {
       content: '';
       width: 5px; height: 5px;
-      background: var(--teal);
-      border-radius: 50%;
-      flex-shrink: 0;
-      opacity: .5;
+      background: var(--teal); border-radius: 50%;
+      flex-shrink: 0; opacity: .5;
       transition: opacity .15s ease, transform .15s ease;
     }
     .brand-item:hover { background: rgba(0,196,180,.06); color: var(--blue-mid); }
     .brand-item:hover::before { opacity: 1; transform: scale(1.4); }
+
+    /* ── highlighted search match ── */
+    .brand-item mark {
+      background: rgba(0,196,180,.22);
+      color: var(--navy);
+      border-radius: 3px;
+      padding: 0 1px;
+    }
 
     /* ── Footer ── */
     footer {
@@ -352,7 +434,6 @@
     .footer-right a:hover { color: var(--teal); }
     .footer-divider { color: rgba(255,255,255,.15); user-select: none; }
 
-    /* ── Keyframes ── */
     @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ── Responsive ── */
@@ -363,17 +444,16 @@
       #navbar.scrolled .logo img { height: 34px; }
       .menu { display: none; }
       .hamburger { display: flex; }
-
       .page-hero { padding: 60px 5% 52px; background-attachment: scroll; }
       .page-hero h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
-
       #jump-bar { top: var(--nav-h-sm); }
+      #navbar.scrolled ~ #jump-bar { top: var(--nav-h-scrolled); }
       .jump-inner { height: 46px; padding: 0 4%; }
-
-      .list-wrap { padding: 44px 4% 80px; }
-      .letter-section { scroll-margin-top: calc(var(--nav-h-sm) + 46px + 12px); }
+      #search-bar { top: calc(var(--nav-h-sm) + 46px); }
+      #navbar.scrolled ~ #jump-bar ~ #search-bar { top: calc(var(--nav-h-scrolled) + 46px); }
+      .search-bar-inner { padding: 0 4%; }
+      .letter-section { scroll-margin-top: calc(var(--nav-h-sm) + 46px + var(--search-h) + 12px); }
       .brand-grid { grid-template-columns: 1fr 1fr; }
-
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
       .footer-right { gap: 16px; }
     }
@@ -384,6 +464,8 @@
       .list-wrap { padding: 36px 4% 64px; }
       .brand-grid { grid-template-columns: 1fr; }
       .letter-char { width: 44px; height: 44px; font-size: 1.6rem; border-radius: 11px; }
+      .search-wrap { max-width: 100%; }
+      .search-count { display: none; }
       footer { padding: 36px 4%; }
       .footer-right { flex-direction: column; align-items: flex-start; gap: 10px; }
       .footer-divider { display: none; }
@@ -443,7 +525,7 @@
         Strategic Partners
       </div>
       <h1>Our <em>Partner</em> Network</h1>
-      <p>From aerospace and defense to enterprise computing and photonics — we maintain authorized relationships with hundreds of the world's most trusted technology manufacturers.</p>
+      <p>From aerospace and defense to enterprise computing and photonics — we maintain authorized relationships with <strong style="color:rgba(255,255,255,.92)">350+ manufacturers</strong> across the world's most trusted technology brands.</p>
     </div>
   </header>
 
@@ -456,12 +538,43 @@
       <a href="#M">M</a><a href="#N">N</a><a href="#O">O</a><a href="#P">P</a>
       <a href="#Q">Q</a><a href="#R">R</a><a href="#S">S</a><a href="#T">T</a>
       <a href="#U">U</a><a href="#V">V</a><a href="#W">W</a><a href="#X">X</a>
+      <span class="jump-disabled" title="No partners listed under Y yet">Y</span>
+      <span class="jump-disabled" title="No partners listed under Z yet">Z</span>
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div id="search-bar" role="search" aria-label="Search partners">
+    <div class="search-bar-inner">
+      <div class="search-wrap">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="6.5" cy="6.5" r="4.5"/><path d="M11 11l3 3"/>
+        </svg>
+        <input type="search" id="brand-search"
+               placeholder="Search 350+ partners…"
+               autocomplete="off" spellcheck="false"
+               aria-label="Search manufacturer partners">
+        <button class="search-clear" id="search-clear" aria-label="Clear search">
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M1 1l8 8M9 1L1 9"/></svg>
+        </button>
+      </div>
+      <span class="search-count hidden" id="search-count" aria-live="polite"></span>
     </div>
   </div>
 
   <!-- Brand List -->
   <main>
     <div class="list-wrap">
+
+      <!-- No results state -->
+      <div id="no-results" role="status">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="10" cy="10" r="7"/><path d="M21 21l-4.35-4.35"/>
+          <path d="M8 10h4M10 8v4" stroke-width="1.8"/>
+        </svg>
+        <p>No partners found for &ldquo;<strong id="no-results-term"></strong>&rdquo;</p>
+        <p style="font-size:.85rem">Try a shorter search term or browse by letter above.</p>
+      </div>
 
       <div class="letter-section" id="A">
         <div class="letter-heading">
@@ -933,7 +1046,7 @@
         <div class="letter-heading">
           <div class="letter-char">S</div>
           <div class="letter-rule"></div>
-          <span class="letter-count">31 partners</span>
+          <span class="letter-count">30 partners</span>
         </div>
         <div class="brand-grid">
           <div class="brand-item">Safran</div>
@@ -1065,16 +1178,15 @@
           <span class="letter-count">3 partners</span>
         </div>
         <div class="brand-grid">
-          <div class="brand-item">X-CelePrint</div>
-          <div class="brand-item">Xilinx</div>
-          <div class="brand-item">Xometry</div>
+          <div class="brand-item">Xcelite</div>
+          <div class="brand-item">Xicato</div>
+          <div class="brand-item">XP Power</div>
         </div>
       </div>
 
-    </div><!-- /list-wrap -->
+    </div><!-- /.list-wrap -->
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-inner">
       <div class="footer-left">
@@ -1093,14 +1205,13 @@
 
   <script>
     (() => {
+      /* ── Mobile menu ── */
       const navbar   = document.getElementById('navbar');
       const btn      = document.getElementById('hamburger');
       const dropdown = document.getElementById('mobile-menu');
-      const jumpBar  = document.getElementById('jump-bar');
       const bar      = document.getElementById('progress');
       let isOpen = false;
 
-      /* ── Mobile menu ── */
       const openMenu = () => {
         isOpen = true;
         dropdown.style.display = 'flex';
@@ -1121,6 +1232,7 @@
         }, { once: true });
         btn.focus();
       };
+
       btn.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
       document.addEventListener('keydown', e => e.key === 'Escape' && isOpen && closeMenu());
       dropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
@@ -1128,50 +1240,140 @@
         if (isOpen && !navbar.contains(e.target) && !dropdown.contains(e.target)) closeMenu();
       });
 
-      /* ── Scroll: nav + progress + jump-bar top offset ── */
+      /* ── Scroll progress + nav shrink ── */
+      const searchBar = document.getElementById('search-bar');
       const onScroll = () => {
         const scrolled = window.scrollY > 40;
         navbar.classList.toggle('scrolled', scrolled);
-
-        // Adjust jump bar top to match whichever nav height is active
-        const navH = scrolled
-          ? getComputedStyle(document.documentElement).getPropertyValue('--nav-h-scrolled').trim()
-          : getComputedStyle(document.documentElement).getPropertyValue('--nav-h').trim();
-        jumpBar.style.top = navH;
-
-        // Progress bar
         const total = document.documentElement.scrollHeight - window.innerHeight;
         bar.style.width = total > 0 ? `${(window.scrollY / total * 100).toFixed(1)}%` : '0%';
-
-        // Highlight active jump letter
-        highlightLetter();
+        // Keep search-bar top in sync with scrolled nav
+        if (scrolled) {
+          searchBar.style.top = `calc(var(--nav-h-scrolled) + var(--jump-h))`;
+        } else {
+          searchBar.style.top = `calc(var(--nav-h) + var(--jump-h))`;
+        }
       };
       window.addEventListener('scroll', onScroll, { passive: true });
 
-      /* ── Highlight active letter in jump bar ── */
-      const sections   = document.querySelectorAll('.letter-section');
-      const jumpLinks  = document.querySelectorAll('#jump-bar a');
-      const navHSm     = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h-sm'));
-      const jumpH      = 52;
-      const offset     = navHSm + jumpH + 16;
-
-      function highlightLetter() {
-        let active = null;
-        sections.forEach(sec => {
-          if (sec.getBoundingClientRect().top <= offset + 10) active = sec.id;
-        });
-        jumpLinks.forEach(a => {
-          a.classList.toggle('jump-active', a.getAttribute('href') === `#${active}`);
-        });
-      }
-
-      /* ── Scroll-reveal ── */
-      const observer = new IntersectionObserver(entries => {
+      /* ── Reveal on scroll ── */
+      const revealObs = new IntersectionObserver(entries => {
         entries.forEach(({ target, isIntersecting }) => {
-          if (isIntersecting) { target.classList.add('visible'); observer.unobserve(target); }
+          if (isIntersecting) { target.classList.add('visible'); revealObs.unobserve(target); }
         });
       }, { threshold: .06 });
-      sections.forEach(el => observer.observe(el));
+      document.querySelectorAll('.letter-section').forEach(el => revealObs.observe(el));
+
+      /* ── Active jump letter on scroll ── */
+      const jumpLinks  = document.querySelectorAll('#jump-bar .jump-inner a');
+      const sections   = document.querySelectorAll('.letter-section');
+      const activeObs  = new IntersectionObserver(entries => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting) {
+            jumpLinks.forEach(a => a.classList.remove('jump-active'));
+            const active = document.querySelector(`#jump-bar a[href="#${target.id}"]`);
+            if (active) {
+              active.classList.add('jump-active');
+              active.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+            }
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(s => activeObs.observe(s));
+
+      /* ── Live search ── */
+      const searchInput  = document.getElementById('brand-search');
+      const searchClear  = document.getElementById('search-clear');
+      const searchCount  = document.getElementById('search-count');
+      const noResults    = document.getElementById('no-results');
+      const noResultsTerm = document.getElementById('no-results-term');
+      const allItems     = document.querySelectorAll('.brand-item');
+      const allSections  = document.querySelectorAll('.letter-section');
+
+      function escapeRegex(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+
+      function filterBrands() {
+        const raw = searchInput.value;
+        const q   = raw.trim().toLowerCase();
+
+        // Toggle clear button
+        searchClear.style.display = q ? 'flex' : 'none';
+
+        if (!q) {
+          // Reset everything
+          allItems.forEach(el => {
+            el.style.display = '';
+            // Remove any highlight markup
+            if (el.dataset.original) {
+              el.textContent = el.dataset.original;
+              delete el.dataset.original;
+            }
+          });
+          allSections.forEach(el => { el.style.display = ''; });
+          noResults.style.display = 'none';
+          searchCount.textContent = '';
+          searchCount.classList.add('hidden');
+          return;
+        }
+
+        const re = new RegExp(`(${escapeRegex(q)})`, 'gi');
+        let total = 0;
+
+        allSections.forEach(section => {
+          const items = section.querySelectorAll('.brand-item');
+          let visible = 0;
+
+          items.forEach(item => {
+            // Store original text once
+            if (!item.dataset.original) item.dataset.original = item.textContent;
+            const text = item.dataset.original;
+            const match = text.toLowerCase().includes(q);
+
+            if (match) {
+              item.style.display = '';
+              // Highlight match
+              item.innerHTML = text.replace(re, '<mark>$1</mark>');
+              visible++;
+              total++;
+            } else {
+              item.style.display = 'none';
+              item.textContent = text; // clear any old highlight
+            }
+          });
+
+          section.style.display = visible > 0 ? '' : 'none';
+        });
+
+        // Update count
+        searchCount.textContent = total === 1 ? '1 match' : `${total} matches`;
+        searchCount.classList.remove('hidden');
+
+        // No results state
+        if (total === 0) {
+          noResults.style.display = 'flex';
+          noResultsTerm.textContent = raw.trim();
+        } else {
+          noResults.style.display = 'none';
+        }
+      }
+
+      searchInput.addEventListener('input', filterBrands);
+
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        filterBrands();
+        searchInput.focus();
+      });
+
+      // Also clear on Escape when input is focused
+      searchInput.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          searchInput.value = '';
+          filterBrands();
+        }
+      });
     })();
   </script>
 
