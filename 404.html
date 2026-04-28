@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Page Not Found | Smith Technology Group</title>
+  <link rel="icon" type="image/png" href="logoicon.png">
+  <link rel="apple-touch-icon" href="logoicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:      #0c1e35;
+      --blue:      #003366;
+      --blue-mid:  #0a4b8c;
+      --teal:      #00c4b4;
+      --teal-dark: #009e90;
+      --white:     #ffffff;
+      --off-white: #f5f9fd;
+      --text:      #0c1e35;
+      --muted:     #5a6a7e;
+      --sh-teal:   0 8px 28px rgba(0,196,180,.38);
+      --ease:      cubic-bezier(.22,1,.36,1);
+      --ease-back: cubic-bezier(.34,1.56,.64,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: linear-gradient(155deg, #ecf4ff 0%, #e6f5f4 50%, #eef5ff 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    h1, h2 { font-family: 'Poppins', sans-serif; line-height: 1.1; }
+    p { color: var(--muted); }
+    a { text-decoration: none; }
+
+    .error-container {
+      max-width: 600px;
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: 0 24px 56px rgba(0,0,0,.13);
+      padding: 60px 50px;
+      text-align: center;
+      border: 1px solid rgba(0,0,0,.05);
+      animation: fadeIn 0.6s var(--ease);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .error-code {
+      font-size: 7rem;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--blue-mid));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .error-title {
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+      letter-spacing: -.5px;
+    }
+
+    .error-description {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .error-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      height: 52px;
+      padding: 0 34px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: var(--white) !important;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      box-shadow: var(--sh-teal);
+      transition: transform .22s var(--ease-back), box-shadow .22s ease, filter .22s ease;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 18px 44px rgba(0,196,180,.52);
+      filter: brightness(1.07);
+    }
+
+    .btn-primary .arr {
+      display: inline-flex;
+      transition: transform .22s var(--ease-back);
+    }
+
+    .btn-primary:hover .arr {
+      transform: translateX(4px);
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .quick-links a {
+      color: var(--blue-mid);
+      font-weight: 600;
+      font-size: .9rem;
+      transition: color .2s ease;
+    }
+
+    .quick-links a:hover {
+      color: var(--teal);
+    }
+
+    .logo-link {
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    .logo-link img {
+      height: 60px;
+      width: auto;
+    }
+
+    @media (max-width: 600px) {
+      .error-container {
+        padding: 40px 30px;
+      }
+
+      .error-code {
+        font-size: 5rem;
+      }
+
+      .error-title {
+        font-size: 1.5rem;
+      }
+
+      .error-description {
+        font-size: .95rem;
+      }
+
+      .quick-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-container">
+    <a href="/" class="logo-link">
+      <img src="./Logo.png" alt="Smith Technology Group">
+    </a>
+
+    <div class="error-code">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-description">
+      Sorry, we couldn't find the page you're looking for. It may have been moved or doesn't exist.
+    </p>
+
+    <div class="error-actions">
+      <a href="/" class="btn-primary">
+        Back to Home
+        <span class="arr" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </span>
+      </a>
+
+      <div class="quick-links">
+        <a href="/solutions">Solutions</a>
+        <a href="/manufacturers">Our Partners</a>
+        <a href="/aboutus">Who We Are</a>
+        <a href="/quote">Request Quote</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
