@@ -255,6 +255,51 @@
     .img-card-badge strong { color: var(--white); font-size: 1.4rem; font-family: 'Poppins', sans-serif; line-height: 1; }
     .img-card-badge span { color: rgba(255,255,255,.5); font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; }
 
+    /* ── Trust Strip (from index.html) ── */
+    .trust-strip {
+      background: linear-gradient(90deg, #081828 0%, #0c2340 50%, #081828 100%);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative; overflow: hidden;
+    }
+    .trust-strip::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(0,196,180,.04) 50%, transparent 100%);
+      pointer-events: none;
+    }
+    .trust-strip-inner {
+      max-width: 1180px; margin: 0 auto;
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .trust-stat {
+      display: flex; align-items: center; gap: 16px;
+      padding: 26px 20px;
+      border-right: 1px solid rgba(255,255,255,.07);
+      transition: background .25s ease;
+    }
+    .trust-stat:last-child { border-right: none; }
+    .trust-stat:hover { background: rgba(0,196,180,.05); }
+    .trust-stat-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 11px;
+      background: linear-gradient(135deg, rgba(0,196,180,.18), rgba(0,51,102,.2));
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(0,196,180,.2);
+    }
+    .trust-stat-icon svg { width: 18px; height: 18px; }
+    .trust-stat-text { display: flex; flex-direction: column; gap: 1px; }
+    .trust-stat-num {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: 1.35rem; color: var(--white); line-height: 1;
+    }
+    .trust-stat-num em { font-style: normal; color: var(--teal); }
+    .trust-stat-label {
+      font-size: .68rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.1px;
+      color: rgba(255,255,255,.38);
+    }
+
     .values-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -284,32 +329,6 @@
     .value-icon svg { width: 22px; height: 22px; }
     .value-card h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 10px; }
     .value-card p { font-size: .93rem; line-height: 1.75; }
-
-    .stats-row {
-      display: flex; justify-content: center; flex-wrap: wrap;
-      gap: 0; max-width: 900px; margin: 0 auto;
-      border-radius: 20px; overflow: hidden;
-      box-shadow: var(--sh-lg);
-    }
-    .stat-block {
-      flex: 1; min-width: 180px;
-      background: var(--navy);
-      padding: 40px 28px; text-align: center;
-      border-right: 1px solid rgba(255,255,255,.07);
-      transition: background .3s ease;
-    }
-    .stat-block:last-child { border-right: none; }
-    .stat-block:hover { background: var(--blue-mid); }
-    .stat-block .num {
-      font-family: 'Poppins', sans-serif; font-weight: 800;
-      font-size: 2.4rem; color: var(--white); line-height: 1;
-      margin-bottom: 8px;
-    }
-    .stat-block .num em { font-style: normal; color: var(--teal); }
-    .stat-block .lbl {
-      font-size: .72rem; text-transform: uppercase; letter-spacing: 1.2px;
-      color: rgba(255,255,255,.4);
-    }
 
     .team-grid {
       display: grid;
@@ -394,10 +413,12 @@
       .two-col { grid-template-columns: 1fr; gap: 44px; }
       .img-card { order: -1; }
       .img-card img { min-height: 280px; }
+      .trust-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .trust-stat { border-right: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07); }
+      .trust-stat:nth-child(2) { border-right: none; }
+      .trust-stat:nth-child(3), .trust-stat:nth-child(4) { border-bottom: none; }
+      .trust-stat:nth-child(4) { border-right: none; }
       .values-grid { gap: 18px; }
-      .stats-row { flex-direction: column; border-radius: 18px; }
-      .stat-block { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); padding: 30px 24px; }
-      .stat-block:last-child { border-bottom: none; }
       .team-grid { grid-template-columns: 1fr 1fr; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
       .footer-right { gap: 16px; }
@@ -407,6 +428,10 @@
       #navbar { padding: 0 4%; }
       .page-hero { padding: 52px 4% 48px; }
       .section { padding: 64px 4%; }
+      .trust-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .trust-stat { padding: 20px 14px; }
+      .trust-stat-icon { width: 34px; height: 34px; border-radius: 9px; }
+      .trust-stat-num { font-size: 1.15rem; }
       .team-grid { grid-template-columns: 1fr; }
       .cta-strip { padding: 72px 4%; }
       footer { padding: 36px 4%; }
@@ -470,7 +495,7 @@
           Our Story
         </div>
         <h1>Built on Expertise. Driven by <em>Results.</em></h1>
-        <p>Smith Technology Group was founded by an industry veteran with over 35 years of hands-on enterprise IT experience — bringing deep technical knowledge, trusted manufacturer relationships, and a client-first approach to every engagement.</p>
+        <p>Smith Technology Group was founded by an industry veteran with over 35 years of hands-on enterprise IT experience — bringing deep technical knowledge, trusted manufacturer relationships, and a commitment to client success.</p>
       </div>
     </header>
 
@@ -480,9 +505,9 @@
         <div class="two-col-text reveal">
           <span class="eyebrow">Our Story</span>
           <h2 id="story-heading">35 Years of Industry Experience, One Focused Mission</h2>
-          <p>Smith Technology Group was built on a single conviction: enterprises deserve a technology partner who has actually lived the challenges they face — not just read about them. Our founder, Steven Smith, brings more than 35 years of direct enterprise IT experience to every client relationship, spanning hardware procurement, infrastructure architecture, and mission-critical managed services.</p>
-          <p>That depth of expertise shapes everything we do. From day one, we set out to build a firm that combines the agility and personal attention of a specialized boutique with the OEM access and technical capability typically reserved for much larger organizations.</p>
-          <p>Today, Smith Technology Group serves clients across a wide range of industries — delivering everything from compute and networking hardware to cloud strategy and 24/7 managed support, backed by direct relationships with HP, Dell, Lenovo, and hundreds of leading manufacturers.</p>
+          <p>Smith Technology Group was built on a single conviction: enterprises deserve a technology partner who has actually lived the challenges they face — not just read about them. Our founder brings over 35 years of direct, hands-on IT experience across enterprise compute, networking, storage, and cloud infrastructure. That's three and a half decades of navigating vendor ecosystems, architecting resilient systems, and solving mission-critical problems in real-world production environments.</p>
+          <p>That depth of expertise shapes everything we do. From day one, we set out to build a firm that combines the agility and personal attention of a specialized boutique with the OEM access and procurement power typically reserved for large integrators. It's a model that puts your goals first — without the friction of bloated org charts or one-size-fits-all playbooks.</p>
+          <p>Today, Smith Technology Group serves clients across a wide range of industries — delivering everything from compute and networking hardware to cloud strategy and 24/7 managed support. We take pride in earning long-term partnerships built on trust, transparency, and tangible results.</p>
         </div>
         <div class="img-card reveal reveal-d1">
           <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80"
@@ -496,27 +521,65 @@
       </div>
     </section>
 
-    <!-- ③ Stats — removed "3+ Tier-1 OEM Partners", updated "25+" → "35+" -->
-    <section class="section section-alt" aria-label="Company highlights">
-      <div class="stats-row reveal">
-        <div class="stat-block">
-          <div class="num">35<em>+</em></div>
-          <div class="lbl">Years Experience</div>
+    <!-- Trust / Stats Strip (from index.html) -->
+    <div class="trust-strip" aria-label="Company at a glance">
+      <div class="trust-strip-inner">
+
+        <div class="trust-stat">
+          <div class="trust-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="trust-stat-text">
+            <span class="trust-stat-num">35<em>+</em></span>
+            <span class="trust-stat-label">Years of Experience</span>
+          </div>
         </div>
-        <div class="stat-block">
-          <div class="num">500<em>+</em></div>
-          <div class="lbl">Manufacturer Partners</div>
+
+        <div class="trust-stat">
+          <div class="trust-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="trust-stat-text">
+            <span class="trust-stat-num">350<em>+</em></span>
+            <span class="trust-stat-label">Manufacturer Partners</span>
+          </div>
         </div>
-        <div class="stat-block">
-          <div class="num">24<em>/7</em></div>
-          <div class="lbl">Managed Support</div>
+
+        <div class="trust-stat">
+          <div class="trust-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <div class="trust-stat-text">
+            <span class="trust-stat-num">10<em>+</em></span>
+            <span class="trust-stat-label">Industries Served</span>
+          </div>
         </div>
-        <div class="stat-block">
-          <div class="num">100<em>%</em></div>
-          <div class="lbl">Client Focused</div>
+
+        <div class="trust-stat">
+          <div class="trust-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 19.92z"/>
+            </svg>
+          </div>
+          <div class="trust-stat-text">
+            <span class="trust-stat-num">1<em>-Day</em></span>
+            <span class="trust-stat-label">Quote Response Time</span>
+          </div>
         </div>
+
       </div>
-    </section>
+    </div>
 
     <!-- Values — unchanged -->
     <section class="section" aria-labelledby="values-heading">
