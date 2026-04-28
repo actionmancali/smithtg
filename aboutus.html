@@ -210,12 +210,20 @@
 
     .section { padding: 100px 8%; }
     .section-alt { background: var(--off-white); }
+    .section-header { text-align: center; margin-bottom: 62px; }
 
     .eyebrow {
       display: inline-block; font-size: .95rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 2px;
       color: var(--teal-dark); margin-bottom: 12px;
     }
+
+    .section-header h2 {
+      color: var(--navy);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: -.5px; margin-bottom: 16px;
+    }
+    .section-header p { font-size: 1.02rem; max-width: 620px; margin: 0 auto; line-height: 1.8; }
 
     .reveal {
       opacity: 0; transform: translateY(28px);
@@ -225,6 +233,8 @@
     .reveal-d1 { transition-delay: .08s; }
     .reveal-d2 { transition-delay: .18s; }
     .reveal-d3 { transition-delay: .28s; }
+    .reveal-d4 { transition-delay: .38s; }
+    .reveal-d5 { transition-delay: .48s; }
 
     .two-col {
       max-width: 1180px; margin: 0 auto;
@@ -330,28 +340,93 @@
     .value-card h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 10px; }
     .value-card p { font-size: .93rem; line-height: 1.75; }
 
+    /* ── Updated Team Grid - tightened spacing ── */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 26px; max-width: 900px; margin: 0 auto;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1220px; 
+      margin: 0 auto;
     }
     .team-card {
       background: var(--white); border-radius: 18px;
       border: 1px solid rgba(0,0,0,.06); box-shadow: var(--sh-sm);
-      padding: 36px 28px; text-align: center;
+      padding: 32px 26px;
+      text-align: center;
       transition: transform .38s var(--ease), box-shadow .38s ease;
+      position: relative; overflow: hidden;
     }
+    .team-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+      border-radius: 18px 18px 0 0; opacity: 0; transition: opacity .3s ease;
+    }
+    .team-card:hover::after { opacity: 1; }
     .team-card:hover { transform: translateY(-8px); box-shadow: var(--sh-lg); }
+    
+    /* ── Fixed-width Rounded Rectangle Badge (Pill Shape) ── */
     .avatar {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--teal));
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px; font-family: 'Poppins', sans-serif;
-      font-size: 1.5rem; font-weight: 800; color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 130px;  /* FIXED WIDTH - all badges same size */
+      height: 32px;
+      border-radius: 99px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      margin: 0 auto 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .8px;
       box-shadow: var(--sh-teal);
     }
-    .team-card h4 { color: var(--navy); font-size: 1.05rem; margin-bottom: 4px; }
-    .team-card .role { font-size: .78rem; color: var(--teal-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    
+    .team-card h4 { 
+      color: var(--navy); 
+      font-size: 1.12rem; 
+      margin-bottom: 5px;
+      letter-spacing: -.3px;
+    }
+    .team-card .role { 
+      font-size: .74rem; 
+      color: var(--teal-dark); 
+      font-weight: 600; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+      margin-bottom: 12px;
+    }
+    .team-card .statement {
+      font-size: .87rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+    .team-card .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .79rem;
+      font-weight: 600;
+      color: var(--blue-mid);
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: rgba(0,196,180,.08);
+      border: 1px solid rgba(0,196,180,.15);
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .team-card .email-link:hover {
+      background: rgba(0,196,180,.15);
+      border-color: rgba(0,196,180,.3);
+      transform: translateY(-2px);
+      color: var(--teal-dark);
+    }
+    .team-card .email-link svg {
+      width: 14px;
+      height: 14px;
+    }
 
     .cta-strip {
       background: linear-gradient(155deg, #081828 0%, #003366 55%, #0a3d6b 100%);
@@ -419,7 +494,7 @@
       .trust-stat:nth-child(3), .trust-stat:nth-child(4) { border-bottom: none; }
       .trust-stat:nth-child(4) { border-right: none; }
       .values-grid { gap: 18px; }
-      .team-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
       .footer-right { gap: 16px; }
     }
@@ -433,6 +508,7 @@
       .trust-stat-icon { width: 34px; height: 34px; border-radius: 9px; }
       .trust-stat-num { font-size: 1.15rem; }
       .team-grid { grid-template-columns: 1fr; }
+      .team-card { padding: 28px 22px; }
       .cta-strip { padding: 72px 4%; }
       footer { padding: 36px 4%; }
       .footer-right { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -637,29 +713,105 @@
       </div>
     </section>
 
-    <!-- ④ Leadership — name and initials updated -->
+    <!-- Leadership Section — Fixed-width badges -->
     <section class="section section-alt" aria-labelledby="team-heading">
       <div class="section-header">
-        <span class="eyebrow">Leadership</span>
-        <h2 id="team-heading">The Team Behind the Work</h2>
-        <p>Experienced professionals who bring decades of enterprise IT expertise to every engagement.</p>
+        <span class="eyebrow">Our Team</span>
+        <h2 id="team-heading">Dedicated Expertise Across Every Function</h2>
+        <p>Specialized divisions working together to deliver seamless, enterprise-grade solutions and support.</p>
       </div>
       <div class="team-grid">
+
+        <!-- Management -->
         <div class="team-card reveal">
-          <div class="avatar" aria-hidden="true">SS</div>
+          <div class="avatar">Management</div>
           <h4>Steven Smith</h4>
           <p class="role">Founder &amp; CEO</p>
+          <p class="statement"><strong>Leading with 35+ years of enterprise IT expertise.</strong> Hands-on strategic guidance for every client engagement.</p>
+          <a href="mailto:steve@smithtg.com" class="email-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            steve@smithtg.com
+          </a>
         </div>
+
+        <!-- Sales -->
         <div class="team-card reveal reveal-d1">
-          <div class="avatar" aria-hidden="true">ST</div>
+          <div class="avatar">Sales</div>
           <h4>Sales Team</h4>
           <p class="role">Enterprise Solutions</p>
+          <p class="statement"><strong>Your trusted advisors for complex technology needs.</strong> We listen first, recommend second, and deliver always.</p>
+          <a href="mailto:sales@smithtg.com" class="email-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            sales@smithtg.com
+          </a>
         </div>
+
+        <!-- Purchasing -->
         <div class="team-card reveal reveal-d2">
-          <div class="avatar" aria-hidden="true">OPS</div>
-          <h4>Operations</h4>
-          <p class="role">Logistics &amp; Procurement</p>
+          <div class="avatar">Purchasing</div>
+          <h4>Purchasing Team</h4>
+          <p class="role">Strategic Procurement</p>
+          <p class="statement"><strong>Securing optimal hardware at the best value.</strong> Direct OEM relationships and volume leverage working for you.</p>
+          <a href="mailto:purchasing@smithtg.com" class="email-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            purchasing@smithtg.com
+          </a>
         </div>
+
+        <!-- Logistics -->
+        <div class="team-card reveal reveal-d3">
+          <div class="avatar">Logistics</div>
+          <h4>Logistics Team</h4>
+          <p class="role">Shipping &amp; Coordination</p>
+          <p class="statement"><strong>On-time delivery, every time.</strong> Coordinating seamless deployments from warehouse to data center floor.</p>
+          <a href="mailto:shipping@smithtg.com" class="email-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            shipping@smithtg.com
+          </a>
+        </div>
+
+        <!-- Support -->
+        <div class="team-card reveal reveal-d4">
+          <div class="avatar">Support</div>
+          <h4>Technical Support</h4>
+          <p class="role">24/7 Expert Assistance</p>
+          <p class="statement"><strong>Mission-critical systems demand mission-critical support.</strong> Always available when you need us most.</p>
+          <a href="mailto:support@smithtg.com" class="email-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            support@smithtg.com
+          </a>
+        </div>
+
+        <!-- Accounting -->
+        <div class="team-card reveal reveal-d5">
+          <div class="avatar">Accounting</div>
+          <h4>Accounting Team</h4>
+          <p class="role">Finance &amp; Accounts Payable</p>
+          <p class="statement"><strong>Transparent billing and seamless financial operations.</strong> Making procurement painless from quote to payment.</p>
+          <a href="mailto:ap@smithtg.com" class="email-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            ap@smithtg.com
+          </a>
+        </div>
+
       </div>
     </section>
 
