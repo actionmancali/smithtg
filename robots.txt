@@ -1,6 +1,10 @@
-# Gridworx Games - Allow all crawlers
+# robots.txt for smithtg.com
+
 User-agent: *
 Allow: /
 
-# Sitemap for search engines
-Sitemap: https://smithtg.com/sitemap.xml
+# Sitemap location
+Sitemap: https://www.smithtg.com/sitemap.xml
+
+# Crawl-delay (optional, adjust if needed)
+Crawl-delay: 1
