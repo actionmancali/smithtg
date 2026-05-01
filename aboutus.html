@@ -3,22 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Who We Are | Smith Technology Group</title>
+  <title>Who We Are | Smith Technology Group - Strategic Procurement & Mission-Critical Management</title>
   <link rel="canonical" href="https://www.smithtg.com/aboutus">
   <link rel="icon" type="image/png" href="logoicon.png">
   <link rel="apple-touch-icon" href="logoicon.png">
   
   <!-- Site identity & SEO -->
-  <meta name="description" content="Learn about Smith Technology Group's 35+ years of enterprise IT expertise. Meet our specialized team delivering strategic procurement, infrastructure, and managed services.">
+  <meta name="description" content="Learn about Smith Technology Group's 35+ years of enterprise IT expertise. SAM.gov registered (UEI: MXYGG82VRA93, CAGE: 1ZP65), California Certified Small Business #2051852. Meet our specialized team delivering strategic procurement, infrastructure, and mission-critical management.">
   <meta name="author" content="Smith Technology Group">
+  <meta name="keywords" content="Smith Technology Group, STG, about us, our team, company history, UEI MXYGG82VRA93, CAGE Code 1ZP65, California Small Business 2051852, 35 years experience, enterprise IT expertise, strategic procurement, mission-critical management, Steven Smith CEO, SAM.gov registered, federal contractor">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Smith Technology Group">
   <meta property="og:title" content="Who We Are | Smith Technology Group">
-  <meta property="og:description" content="Learn about Smith Technology Group's 35+ years of enterprise IT expertise. Meet our specialized team delivering strategic procurement, infrastructure, and managed services.">
+  <meta property="og:description" content="Learn about Smith Technology Group's 35+ years of enterprise IT expertise. SAM.gov registered (UEI: MXYGG82VRA93, CAGE: 1ZP65), California Certified Small Business #2051852. Meet our specialized team delivering strategic procurement and mission-critical management.">
   <meta property="og:url" content="https://www.smithtg.com/aboutus">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.smithtg.com/Logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Who We Are | Smith Technology Group">
+  <meta name="twitter:description" content="35+ years of enterprise IT expertise. SAM.gov registered (UEI: MXYGG82VRA93, CAGE: 1ZP65). Meet the team behind strategic procurement & mission-critical management.">
+  <meta name="twitter:image" content="https://www.smithtg.com/Logo.png">
+
+  <!-- Additional SEO -->
+  <meta name="geo.region" content="US-CA">
+  <meta name="geo.placename" content="California">
+  <meta name="coverage" content="Worldwide">
+  <meta name="distribution" content="Global">
+  <meta name="rating" content="General">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -155,7 +171,7 @@
       transform: translateY(-8px); opacity: 0;
       transition: transform .28s var(--ease), opacity .22s ease;
     }
-    #mobile-menu.open { transform: translateY(0); opacity: 1; }
+    #mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; }
     #mobile-menu a {
       color: var(--text); font-family: 'Poppins', sans-serif;
       font-size: 1.05rem; font-weight: 700;
@@ -173,13 +189,14 @@
     .mobile-cta-row { padding: 16px 7% 4px; }
     .mobile-cta-row .cta { width: 100%; height: 50px; justify-content: center; font-size: .85rem; border-radius: 10px; }
 
+    /* ── Hero (100px → 80px = -20%) ── */
     .page-hero {
       margin-top: var(--nav-h);
       background:
         linear-gradient(155deg, rgba(8,22,48,.94) 0%, rgba(0,51,102,.88) 50%, rgba(10,70,130,.85) 100%),
         url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1920&q=80')
         center/cover;
-      padding: 72px 8% 68px;
+      padding: 58px 8% 54px;
       position: relative; overflow: hidden;
     }
     .page-hero::before {
@@ -220,9 +237,12 @@
       animation: rise .68s var(--ease) .2s both;
     }
 
-    .section { padding: 100px 8%; }
+    /* ── Section padding (100px → 80px = -20%) ── */
+    .section { padding: 80px 8%; }
     .section-alt { background: var(--off-white); }
-    .section-header { text-align: center; margin-bottom: 62px; }
+    
+    /* ── Section header margin (62px → 50px ≈ -20%) ── */
+    .section-header { text-align: center; margin-bottom: 50px; }
 
     .eyebrow {
       display: inline-block; font-size: .95rem; font-weight: 700;
@@ -248,11 +268,12 @@
     .reveal-d4 { transition-delay: .38s; }
     .reveal-d5 { transition-delay: .48s; }
 
+    /* ── Two column gap (80px → 64px = -20%) ── */
     .two-col {
       max-width: 1180px; margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 64px;
       align-items: center;
     }
     .two-col-text h2 {
@@ -277,7 +298,7 @@
     .img-card-badge strong { color: var(--white); font-size: 1.4rem; font-family: 'Poppins', sans-serif; line-height: 1; }
     .img-card-badge span { color: rgba(255,255,255,.5); font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* ── Trust Strip (from index.html) ── */
+    /* ── Trust Strip ── */
     .trust-strip {
       background: linear-gradient(90deg, #081828 0%, #0c2340 50%, #081828 100%);
       border-bottom: 1px solid rgba(255,255,255,.06);
@@ -352,7 +373,6 @@
     .value-card h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 10px; }
     .value-card p { font-size: .93rem; line-height: 1.75; }
 
-    /* ── Updated Team Grid - tightened spacing ── */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -376,12 +396,11 @@
     .team-card:hover::after { opacity: 1; }
     .team-card:hover { transform: translateY(-8px); box-shadow: var(--sh-lg); }
     
-    /* ── Fixed-width Rounded Rectangle Badge (Pill Shape) ── */
     .avatar {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 130px;  /* FIXED WIDTH - all badges same size */
+      width: 130px;
       height: 32px;
       border-radius: 99px;
       background: linear-gradient(135deg, var(--teal), var(--teal-dark));
@@ -440,9 +459,10 @@
       height: 14px;
     }
 
+    /* ── CTA Strip padding (88px → 70px ≈ -20%) ── */
     .cta-strip {
       background: linear-gradient(155deg, #081828 0%, #003366 55%, #0a3d6b 100%);
-      padding: 88px 8%;
+      padding: 70px 8%;
       text-align: center; position: relative; overflow: hidden;
     }
     .cta-strip::before {
@@ -466,7 +486,7 @@
 
     footer {
       background: linear-gradient(155deg, #080f1e 0%, #0f2944 100%);
-      padding: 44px 8%; position: relative; overflow: hidden;
+      padding: 35px 8%; position: relative; overflow: hidden;
     }
     footer::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -480,8 +500,52 @@
     .footer-left { display: flex; flex-direction: column; gap: 4px; }
     .footer-left strong { color: var(--white); font-size: .92rem; font-weight: 700; letter-spacing: -.1px; }
     .footer-left span { color: rgba(255,255,255,.32); font-size: .78rem; letter-spacing: .2px; }
+    .footer-certs {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: rgba(255,255,255,.5);
+      padding: 4px 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .footer-cert-badge:hover {
+      background: rgba(0,196,180,.1);
+      border-color: rgba(0,196,180,.3);
+      color: var(--teal);
+    }
+    .footer-cert-badge svg {
+      width: 12px;
+      height: 12px;
+    }
     .footer-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-    .footer-right a { color: rgba(255,255,255,.45); font-size: .84rem; transition: color .2s ease; }
+    .footer-right a { 
+      color: rgba(255,255,255,.45); 
+      font-size: .84rem; 
+      transition: color .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-right a svg {
+      width: 16px;
+      height: 16px;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
     .footer-right a:hover { color: var(--teal); }
     .footer-divider { color: rgba(255,255,255,.15); font-size: .8rem; user-select: none; }
 
@@ -494,10 +558,10 @@
       #navbar.scrolled .logo img { height: 34px; }
       .menu { display: none; }
       .hamburger { display: flex; }
-      .page-hero { padding: 60px 6% 52px; }
+      .page-hero { padding: 46px 6% 42px; }
       .page-hero h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
-      .section { padding: 80px 6%; }
-      .two-col { grid-template-columns: 1fr; gap: 44px; }
+      .section { padding: 64px 6%; }
+      .two-col { grid-template-columns: 1fr; gap: 35px; }
       .img-card { order: -1; }
       .img-card img { min-height: 280px; }
       .trust-strip-inner { grid-template-columns: repeat(2, 1fr); }
@@ -507,26 +571,75 @@
       .trust-stat:nth-child(4) { border-right: none; }
       .values-grid { gap: 18px; }
       .team-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .cta-strip { padding: 56px 5%; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
       .footer-right { gap: 16px; }
     }
 
     @media (max-width: 480px) {
       #navbar { padding: 0 4%; }
-      .page-hero { padding: 52px 4% 48px; }
-      .section { padding: 64px 4%; }
+      .page-hero { padding: 42px 4% 38px; }
+      .section { padding: 51px 4%; }
       .trust-strip-inner { grid-template-columns: repeat(2, 1fr); }
       .trust-stat { padding: 20px 14px; }
       .trust-stat-icon { width: 34px; height: 34px; border-radius: 9px; }
       .trust-stat-num { font-size: 1.15rem; }
       .team-grid { grid-template-columns: 1fr; }
       .team-card { padding: 28px 22px; }
-      .cta-strip { padding: 72px 4%; }
-      footer { padding: 36px 4%; }
+      .cta-strip { padding: 56px 4%; }
+      footer { padding: 29px 4%; }
+      .footer-certs { flex-direction: column; align-items: flex-start; gap: 8px; }
       .footer-right { flex-direction: column; align-items: flex-start; gap: 10px; }
       .footer-divider { display: none; }
     }
   </style>
+
+  <!-- Structured data: About Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": "https://www.smithtg.com/aboutus#aboutpage",
+    "url": "https://www.smithtg.com/aboutus",
+    "name": "About Smith Technology Group",
+    "description": "Learn about Smith Technology Group's 35+ years of enterprise IT expertise. Founded by industry veteran Steven Smith, we provide strategic procurement and mission-critical management for federal, state, and enterprise customers.",
+    "about": {
+      "@type": "Organization",
+      "@id": "https://www.smithtg.com/#organization",
+      "name": "Smith Technology Group",
+      "alternateName": "STG",
+      "url": "https://www.smithtg.com/",
+      "logo": "https://www.smithtg.com/Logo.png",
+      "slogan": "Strategic Procurement & Mission-Critical Management",
+      "foundingDate": "1990",
+      "founder": {
+        "@type": "Person",
+        "name": "Steven Smith",
+        "jobTitle": "Founder & CEO",
+        "email": "steve@smithtg.com"
+      },
+      "telephone": "+1-760-402-7441",
+      "email": "info@smithtg.com",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "name": "UEI",
+          "value": "MXYGG82VRA93"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "CAGE Code",
+          "value": "1ZP65"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "California Small Business Certification",
+          "value": "2051852"
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -535,12 +648,12 @@
   <!-- Nav -->
   <nav id="navbar">
     <a href="/" class="logo" aria-label="Smith Technology Group home">
-      <img src="./Logo.png" alt="Smith Technology Group">
+      <img src="./Logo.png" alt="Smith Technology Group - Strategic Procurement & Mission-Critical Management">
     </a>
     <div class="menu">
       <a href="manufacturers">Our Partners</a>
       <a href="solutions">Solutions</a>
-      <a href="aboutus">Who We Are</a>
+      <a href="aboutus" class="active">Who We Are</a>
       <a href="quote" class="cta">
         Request Quote
         <span class="arr" aria-hidden="true">
@@ -575,7 +688,6 @@
 
   <main>
 
-    <!-- ① Hero — rewritten -->
     <header class="page-hero">
       <div class="page-hero-content">
         <div class="badge">
@@ -583,24 +695,22 @@
           Our Story
         </div>
         <h1>Built on Expertise. Driven by <em>Results.</em></h1>
-        <p>Smith Technology Group was founded by an industry veteran with over 35 years of hands-on enterprise IT experience — bringing deep technical knowledge, trusted manufacturer relationships, and a commitment to client success.</p>
+        <p>Smith Technology Group was founded by an industry veteran with over 35 years of hands-on enterprise IT experience — bringing deep technical knowledge, trusted manufacturer relationships, and a relentless focus on strategic procurement and mission-critical management to every engagement.</p>
       </div>
     </header>
 
-    <!-- ② Story Section — rewritten -->
     <section class="section" aria-labelledby="story-heading">
       <div class="two-col">
         <div class="two-col-text reveal">
           <span class="eyebrow">Our Story</span>
           <h2 id="story-heading">35 Years of Industry Experience, One Focused Mission</h2>
-          <p>Smith Technology Group was built on a single conviction: enterprises deserve a technology partner who has actually lived the challenges they face — not just read about them. Our founder brings over 35 years of direct, hands-on IT experience across enterprise compute, networking, storage, and cloud infrastructure. That's three and a half decades of navigating vendor ecosystems, architecting resilient systems, and solving mission-critical problems in real-world production environments.</p>
-          <p>That depth of expertise shapes everything we do. From day one, we set out to build a firm that combines the agility and personal attention of a specialized boutique with the OEM access and procurement power typically reserved for large integrators. It's a model that puts your goals first — without the friction of bloated org charts or one-size-fits-all playbooks.</p>
-          <p>Today, Smith Technology Group serves clients across a wide range of industries — delivering everything from compute and networking hardware to cloud strategy and 24/7 managed support. We take pride in earning long-term partnerships built on trust, transparency, and tangible results.</p>
+          <p>Smith Technology Group was built on a single conviction: enterprises deserve a technology partner who has actually lived the challenges they face — not just read about them. Our founder spent over three decades in the enterprise IT trenches, managing infrastructure, sourcing mission-critical hardware, and navigating complex procurement cycles for organizations that simply could not afford downtime.</p>
+          <p>That depth of expertise shapes everything we do. From day one, we set out to build a firm that combines the agility and personal attention of a specialized boutique with the OEM access and procurement power of a major provider.</p>
+          <p>Today, Smith Technology Group serves clients across a wide range of industries — delivering everything from compute and networking hardware to cloud strategy and 24/7 managed support. We're SAM.gov registered (UEI: MXYGG82VRA93, CAGE Code: 1ZP65) and California Certified Small Business #2051852, proudly serving federal, state, and enterprise customers.</p>
         </div>
         <div class="img-card reveal reveal-d1">
           <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80"
                alt="Smith Technology Group team at work">
-          <!-- ② badge updated -->
           <div class="img-card-badge">
             <strong>35<span style="font-size:1rem">+</span></strong>
             <span>Years of Experience</span>
@@ -609,7 +719,6 @@
       </div>
     </section>
 
-    <!-- Trust / Stats Strip (from index.html) -->
     <div class="trust-strip" aria-label="Company at a glance">
       <div class="trust-strip-inner">
 
@@ -657,7 +766,7 @@
         <div class="trust-stat">
           <div class="trust-stat-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 19.92z"/>
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 20.92z"/>
             </svg>
           </div>
           <div class="trust-stat-text">
@@ -669,7 +778,6 @@
       </div>
     </div>
 
-    <!-- Values — unchanged -->
     <section class="section" aria-labelledby="values-heading">
       <div class="section-header">
         <span class="eyebrow">What Drives Us</span>
@@ -725,7 +833,6 @@
       </div>
     </section>
 
-    <!-- Leadership Section — Fixed-width badges -->
     <section class="section section-alt" aria-labelledby="team-heading">
       <div class="section-header">
         <span class="eyebrow">Our Team</span>
@@ -734,7 +841,6 @@
       </div>
       <div class="team-grid">
 
-        <!-- Management -->
         <div class="team-card reveal">
           <div class="avatar">Management</div>
           <h4>Steven Smith</h4>
@@ -749,7 +855,6 @@
           </a>
         </div>
 
-        <!-- Sales -->
         <div class="team-card reveal reveal-d1">
           <div class="avatar">Sales</div>
           <h4>Sales Team</h4>
@@ -764,7 +869,6 @@
           </a>
         </div>
 
-        <!-- Purchasing -->
         <div class="team-card reveal reveal-d2">
           <div class="avatar">Purchasing</div>
           <h4>Purchasing Team</h4>
@@ -779,7 +883,6 @@
           </a>
         </div>
 
-        <!-- Logistics -->
         <div class="team-card reveal reveal-d3">
           <div class="avatar">Logistics</div>
           <h4>Logistics Team</h4>
@@ -794,7 +897,6 @@
           </a>
         </div>
 
-        <!-- Support -->
         <div class="team-card reveal reveal-d4">
           <div class="avatar">Support</div>
           <h4>Technical Support</h4>
@@ -809,7 +911,6 @@
           </a>
         </div>
 
-        <!-- Accounting -->
         <div class="team-card reveal reveal-d5">
           <div class="avatar">Accounting</div>
           <h4>Accounting Team</h4>
@@ -827,7 +928,6 @@
       </div>
     </section>
 
-    <!-- CTA Strip — unchanged -->
     <section class="cta-strip" aria-labelledby="cta-heading">
       <div class="cta-strip-inner reveal">
         <span class="eyebrow" style="color:rgba(0,196,180,.8);">Ready to Get Started?</span>
@@ -844,19 +944,58 @@
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-inner">
       <div class="footer-left">
         <strong>Smith Technology Group</strong>
-        <span>&copy; 2025 · Strategic IT Infrastructure &amp; Mission-Critical Management</span>
+        <span>&copy; 2025 · Strategic Procurement &amp; Mission-Critical Management</span>
+        <div class="footer-certs">
+          <span class="footer-cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            SAM.GOV: MXYGG82VRA93
+          </span>
+          <span class="footer-cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            CAGE: 1ZP65
+          </span>
+          <span class="footer-cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            CA Cert #2051852
+          </span>
+        </div>
       </div>
       <div class="footer-right">
-        <a href="tel:1-760-402-7441">1-760-402-7441</a>
+        <a href="tel:1-760-402-7441">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          1-760-402-7441
+        </a>
         <span class="footer-divider">|</span>
-        <a href="mailto:info@smithtg.com">info@smithtg.com</a>
+        <a href="mailto:info@smithtg.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          info@smithtg.com
+        </a>
         <span class="footer-divider">|</span>
-        <a href="https://www.smithtg.com">smithtg.com</a>
+        <a href="https://www.smithtg.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          smithtg.com
+        </a>
       </div>
     </div>
   </footer>
@@ -913,7 +1052,6 @@
     })();
   </script>
 
-  <!-- Smartsupp -->
   <script>
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = 'd433810c9a6ed551ac5f4908db2942c35fba3ef5';

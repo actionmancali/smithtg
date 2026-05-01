@@ -3,22 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Request a Quote | Smith Technology Group</title>
+  <title>Request a Quote | Smith Technology Group - Enterprise IT Procurement</title>
   <link rel="canonical" href="https://www.smithtg.com/quote">
   <link rel="icon" type="image/png" href="logoicon.png">
   <link rel="apple-touch-icon" href="logoicon.png">
   
   <!-- Site identity & SEO -->
-  <meta name="description" content="Request a quote from Smith Technology Group. Expert consultation on hardware procurement, IT infrastructure, and managed services. Typically respond within 1 business day.">
+  <meta name="description" content="Request a quote from Smith Technology Group (SAM.gov UEI: MXYGG82VRA93, CAGE: 1ZP65). Expert consultation on hardware procurement, IT infrastructure, and managed services. California Certified Small Business. Typically respond within 1 business day.">
   <meta name="author" content="Smith Technology Group">
+  <meta name="keywords" content="request quote, Smith Technology Group, enterprise IT procurement, hardware quote, infrastructure quote, managed services quote, Dell quote, HPE quote, Cisco quote, UEI MXYGG82VRA93, CAGE 1ZP65, California Small Business, SAM.gov registered, government contractor quotes">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Smith Technology Group">
-  <meta property="og:title" content="Request a Quote | Smith Technology Group">
-  <meta property="og:description" content="Request a quote from Smith Technology Group. Expert consultation on hardware procurement, IT infrastructure, and managed services. Typically respond within 1 business day.">
+  <meta property="og:title" content="Request a Quote | Smith Technology Group - Enterprise IT Procurement">
+  <meta property="og:description" content="Request a quote from Smith Technology Group (SAM.gov UEI: MXYGG82VRA93, CAGE: 1ZP65). Expert consultation on hardware procurement, IT infrastructure, and managed services. 1-day response time.">
   <meta property="og:url" content="https://www.smithtg.com/quote">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.smithtg.com/Logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Request a Quote | Enterprise IT Procurement">
+  <meta name="twitter:description" content="Get expert quotes on hardware, infrastructure, and managed services. SAM.gov registered. Typically respond within 1 business day.">
+  <meta name="twitter:image" content="https://www.smithtg.com/Logo.png">
+
+  <!-- Additional SEO -->
+  <meta name="geo.region" content="US-CA">
+  <meta name="geo.placename" content="California">
+  <meta name="coverage" content="Worldwide">
+  <meta name="distribution" content="Global">
+  <meta name="rating" content="General">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -121,6 +137,19 @@
     .cta:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 14px 38px rgba(0,196,180,.48); filter: brightness(1.06); }
     .cta .arr { display: inline-flex; transition: transform .2s var(--ease-back); }
     .cta:hover .arr { transform: translateX(3px); }
+    .cta.active {
+      background: var(--white);
+      color: var(--teal-dark) !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .cta.active:hover {
+      background: var(--white);
+      color: var(--teal-dark) !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,.20);
+    }
+    .cta.active svg {
+      stroke: var(--teal-dark);
+    }
 
     .hamburger {
       display: none; width: 44px; height: 44px;
@@ -156,7 +185,7 @@
       transform: translateY(-8px); opacity: 0;
       transition: transform .28s var(--ease), opacity .22s ease;
     }
-    #mobile-menu.open { transform: translateY(0); opacity: 1; }
+    #mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; }
     #mobile-menu a {
       color: var(--text); font-family: 'Poppins', sans-serif;
       font-size: 1.05rem; font-weight: 700;
@@ -179,7 +208,7 @@
         linear-gradient(155deg, rgba(8,22,48,.94) 0%, rgba(0,51,102,.88) 50%, rgba(10,70,130,.85) 100%),
         url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&w=1920&q=80')
         center/cover;
-      padding: 68px 8% 64px;
+      padding: 54px 8% 51px;
       position: relative; overflow: hidden;
     }
     .page-hero::before {
@@ -221,9 +250,27 @@
       animation: rise .68s var(--ease) .2s both;
     }
 
+    .hero-badges {
+      display: inline-flex; align-items: center; gap: 10px; 
+      margin-bottom: 16px; flex-wrap: wrap;
+      animation: rise .68s var(--ease) .15s both;
+    }
+    .hero-badge-item {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .8rem; font-weight: 600;
+      color: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.1);
+      padding: 6px 14px; border-radius: 99px;
+      border: 1px solid rgba(255,255,255,.2);
+      backdrop-filter: blur(8px);
+    }
+    .hero-badge-item svg {
+      width: 14px; height: 14px;
+    }
+
     .quote-wrap {
       max-width: 1180px; margin: 0 auto;
-      padding: 72px 5% 100px;
+      padding: 58px 5% 80px;
       display: grid; grid-template-columns: 1fr 400px;
       gap: 44px; align-items: start;
     }
@@ -231,13 +278,13 @@
     .form-card {
       background: var(--white); border-radius: 22px;
       box-shadow: var(--sh-lg); border: 1px solid rgba(0,0,0,.05);
-      padding: 52px 52px 48px;
+      padding: 42px 42px 38px;
       opacity: 0; transform: translateY(28px);
       transition: opacity .65s var(--ease), transform .65s var(--ease);
     }
     .form-card.visible { opacity: 1; transform: translateY(0); }
 
-    .form-card-header { margin-bottom: 36px; }
+    .form-card-header { margin-bottom: 29px; }
     .eyebrow {
       display: inline-block; font-size: .85rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 2px;
@@ -252,7 +299,7 @@
     .form-divider {
       border: none; height: 1px;
       background: linear-gradient(90deg, var(--teal), rgba(0,196,180,.1));
-      margin-bottom: 36px;
+      margin-bottom: 29px;
     }
 
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -435,7 +482,7 @@
 
     footer {
       background: linear-gradient(155deg, #080f1e 0%, #0f2944 100%);
-      padding: 44px 8%; position: relative; overflow: hidden;
+      padding: 35px 8%; position: relative; overflow: hidden;
     }
     footer::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -447,12 +494,56 @@
       flex-wrap: wrap; gap: 18px;
     }
     .footer-left { display: flex; flex-direction: column; gap: 4px; }
-    .footer-left strong { color: var(--white); font-size: .92rem; font-weight: 700; }
-    .footer-left span { color: rgba(255,255,255,.32); font-size: .78rem; }
+    .footer-left strong { color: var(--white); font-size: .92rem; font-weight: 700; letter-spacing: -.1px; }
+    .footer-left span { color: rgba(255,255,255,.32); font-size: .78rem; letter-spacing: .2px; }
+    .footer-certs {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: rgba(255,255,255,.5);
+      padding: 4px 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .footer-cert-badge:hover {
+      background: rgba(0,196,180,.1);
+      border-color: rgba(0,196,180,.3);
+      color: var(--teal);
+    }
+    .footer-cert-badge svg {
+      width: 12px;
+      height: 12px;
+    }
     .footer-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-    .footer-right a { color: rgba(255,255,255,.45); font-size: .84rem; transition: color .2s ease; }
+    .footer-right a { 
+      color: rgba(255,255,255,.45); 
+      font-size: .84rem; 
+      transition: color .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-right a svg {
+      width: 16px;
+      height: 16px;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
     .footer-right a:hover { color: var(--teal); }
-    .footer-divider { color: rgba(255,255,255,.15); user-select: none; }
+    .footer-divider { color: rgba(255,255,255,.15); font-size: .8rem; user-select: none; }
 
     @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -463,12 +554,12 @@
       #navbar.scrolled .logo img { height: 34px; }
       .menu { display: none; }
       .hamburger { display: flex; }
-      .page-hero { padding: 60px 5% 52px; background-attachment: scroll; }
+      .page-hero { padding: 48px 5% 42px; background-attachment: scroll; }
       .page-hero h1 { font-size: clamp(1.7rem, 5.5vw, 2.2rem); }
-      .quote-wrap { grid-template-columns: 1fr; padding: 52px 5% 80px; gap: 28px; }
+      .quote-wrap { grid-template-columns: 1fr; padding: 42px 5% 64px; gap: 28px; }
       .sidebar { order: -1; }
       .promo-card { display: none; }
-      .form-card { padding: 36px 28px; }
+      .form-card { padding: 29px 22px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
       .footer-right { gap: 16px; }
@@ -476,15 +567,55 @@
 
     @media (max-width: 480px) {
       #navbar { padding: 0 4%; }
-      .page-hero { padding: 52px 4% 48px; }
-      .quote-wrap { padding: 40px 4% 64px; }
-      .form-card { padding: 28px 20px; }
-      .info-card { padding: 24px 20px; }
-      footer { padding: 36px 4%; }
+      .page-hero { padding: 42px 4% 38px; }
+      .quote-wrap { padding: 32px 4% 51px; }
+      .form-card { padding: 22px 16px; }
+      .info-card { padding: 19px 16px; }
+      footer { padding: 29px 4%; }
+      .footer-certs { flex-direction: column; align-items: flex-start; gap: 8px; }
       .footer-right { flex-direction: column; align-items: flex-start; gap: 10px; }
       .footer-divider { display: none; }
+      .hero-badge-item { font-size: .72rem; padding: 5px 11px; }
     }
   </style>
+
+  <!-- Structured data: ContactPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": "https://www.smithtg.com/quote#contactpage",
+    "url": "https://www.smithtg.com/quote",
+    "name": "Request a Quote",
+    "description": "Request a quote from Smith Technology Group for enterprise IT procurement, hardware, infrastructure, and managed services.",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://www.smithtg.com/#organization",
+      "name": "Smith Technology Group",
+      "alternateName": "STG",
+      "slogan": "Strategic Procurement & Mission-Critical Management",
+      "telephone": "+1-760-402-7441",
+      "email": "info@smithtg.com",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "name": "UEI",
+          "value": "MXYGG82VRA93"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "CAGE Code",
+          "value": "1ZP65"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "California Small Business Certification",
+          "value": "2051852"
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -492,8 +623,8 @@
 
   <!-- Nav -->
   <nav id="navbar">
-    <a href="index.html" class="logo" aria-label="Smith Technology Group home">
-      <img src="./Logo.png" alt="Smith Technology Group">
+    <a href="/" class="logo" aria-label="Smith Technology Group home">
+      <img src="./Logo.png" alt="Smith Technology Group - Strategic Procurement & Mission-Critical Management">
     </a>
     <div class="menu">
       <a href="manufacturers">Our Partners</a>
@@ -539,6 +670,22 @@
         Fast Response &nbsp;·&nbsp; Expert Guidance
       </div>
       <h1>Request a <em>Quote.</em></h1>
+      <div class="hero-badges">
+        <span class="hero-badge-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+          State & Federal Customers Welcome
+        </span>
+        <span class="hero-badge-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          CAGE: 1ZP65
+        </span>
+      </div>
       <p>Tell us about your infrastructure requirements and our team will respond with a tailored solution — typically within one business day.</p>
     </div>
   </header>
@@ -550,7 +697,7 @@
       <div class="form-card" id="form-card">
         <div class="form-card-header">
           <span class="eyebrow">Get in Touch</span>
-          <h2>Enterprise Procurement &amp; Infrastructure</h2>
+          <h2>Strategic Procurement &amp; Mission-Critical Management</h2>
           <p>Fill in the details below and a specialist will be in touch to discuss your requirements.</p>
         </div>
         <hr class="form-divider">
@@ -691,6 +838,7 @@
           <h3>Why Smith Technology Group?</h3>
           <div class="trust-list">
             <div class="trust-item"><span class="trust-dot"></span>35+ years of enterprise IT expertise</div>
+            <div class="trust-item"><span class="trust-dot"></span>State &amp; Federal customers welcome</div>
             <div class="trust-item"><span class="trust-dot"></span>Authorized HP, Dell &amp; Lenovo partner</div>
             <div class="trust-item"><span class="trust-dot"></span>350+ manufacturer relationships</div>
             <div class="trust-item"><span class="trust-dot"></span>24/7 managed support available</div>
@@ -717,14 +865,54 @@
     <div class="footer-inner">
       <div class="footer-left">
         <strong>Smith Technology Group</strong>
-        <span>&copy; 2025 · Strategic IT Infrastructure &amp; Mission-Critical Management</span>
+        <span>&copy; 2025 · Strategic Procurement &amp; Mission-Critical Management</span>
+        <div class="footer-certs">
+          <span class="footer-cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            SAM.GOV: MXYGG82VRA93
+          </span>
+          <span class="footer-cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            CAGE: 1ZP65
+          </span>
+          <span class="footer-cert-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            CA Cert #2051852
+          </span>
+        </div>
       </div>
       <div class="footer-right">
-        <a href="tel:1-760-402-7441">1-760-402-7441</a>
+        <a href="tel:1-760-402-7441">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          1-760-402-7441
+        </a>
         <span class="footer-divider">|</span>
-        <a href="mailto:info@smithtg.com">info@smithtg.com</a>
+        <a href="mailto:info@smithtg.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          info@smithtg.com
+        </a>
         <span class="footer-divider">|</span>
-        <a href="https://www.smithtg.com">smithtg.com</a>
+        <a href="https://www.smithtg.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          smithtg.com
+        </a>
       </div>
     </div>
   </footer>
