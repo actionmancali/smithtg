@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head
+<head>
+  <meta charset="utf-8">
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KQNK3TSVX0"></script>
 <script>
@@ -10,8 +11,7 @@
 
   gtag('config', 'G-KQNK3TSVX0');
 </script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Our Partners | Smith Technology Group</title>
   <link rel="canonical" href="https://www.smithtg.com/manufacturers">
   <link rel="icon" type="image/png" href="logoicon.png">
@@ -82,7 +82,7 @@
       overflow-x: hidden;
     }
     body.menu-open { overflow: hidden; }
-    h1,h2,h3 { font-family: 'Poppins', sans-serif; line-height: 1.1; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; line-height: 1.1; }
     p { color: var(--muted); }
     a { text-decoration: none; }
 
@@ -183,7 +183,7 @@
       transform: translateY(-8px); opacity: 0;
       transition: transform .28s var(--ease), opacity .22s ease;
     }
-    #mobile-menu.open { transform: translateY(0); opacity: 1; }
+    #mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; }
     #mobile-menu a {
       color: var(--text); font-family: 'Poppins', sans-serif;
       font-size: 1.05rem; font-weight: 700;
@@ -464,55 +464,54 @@
     .footer-left { display: flex; flex-direction: column; gap: 4px; }
     .footer-left strong { color: var(--white); font-size: .92rem; font-weight: 700; letter-spacing: -.1px; }
     .footer-left span { color: rgba(255,255,255,.32); font-size: .78rem; letter-spacing: .2px; }
-    .footer-certs {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-.footer-cert-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: .7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .6px;
-  color: rgba(255,255,255,.5);
-  padding: 4px 10px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 6px;
-  transition: background .2s ease, border-color .2s ease, color .2s ease;
-}
-.footer-cert-badge:hover {
-  background: rgba(0,196,180,.1);
-  border-color: rgba(0,196,180,.3);
-  color: var(--teal);
-}
-.footer-cert-badge svg {
-  width: 12px;
-  height: 12px;
-}
-    
+   .footer-certs {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .footer-cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: rgba(255,255,255,.5);
+      padding: 4px 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .footer-cert-badge:hover {
+      background: rgba(0,196,180,.1);
+      border-color: rgba(0,196,180,.3);
+      color: var(--teal);
+    }
+    .footer-cert-badge svg {
+      width: 12px;
+      height: 12px;
+    }
     .footer-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-.footer-right a { 
-  color: rgba(255,255,255,.45); 
-  font-size: .84rem; 
-  transition: color .2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.footer-right a svg {
-  width: 16px;
-  height: 16px;
-  color: var(--teal);
-  flex-shrink: 0;
-}
-.footer-right a:hover { color: var(--teal); }
-.footer-divider { color: rgba(255,255,255,.15); font-size: .8rem; user-select: none; }
+    .footer-right a {
+      color: rgba(255,255,255,.45);
+      font-size: .84rem;
+      transition: color .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-right a svg {
+      width: 16px;
+      height: 16px;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    .footer-right a:hover { color: var(--teal); }
+    .footer-divider { color: rgba(255,255,255,.15); font-size: .8rem; user-select: none; }
 
     @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -567,7 +566,7 @@
     "@id": "https://www.smithtg.com/#organization",
     "name": "Smith Technology Group",
     "alternateName": "STG",
-    "slogan": "Strategic Procurement & Mission-Critical Management",
+    "slogan": "Strategic Sourcing & Procurement | Mission-Critical Project Management",
     "identifier": [
       {
         "@type": "PropertyValue",
@@ -596,13 +595,13 @@
   <!-- Nav -->
   <nav id="navbar">
     <a href="/" class="logo" aria-label="Smith Technology Group home">
-      <img src="./Logo.png" alt="Smith Technology Group - Strategic Procurement & Mission-Critical Management">
+      <img src="./Logo.png" alt="Smith Technology Group | Strategic Sourcing & Procurement | Mission-Critical Project Management">
     </a>
     <div class="menu">
-      <a href="manufacturers" class="active">Our Partners</a>
-      <a href="solutions">Solutions</a>
-      <a href="aboutus">Who We Are</a>
-      <a href="quote" class="cta">
+      <a href="/manufacturers" class="active">Our Partners</a>
+      <a href="/solutions">Solutions</a>
+      <a href="/aboutus">Who We Are</a>
+      <a href="/quote" class="cta">
         Request Quote
         <span class="arr" aria-hidden="true">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -621,11 +620,11 @@
 
   <!-- Mobile dropdown -->
   <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
-    <a href="manufacturers">Our Partners</a>
-    <a href="solutions">Solutions</a>
-    <a href="aboutus">Who We Are</a>
+    <a href="/manufacturers">Our Partners</a>
+    <a href="/solutions">Solutions</a>
+    <a href="/aboutus">Who We Are</a>
     <div class="mobile-cta-row">
-      <a href="quote" class="cta">
+      <a href="/quote" class="cta">
         Request a Quote
         <span class="arr" aria-hidden="true">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
