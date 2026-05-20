@@ -22,7 +22,7 @@ Live at: [www.smithtg.com](https://www.smithtg.com)
 - **About Us** (`aboutus.html`) - Company history and team
 - **Request Quote** (`quote.html`) - Contact form for procurement requests
 
-## Recent Updates (May 2025)
+## Recent Updates (May 2026)
 
 - Standardized branding tagline to "Strategic Sourcing & Procurement | Mission-Critical Project Management" across all pages
 - Corrected `<meta charset>` placement to first position in `<head>` on all pages
