@@ -1,6 +1,6 @@
 # Smith Technology Group
 
-**Strategic Procurement & Mission-Critical Management**
+**Strategic Sourcing & Procurement | Mission-Critical Project Management**
 
 Smith Technology Group delivers end-to-end IT solutions for enterprise and federal customers. With 35+ years of industry expertise and 350+ authorized OEM partnerships, we provide strategic hardware procurement, hybrid cloud infrastructure, and 24/7 mission-critical management services.
 
@@ -24,12 +24,13 @@ Live at: [www.smithtg.com](https://www.smithtg.com)
 
 ## Recent Updates (May 2025)
 
-- Enhanced SEO with certification numbers across all pages
-- Updated tagline to "Strategic Procurement & Mission-Critical Management"
-- Added footer certification badges (SAM.gov UEI, CAGE Code, CA Certification)
-- Tightened padding across all sections for improved visual hierarchy
-- Added structured data (Schema.org) for better search engine visibility
-- Improved mobile responsiveness
+- Standardized branding tagline to "Strategic Sourcing & Procurement | Mission-Critical Project Management" across all pages
+- Corrected `<meta charset>` placement to first position in `<head>` on all pages
+- Fixed all internal navigation links to use leading slashes for root-relative routing
+- Corrected footer website & LinkedIn link indentation across all pages
+- Updated h1–h6 heading font rule to include h5 and h6 on all pages
+- Updated sitemap lastmod dates to reflect current revision
+- Updated aboutus.html hero heading style — "Driven by Results." now renders full teal
 
 ## Technology Stack
 
